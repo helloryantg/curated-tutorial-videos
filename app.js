@@ -18,7 +18,7 @@ app.use(bodyParser.json({ type: '*/*' }))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // Routes
-
+app.use('/auth', require('./controllers/auth.controller'))
 
 // Catch all route
 app.get('*', (req, res) => { res.send('404 not found!') })
