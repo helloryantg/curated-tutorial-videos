@@ -1,11 +1,15 @@
 @base = http://localhost:4000
 @application-json = Content-Type: application/json
-@id = 5e617f52ff31f7d9640193c9
+@id = 5e61892041a37762ae86eb0a
 
 ### Get all users
 GET {{base}}/users/all
 {{application-json}}
 
+### Get user
+GET {{base}}/users/{{id}}
+{{application-json}}
+
 ### Delete user
-DELETE {{base}}/users/{{id}}/delete
+DELETE {{base}}/users/{{id}}
 {{application-json}}
