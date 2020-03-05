@@ -2,7 +2,7 @@
 @application-json = Content-Type: application/json
 @email = test@email.com
 @password = test-user-1
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZTYxN2Y1MmZmMzFmN2Q5NjQwMTkzYzkiLCJpYXQiOjE1ODM0NDc4OTAsImV4cCI6MTU4MzUzNDI5MH0.ijC89mTeLUdLoeHHLqKwFnC_VbmD_XKGyGDV9SYIt5A
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImlhdCI6MTU4MzQ1MDQwMCwiZXhwIjoxNTgzNTM2ODAwfQ.M2_W5avQ38bc_aKD6QMc023Xt4q5oYhum7DZYacDMTs
 
 ### Register user
 POST {{base}}/auth/register
@@ -15,3 +15,7 @@ POST {{base}}/auth/register
   "email": "{{email}}",
   "password": "{{password}}"
 }
+
+### Validate user
+GET {{base}}/auth/validate/{{token}}
+{{application-json}}
