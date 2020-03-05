@@ -1,0 +1,6 @@
+@base = http://localhost:4000
+@application-json = Content-Type: application/json
+
+### Get all users
+GET {{base}}/users/all
+{{application-json}}

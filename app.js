@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // Routes
 app.use('/auth', require('./controllers/auth.controller'))
+app.use('/users', require('./controllers/user.controller'))
 
 // Catch all route
 app.get('*', (req, res) => { res.send('404 not found!') })
