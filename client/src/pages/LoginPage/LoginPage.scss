@@ -1,0 +1,104 @@
+.LoginPage {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #718aab;
+
+  & > .container {
+    height: 70%;
+    width: 80%;
+    box-shadow: 4px 4px 2px 1px rgba(0,0,0,0.55);
+    background-color: #fff;
+    display: flex;
+
+    & > .logo-container {
+      background-color: #1261A0;
+      width: 40%;
+
+      & > .top {
+        font-size: 300%;
+        color: #fff;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & > .title {
+          text-align: center;
+          margin: 0 2rem;
+        }
+      }
+
+      & > .bottom {
+
+      }
+    }
+
+    & > .forms-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      & > .header {
+        width: 100%;
+        flex: 1;
+        margin: 2rem;
+
+        & > .title {
+          color: #1261A0;
+          font-size: 160%;
+          font-weight: 600;
+        }
+
+        & > .description {
+          color: grey;
+        }
+      }
+
+      & > .form {
+        flex: 6;
+        display: flex;
+        flex-direction: column;
+        margin: 2rem;
+
+        & > .email {
+          & > .title {
+            margin-bottom: 1rem;
+          }
+
+          & > input {
+            width: 80%;
+            height: 30px;
+            margin-bottom: 3rem;
+          }
+        }
+
+        & > .password {
+          & > .title {
+            margin-bottom: 1rem;
+          }
+
+          & > input {
+            width: 80%;
+            height: 30px;
+          }
+        }
+      }
+
+      & > .button-container {
+        flex: 2;
+        margin: 2rem;
+
+        & > button {
+          border: none;
+          height: 2.8rem;
+          width: 12rem;
+          background-color: #1261A0;
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

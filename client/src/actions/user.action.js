@@ -13,7 +13,6 @@ export const login = creds => async dispatch => {
 }
 
 export const setUser = user => dispatch => {
-  console.log(user)
   dispatch({
     type: SET_USER,
     user

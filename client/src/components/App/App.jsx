@@ -1,25 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import './App.scss'
 import userService from '../../services/user.service'
 import { setUser } from '../../actions/user.action'
+import LoginPage from '../../pages/LoginPage/LoginPage'
 
 function App(props) {
+  const {
+    dispatch
+  } = props
+
   useEffect(() => {
-    getUserFromLocalStorage()
-  }, [])
+    dispatch(setUser(userService.getUser()))
+  }, [dispatch])
 
-  const getUserFromLocalStorage = () => {
-    props.dispatch(setUser(userService.getUser()))
-  }
-
-  if (!props.user) {
+  let body
+  if (props.user) {
     // send to signup or login
+    body = <LoginPage />
   }
 
   return (
     <div className="App">
-
+      {body}
     </div>
   )
 }
