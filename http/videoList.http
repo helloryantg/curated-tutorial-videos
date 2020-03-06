@@ -8,3 +8,13 @@
 GET {{base}}/videoLists/all
 {{application-json}}
 {{authorization}}
+
+### Create a video list
+POST {{base}}/videoLists
+{{application-json}}
+{{authorization}}
+
+{
+  "name": "First List",
+  "userId": "{{id}}"
+}
