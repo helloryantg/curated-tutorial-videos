@@ -6,6 +6,10 @@ const videoSchema = new Schema({
     type: String,
     required: true
   },
+  userId: {
+    type: String,
+    required: true
+  },
   likes: {
     type: Number,
     default: 0

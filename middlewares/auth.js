@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
       if (err) {
         next(err)
       } else {
-        req.user = decoded.user
+        req.userId = decoded.id
         next()
       }
     })

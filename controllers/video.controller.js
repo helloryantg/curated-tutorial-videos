@@ -16,4 +16,24 @@ router.get('/all', authMiddleware, async (req, res) => {
   }
 })
 
+// Create a video
+router.post('/', authMiddleware, async (req, res) => {
+  try {
+    const newVideo = new Video({ 
+      url: req.body.url,
+      userId: req.userId 
+    })
+
+    await newVideo.save()
+
+    res
+      .status(HttpStatus.OK)
+      .send(newVideo.id)
+  } catch(err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
 module.exports = router

@@ -1,6 +1,6 @@
 @base = http://localhost:4000
 @application-json = Content-Type: application/json
-@id = 5e61a88f3f02930f9cdbb936
+@id = 5e61be54982b482c7ee9315f
 @userId = 5e61892041a37762ae86eb0a
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImlhdCI6MTU4MzQ1MDQwMCwiZXhwIjoxNTgzNTM2ODAwfQ.M2_W5avQ38bc_aKD6QMc023Xt4q5oYhum7DZYacDMTs
 @authorization = Authorization: {{token}}
@@ -9,3 +9,12 @@
 GET {{base}}/videos/all
 {{application-json}}
 {{authorization}}
+
+### Create a video
+POST {{base}}/videos
+{{application-json}}
+{{authorization}}
+
+{
+  "url": "http://test-url-2.com"
+}
