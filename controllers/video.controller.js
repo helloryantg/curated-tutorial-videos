@@ -19,9 +19,9 @@ router.get('/all', authMiddleware, async (req, res) => {
 // Create a video
 router.post('/', authMiddleware, async (req, res) => {
   try {
-    const newVideo = new Video({ 
+    const newVideo = new Video({
       url: req.body.url,
-      userId: req.userId 
+      userId: req.userId
     })
 
     await newVideo.save()
@@ -29,7 +29,7 @@ router.post('/', authMiddleware, async (req, res) => {
     res
       .status(HttpStatus.OK)
       .send(newVideo.id)
-  } catch(err) {
+  } catch (err) {
     res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)
       .send({ msg: err })
@@ -42,6 +42,54 @@ router.get('/:id', authMiddleware, async (req, res) => {
     res
       .status(HttpStatus.OK)
       .send(await Video.findOne({ _id: req.params.id }))
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
+// Update a video
+router.put('/:id', authMiddleware, async (req, res) => {
+  const {
+    url,
+    likes,
+    views,
+    isFavored
+  } = req.body
+  
+  try {
+    const options = {
+      useFindAndModify: false,
+      new: true
+    }
+
+    const updates = {
+      url,
+      likes,
+      views,
+      isFavored
+    }
+
+    res
+      .status(HttpStatus.OK)
+      .send(await Video.findOneAndUpdate(
+        { _id: req.params.id },
+        updates,
+        options
+      ))
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
+router.delete('/:id', authMiddleware, async (req, res) => {
+  try {
+    res
+      .status(HttpStatus.NO_CONTENT)
+      .send(await Video.findOneAndDelete({ _id: req.params.id }))
   } catch (err) {
     res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)

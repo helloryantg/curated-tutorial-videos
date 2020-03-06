@@ -23,3 +23,20 @@ POST {{base}}/videos
 GET {{base}}/videos/{{id}}
 {{application-json}}
 {{authorization}}
+
+### Update a video
+PUT {{base}}/videos/{{id}}
+{{application-json}}
+{{authorization}}
+
+{
+  "url": "http://test-url-3.com",
+  "likes": 1,
+  "views": 1,
+  "isFavored": true
+}
+
+### Delete a video
+DELETE {{base}}/videos/{{id}}
+{{application-json}}
+{{authorization}}
