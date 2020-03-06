@@ -1,40 +1,21 @@
 import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 import './App.scss'
-import { signup } from '../../services/user.service'
-import tokenService from '../../services/token.service'
 import userService from '../../services/user.service'
+import { setUser } from '../../actions/user.action'
 
-function App() {
-  const [user, setUser] = useState({})
-
+function App(props) {
   useEffect(() => {
     getUserFromLocalStorage()
   }, [])
 
   const getUserFromLocalStorage = () => {
-    setUser(userService.getUser())
+    props.dispatch(setUser(userService.getUser()))
   }
 
-  // const login = () => {
-  //   const user = userService.getUser()
-
-  //   if (user) {
-  //     setUser(user)
-  //   }
-    
-  //   console.log(userService.getUser())
-
-  //   userService.login({
-  //     email: 'test@email.com',
-  //     password: 'test-user-1'
-  //   })
-  // }
-
-  // const getUser = () => {
-  //   const user = userService.getUser()
-  // }
-
-  console.log(user)
+  if (!props.user) {
+    // send to signup or login
+  }
 
   return (
     <div className="App">
@@ -43,4 +24,10 @@ function App() {
   )
 }
 
-export default App
+const mapState = (state) => {
+  return {
+    user: state.reducers.user
+  }
+}
+
+export default connect(mapState)(App)
