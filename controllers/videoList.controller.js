@@ -50,4 +50,45 @@ router.post('/', authMiddleware, async (req, res) => {
   }
 })
 
+// Get a video list
+router.get('/:id', authMiddleware, async (req, res) => {
+  try {
+    res
+      .status(HttpStatus.OK)
+      .send(await VideoList.findById(req.params.id))
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
+// Update a video list
+router.put('/:id', authMiddleware, async (req, res) => {
+  const { name } = req.body
+  
+  try {
+    const options = {
+      useFindAndModify: false,
+      new: true
+    }
+
+    const updates = {
+      name
+    }
+
+    res
+      .status(HttpStatus.OK)
+      .send(await VideoList.findOneAndUpdate(
+        { _id: req.params.id }, 
+        updates, 
+        options
+      ))
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
 module.exports = router
