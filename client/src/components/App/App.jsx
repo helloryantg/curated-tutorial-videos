@@ -18,7 +18,8 @@ function App() {
       password: 'stephen'
     }
 
-    signup(user)
+    const token = signup(user)
+    console.log(token)
   }, [])
 
   return (
