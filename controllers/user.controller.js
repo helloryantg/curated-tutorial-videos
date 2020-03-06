@@ -1,9 +1,10 @@
 const router = require('express').Router()
 const User = require('../models/user.model')
 const HttpStatus = require('http-status-codes')
+const authMiddleware = require('../middlewares/auth')
 
 // Get all users
-router.get('/all', async (req, res) => {
+router.get('/all', authMiddleware, async (req, res) => {
   try {
     res
       .status(HttpStatus.OK)
@@ -16,7 +17,7 @@ router.get('/all', async (req, res) => {
 })
 
 // Get user
-router.get('/:id', async (req, res) => {
+router.get('/:id', authMiddleware, async (req, res) => {
   try {
     res
       .status(HttpStatus.OK)
