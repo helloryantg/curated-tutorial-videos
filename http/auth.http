@@ -17,5 +17,18 @@ POST {{base}}/auth/register
 }
 
 ### Validate user
-GET {{base}}/auth/validate/{{token}}
+POST {{base}}/auth/validate
 {{application-json}}
+
+{
+  "token": "{{token}}"
+}
+
+### Login
+POST {{base}}/auth/login
+{{application-json}}
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}

@@ -5,6 +5,7 @@ const HttpStatus = require('http-status-codes')
 
 const createJWT = id => jwt.sign({ id }, process.env.SECRET, { expiresIn: '24h' })
 
+// Create a user and return a token
 router.post('/register', async (req, res) => {
   const {
     firstName,
@@ -35,8 +36,9 @@ router.post('/register', async (req, res) => {
   }
 })
 
-router.get('/validate/:token', async (req, res) => {
-  const { token } = req.params
+// Validate token
+router.post('/validate', async (req, res) => {
+  const { token } = req.body
 
   if (!token) {
     res
@@ -54,6 +56,32 @@ router.get('/validate/:token', async (req, res) => {
     res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)
       .send({ msg: '' })
+  }
+})
+
+router.post('/login', async (req, res) => {
+  const {
+    email,
+    password
+  } = req.body
+
+  try {
+    const foundUser = await User.findOne({ email }).exec()
+    const isMatch = await foundUser.comparePassword(password)
+
+    if (isMatch) {
+      res
+        .status(HttpStatus.OK)
+        .send({ token: createJWT(foundUser.id )})
+    } else {
+      res
+        .status(HttpStatus.BAD_REQUEST)
+        .send({ msg: 'Invalid Credentials' })
+    }
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: error })
   }
 })
 
