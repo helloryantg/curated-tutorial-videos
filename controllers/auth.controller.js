@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
 
     res
       .status(HttpStatus.OK)
-      .send({ token: createJWT(newUser.id) })
+      .send({ token: createJWT(newUser.toJSON()) })
   } catch (err) {
     res
       .status(HttpStatus.BAD_REQUEST)
@@ -73,7 +73,7 @@ router.post('/login', async (req, res) => {
     if (isMatch) {
       res
         .status(HttpStatus.OK)
-        .send({ token: createJWT(foundUser.id )})
+        .send({ token: createJWT(foundUser.toJSON()) })
     } else {
       res
         .status(HttpStatus.BAD_REQUEST)
