@@ -1,0 +1,44 @@
+.AuthPage {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #718aab;
+
+  & > .container {
+    height: 70%;
+    width: 80%;
+    box-shadow: 4px 4px 2px 1px rgba(0,0,0,0.55);
+    background-color: #fff;
+    display: flex;
+
+    & > .logo-container {
+      background-color: #1261A0;
+      width: 40%;
+
+      & > .top {
+        font-size: 300%;
+        color: #fff;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & > .title {
+          text-align: center;
+          margin: 0 2rem;
+        }
+      }
+
+      & > .bottom {
+
+      }
+    }
+
+    & > .forms-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+}

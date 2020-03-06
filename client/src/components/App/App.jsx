@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import './App.scss'
 import userService from '../../services/user.service'
 import { setUser } from '../../actions/user.action'
-import LoginPage from '../../pages/LoginPage/LoginPage'
+import AuthPage from '../../pages/AuthPage/AuthPage'
 
 function App(props) {
   const {
@@ -16,8 +16,7 @@ function App(props) {
 
   let body
   if (props.user) {
-    // send to signup or login
-    body = <LoginPage />
+    body = <AuthPage />
   }
 
   return (
