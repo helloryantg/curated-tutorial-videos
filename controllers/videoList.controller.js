@@ -91,4 +91,16 @@ router.put('/:id', authMiddleware, async (req, res) => {
   }
 })
 
+router.delete('/:id', authMiddleware, async (req, res) => {
+  try {
+    res
+      .status(HttpStatus.NO_CONTENT)
+      .send(await VideoList.findOneAndDelete({ _id: req.params.id }))
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
 module.exports = router

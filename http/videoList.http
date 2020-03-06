@@ -34,3 +34,8 @@ PUT {{base}}/videoLists/{{id}}
 {
   "name": "Third List"
 }
+
+### Delete a video list
+DELETE {{base}}/videoLists/{{id}}
+{{application-json}}
+{{authorization}}
