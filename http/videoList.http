@@ -4,16 +4,7 @@
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImlhdCI6MTU4MzQ1MDQwMCwiZXhwIjoxNTgzNTM2ODAwfQ.M2_W5avQ38bc_aKD6QMc023Xt4q5oYhum7DZYacDMTs
 @authorization = Authorization: {{token}}
 
-### Get all users
-GET {{base}}/users/all
+### Get all video lists
+GET {{base}}/videoLists/all
 {{application-json}}
 {{authorization}}
-
-### Get user
-GET {{base}}/users/{{id}}
-{{application-json}}
-{{authorization}}
-
-### Delete user
-DELETE {{base}}/users/{{id}}
-{{application-json}}

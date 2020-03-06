@@ -11,7 +11,7 @@ router.get('/all', authMiddleware, async (req, res) => {
       .send(await User.find({}))
   } catch (err) {
     res
-      .status(HttpStatus.BAD_REQUEST)
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
       .send({ msg: err })
   }
 })
