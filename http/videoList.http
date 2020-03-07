@@ -5,6 +5,11 @@
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJfaWQiOiI1ZTYxODkyMDQxYTM3NzYyYWU4NmViMGEiLCJmaXJzdE5hbWUiOiJSeWFuIiwibGFzdE5hbWUiOiJHb256YWxlcyIsImRpc3BsYXlOYW1lIjoicmdvbnphbGVzIiwiZW1haWwiOiJ0ZXN0QGVtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjAtMDMtMDVUMjM6MjA6MDAuNDY3WiIsInVwZGF0ZWRBdCI6IjIwMjAtMDMtMDVUMjM6MjA6MDAuNDY3WiIsIl9fdiI6MH0sImlhdCI6MTU4MzYxMTMwNiwiZXhwIjoxNTgzNjk3NzA2fQ.d448BA1i0g745FQ9BVYJZ3yjoMkBhOl5f7PfCiTmi5A
 @authorization = Authorization: {{token}}
 
+### Get all user video lists
+GET {{base}}/videoLists/user
+{{application-json}}
+{{authorization}}
+
 ### Get all video lists
 GET {{base}}/videoLists/all
 {{application-json}}
@@ -37,10 +42,5 @@ PUT {{base}}/videoLists/{{id}}
 
 ### Delete a video list
 DELETE {{base}}/videoLists/{{id}}
-{{application-json}}
-{{authorization}}
-
-### Get all user video lists
-GET {{base}}/videoLists/user/{{userId}}
 {{application-json}}
 {{authorization}}

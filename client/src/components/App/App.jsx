@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import './App.scss'
 import userService from '../../services/user.service'
-import { setUser } from '../../actions/user.action'
+import { 
+  setUser,
+  getUserFromToken 
+} from '../../actions/user.action'
 import AuthPage from '../../pages/AuthPage/AuthPage'
 import {
   BrowserRouter as Router,
@@ -20,7 +23,7 @@ function App(props) {
   } = props
 
   useEffect(() => {
-    dispatch(setUser(userService.getUser()))
+    dispatch(getUserFromToken())
   }, [])
 
   return (

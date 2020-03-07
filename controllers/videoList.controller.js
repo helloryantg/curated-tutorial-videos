@@ -4,6 +4,20 @@ const authMiddleware = require('../middlewares/auth')
 const VideoList = require('../models/videoList.model')
 const User = require('../models/user.model')
 
+// Get all user video lists
+router.get('/user', authMiddleware, async (req, res) => {
+  try {
+    res
+      .status(HttpStatus.OK)
+      .send(await VideoList.find({ userId: req.userId }))
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
+
 // Get all video lists
 router.get('/all', authMiddleware, async (req, res) => {
   try {
@@ -102,20 +116,5 @@ router.delete('/:id', authMiddleware, async (req, res) => {
       .send({ msg: err })
   }
 })
-
-// Get all user video lists
-router.get('/user/:userId', authMiddleware, async (req, res) => {
-  try {
-    console.log(await VideoList.find({ userId: req.params.userId }))
-    res
-      .status(HttpStatus.OK)
-      .send(await VideoList.find({ userId: req.params.userId }))
-  } catch (err) {
-    res
-      .status(HttpStatus.INTERNAL_SERVER_ERROR)
-      .send({ msg: err })
-  }
-})
-
 
 module.exports = router

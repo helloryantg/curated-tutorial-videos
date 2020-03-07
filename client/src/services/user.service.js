@@ -26,7 +26,7 @@ const login = async creds => {
     throw new Error('Bad credentials')
   }
 
-  return res.data.user
+  return res.data
 }
 
 const getUser = () => tokenService.getUserFromToken()
