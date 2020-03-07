@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './VideoWorkspace.scss'
 import NavBar from '../../components/NavBar/NavBar'
-import { getUserVideoLists } from '../../actions/user.action'
+import videoListAction from '../../actions/videoList.action'
 import { connect } from 'react-redux'
 import { isEmpty } from '../../utils/object'
 
@@ -10,10 +10,10 @@ function VideoWorkspace(props) {
   const [videoList, setVideoList] = useState([])
 
   useEffect(() => {
-    if (!isEmpty(props.user && props.token)) {
-      props.dispatch(getUserVideoLists(props.user._id, props.token))
+    if (props.token) {
+      props.dispatch(videoListAction.getUserVideoLists(props.token))
     }
-  }, [props.user, props.token])
+  }, [props.token])
 
   return (
     <div className="VideoWorkspace">

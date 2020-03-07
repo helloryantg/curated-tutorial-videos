@@ -1,6 +1,5 @@
 import userService from '../services/user.service'
 import tokenService from '../services/token.service'
-import videoListService from '../services/videoList.service'
 import USER_CONSTANTS from '../constants/user.constants'
 
 export const login = creds => async dispatch => {
@@ -8,38 +7,30 @@ export const login = creds => async dispatch => {
 
   dispatch({
     type: USER_CONSTANTS.SET_TOKEN,
-    token: data.token
+    payload: data.token
   })
 
   dispatch({
     type: USER_CONSTANTS.SET_USER,
-    user: data.user
+    payload: data.user
   })
 }
 
 export const getUserFromToken = () => async dispatch => {
   dispatch({
     type: USER_CONSTANTS.SET_USER,
-    user: await userService.getUser()
+    payload: await userService.getUser()
   })
 
   dispatch({
     type: USER_CONSTANTS.SET_TOKEN,
-    token: await tokenService.getToken()
+    payload: await tokenService.getToken()
   })
 }
 
 export const setUser = user => dispatch => {
   dispatch({
     type: USER_CONSTANTS.SET_USER,
-    user
+    payload: user
   })
-}
-
-export const getUserVideoLists = (userId, token) => async dispatch => {
-  console.log(userId)
-  const videoLists = await videoListService.getUserVideoLists(userId, token)
-  console.log(videoLists)
-
-  // console.log(videoLists)
 }
