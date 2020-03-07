@@ -44,7 +44,12 @@ function VideoWorkspace(props) {
         </div>
 
         <div className="videos-list">
-
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(item => 
+            <div className="video-card">
+              <div className="video"></div>
+              <div className="description"></div>
+            </div>
+          )}
         </div>
       </div>
     </div>
