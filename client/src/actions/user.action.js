@@ -4,8 +4,8 @@ const LOGIN = 'LOGIN'
 const SET_USER = 'SET_USER'
 
 export const login = creds => async dispatch => {
-  const user = userService.login(creds)
-  
+  const user = await userService.login(creds)
+
   return {
     type: LOGIN,
     user

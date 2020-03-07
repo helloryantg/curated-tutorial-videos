@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import './AuthPage.scss'
-import Login from '../Login/Login'
+import Login from '../../components/Login/Login'
 
 function AuthPage(props) {
-  const [creds, setCreds] = useState()
   const [isLoginPage, setLoginPage] = useState(true)
 
   return (
@@ -25,7 +24,9 @@ function AuthPage(props) {
 }
 
 const mapState = state => {
+  return {
 
+  }
 }
 
 export default connect(mapState)(AuthPage)

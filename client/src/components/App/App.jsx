@@ -1,27 +1,41 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import './App.scss'
 import userService from '../../services/user.service'
 import { setUser } from '../../actions/user.action'
 import AuthPage from '../../pages/AuthPage/AuthPage'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom';
+import VideoWorkspace from '../../pages/VideoWorkspace/VideoWorkspace'
+import { isEmpty } from '../../utils/object'
 
 function App(props) {
+  const [isLoggedIn, setLoggedIn] = useState(!isEmpty(props.user))
   const {
     dispatch
   } = props
 
   useEffect(() => {
     dispatch(setUser(userService.getUser()))
-  }, [dispatch])
-
-  let body
-  if (props.user) {
-    body = <AuthPage />
-  }
+  }, [])
 
   return (
     <div className="App">
-      {body}
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            {/* {!isEmpty(props.user) ? <Redirect to='/auth' /> : <VideoWorkspace />} */}
+            <VideoWorkspace />
+          </Route>
+          <Route exact path='/auth'>  
+            <AuthPage />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   )
 }
