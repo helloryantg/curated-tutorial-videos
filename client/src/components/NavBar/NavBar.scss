@@ -1,13 +1,13 @@
 .NavBar {
   height: 40px;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #bdbdbd;
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   & > .logo {
-    width: 10rem;
+    width: 14rem;
     height: 100%;
     font-size: 120%;
     font-weight: 600;
@@ -21,7 +21,7 @@
   }
 
   & > .user {
-    width: 10rem;
+    width: 14rem;
     height: 100%;
     display: flex;
     align-items: center;

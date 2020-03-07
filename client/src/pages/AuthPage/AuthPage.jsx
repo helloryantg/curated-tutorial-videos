@@ -6,6 +6,7 @@ import Login from '../../components/Login/Login'
 function AuthPage(props) {
   const [isLoginPage, setLoginPage] = useState(true)
 
+  // TODO add signup page
   return (
     <div className="AuthPage">
       <div className="container">
