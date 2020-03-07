@@ -2,7 +2,8 @@ import USER_CONSTANTS from '../constants/user.constants'
 import VIDEO_LIST_CONSTANTS from '../constants/videoList.constants'
 
 const initialState = {
-  user: {}
+  user: {},
+  videoLists: []
 }
 
 const reducers = (state = initialState, action) => {

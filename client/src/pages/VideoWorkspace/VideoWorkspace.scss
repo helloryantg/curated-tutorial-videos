@@ -19,6 +19,18 @@
         text-align: center;
       }
 
+      & > .tab {
+        height: 3.6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #bdbdbd;
+        }
+      }
+
       & > .add-container {
         height: 3.6rem;
 

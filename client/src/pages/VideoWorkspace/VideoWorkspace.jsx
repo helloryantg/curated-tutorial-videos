@@ -3,11 +3,12 @@ import './VideoWorkspace.scss'
 import NavBar from '../../components/NavBar/NavBar'
 import videoListAction from '../../actions/videoList.action'
 import { connect } from 'react-redux'
-import { isEmpty } from '../../utils/object'
 
 function VideoWorkspace(props) {
+  const {
+    videoLists
+  } = props
   const [isAdding, setAdding] = useState(false)
-  const [videoList, setVideoList] = useState([])
 
   useEffect(() => {
     if (props.token) {
@@ -21,7 +22,12 @@ function VideoWorkspace(props) {
       <div className="main">
         <div className="tabs">
           <div className="title">My Lists</div>
-          {/* List goes here */}
+          {videoLists.length ?
+            videoLists.map(video => (
+              <div className="tab" key={video.key}>{video.name}</div>
+            ))
+            : <div className="tab">No video lists so far.</div>
+          }
           <div className="add-container">
             <button
               onClick={() => setAdding(!isAdding)}
@@ -48,7 +54,8 @@ function VideoWorkspace(props) {
 const mapState = ({ reducers }) => {
   return {
     user: reducers.user,
-    token: reducers.token
+    token: reducers.token,
+    videoLists: reducers.videoLists
   }
 }
 
