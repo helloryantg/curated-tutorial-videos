@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import './Login.scss'
+import { login } from '../../actions/user.action'
 
 const initialCreds = {
   email: '',
@@ -27,11 +28,14 @@ function Login(props) {
       password = 'Password is required'
     }
 
-    setError({
-      email,
-      password
-    })
-    // Submit
+    if (!creds.email || !creds.password) {
+      return setError({
+        email,
+        password
+      })
+    }
+    
+    props.dispatch(login(creds))
   }
 
   useEffect(() => {
