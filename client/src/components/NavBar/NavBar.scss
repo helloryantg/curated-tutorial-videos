@@ -1,0 +1,42 @@
+.NavBar {
+  height: 40px;
+  border-bottom: 1px solid grey;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > .logo {
+    width: 10rem;
+    height: 100%;
+    font-size: 120%;
+    font-weight: 600;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  & > .search {
+    border: 1px solid blue;
+  }
+
+  & > .user {
+    width: 10rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    & > .initials {
+      height: 36px;
+      width: 36px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #1261A0;
+      border-radius: 20px;
+      color: #fff;
+      font-size: 90%;
+    }
+  }
+}
