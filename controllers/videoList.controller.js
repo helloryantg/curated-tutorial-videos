@@ -103,4 +103,19 @@ router.delete('/:id', authMiddleware, async (req, res) => {
   }
 })
 
+// Get all user video lists
+router.get('/user/:userId', authMiddleware, async (req, res) => {
+  try {
+    console.log(await VideoList.find({ userId: req.params.userId }))
+    res
+      .status(HttpStatus.OK)
+      .send(await VideoList.find({ userId: req.params.userId }))
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
+
 module.exports = router
