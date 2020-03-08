@@ -10,18 +10,13 @@ function VideoWorkspace(props) {
   const {
     videoLists,
     dispatch,
-    user
+    user,
+    videos
   } = props
-
-  // console.log(user)
 
   const [isAdding, setAdding] = useState(false)
   const [activeTabIndex, setActiveTabIndex] = useState(0)
   const [newVideoList, setNewVideoList] = useState('')
-
-  // useEffect(() => {
-    
-  // }, [])
 
   useEffect(() => {
     if (!isEmpty(user)) {
@@ -48,7 +43,7 @@ function VideoWorkspace(props) {
             videoLists.map((video, index) => (
               <div
                 className={`tab ${activeTabIndex === index ? 'active' : ''}`}
-                key={video.key}
+                key={video._id}
                 onClick={() => setActiveTabIndex(index)}
               >{
                   video.name}
@@ -79,9 +74,7 @@ function VideoWorkspace(props) {
         <div className="videos-list">
           <div className="title">{videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}</div>
           <div className="list">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(item =>
-              <VideoCard />
-            )}
+            {videos.map(video => <VideoCard key={video._id} />)}
           </div>
         </div>
       </div>
@@ -93,7 +86,8 @@ const mapState = ({ reducers }) => {
   return {
     user: reducers.user,
     token: reducers.token,
-    videoLists: reducers.videoLists
+    videoLists: reducers.videoLists,
+    videos: reducers.videos
   }
 }
 

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import './App.scss'
-import userService from '../../services/user.service'
 import { 
-  setUser,
   getUserFromToken 
 } from '../../actions/user.action'
 import AuthPage from '../../pages/AuthPage/AuthPage'
