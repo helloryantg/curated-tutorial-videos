@@ -16,12 +16,15 @@ function VideoWorkspace(props) {
   const [newVideoList, setNewVideoList] = useState('')
 
   useEffect(() => {
+    dispatch(videoListAction.getUserVideoLists())
+  }, [])
 
+  useEffect(() => {
   }, [videoLists])
 
   useEffect(() => {
-    dispatch(videoListAction.getUserVideoLists())
-  }, [])
+    // dispatch(videoListAction.getVideos())
+  }, [activeTabIndex])
 
   return (
     <div className="VideoWorkspace">

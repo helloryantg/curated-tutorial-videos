@@ -21,7 +21,11 @@ const videoSchema = new Schema({
   isFavorited: {
     type: Boolean,
     default: false
+  },
+  videoListId: {
+    type: String,
+    required: true
   }
-})
+}, { timestamps: true })
 
 module.exports = mongoose.model('Video', videoSchema)

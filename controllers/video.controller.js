@@ -18,10 +18,15 @@ router.get('/all', authMiddleware, async (req, res) => {
 
 // Create a video
 router.post('/', authMiddleware, async (req, res) => {
+  const {
+    url,
+    videoListId
+  } = req.body
   try {
     const newVideo = new Video({
-      url: req.body.url,
-      userId: req.userId
+      url,
+      userId: req.userId,
+      videoListId
     })
 
     await newVideo.save()
@@ -57,7 +62,7 @@ router.put('/:id', authMiddleware, async (req, res) => {
     views,
     isFavored
   } = req.body
-  
+
   try {
     const options = {
       useFindAndModify: false,
