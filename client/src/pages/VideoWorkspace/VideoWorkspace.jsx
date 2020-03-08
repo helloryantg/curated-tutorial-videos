@@ -31,13 +31,13 @@ function VideoWorkspace(props) {
           <div className="title">My Lists</div>
           {videoLists.length ?
             videoLists.map((video, index) => (
-              <div 
-                className={`tab ${activeTabIndex === index ? 'active' : ''}`} 
+              <div
+                className={`tab ${activeTabIndex === index ? 'active' : ''}`}
                 key={video.key}
                 onClick={() => setActiveTabIndex(index)}
-                >{
+              >{
                   video.name}
-                </div>
+              </div>
             ))
             : <div className="tab">No video lists so far.</div>
           }
@@ -46,10 +46,10 @@ function VideoWorkspace(props) {
               onClick={() => setAdding(!isAdding)}
             >Add New List</button>
             <div className={`hidden ${isAdding ? 'active' : ''}`}>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={newVideoList}
-                onChange={({ target }) => setNewVideoList(target.value)}  
+                onChange={({ target }) => setNewVideoList(target.value)}
               />
               <button
                 onClick={() => {
@@ -62,9 +62,12 @@ function VideoWorkspace(props) {
         </div>
 
         <div className="videos-list">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(item =>
-            <VideoCard />
-          )}
+          <div className="title">{videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}</div>
+          <div className="list">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(item =>
+              <VideoCard />
+            )}
+          </div>
         </div>
       </div>
     </div>
