@@ -11,7 +11,7 @@ GET {{base}}/videoLists/{{id}}/videos
 {{authorization}}
 
 ### Get all user video lists
-GET {{base}}/videoLists/user
+GET {{base}}/videoLists/{{userId}}/user
 {{application-json}}
 {{authorization}}
 

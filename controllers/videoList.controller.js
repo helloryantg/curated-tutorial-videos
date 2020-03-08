@@ -5,33 +5,6 @@ const VideoList = require('../models/videoList.model')
 const User = require('../models/user.model')
 const Video = require('../models/video.model')
 
-// Get all user video lists
-router.get('/user', authMiddleware, async (req, res) => {
-  try {
-    res
-      .status(HttpStatus.OK)
-      .send(await VideoList.find({ userId: req.userId }))
-  } catch (err) {
-    res
-      .status(HttpStatus.INTERNAL_SERVER_ERROR)
-      .send({ msg: err })
-  }
-})
-
-
-// Get all video lists
-router.get('/all', authMiddleware, async (req, res) => {
-  try {
-    res
-      .status(HttpStatus.OK)
-      .send(await VideoList.find({}))
-  } catch (err) {
-    res
-      .status(HttpStatus.INTERNAL_SERVER_ERROR)
-      .send({ msg: err })
-  }
-})
-
 // Create a video list
 router.post('/', authMiddleware, async (req, res) => {
   const { name } = req.body
@@ -117,6 +90,32 @@ router.delete('/:id', authMiddleware, async (req, res) => {
   }
 })
 
+// Get all video lists
+router.get('/all', authMiddleware, async (req, res) => {
+  try {
+    res
+      .status(HttpStatus.OK)
+      .send(await VideoList.find({}))
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
+// Get all user video lists
+router.get('/:userId/user', authMiddleware, async (req, res) => {
+  try {
+    res
+      .status(HttpStatus.OK)
+      .send(await VideoList.find({ userId: req.userId }))
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
 // Get all video list videos
 router.get('/:id/videos', authMiddleware, async (req, res) => {
   try {
@@ -129,6 +128,5 @@ router.get('/:id/videos', authMiddleware, async (req, res) => {
       .send({ msg: err })
   }
 })
-
 
 module.exports = router

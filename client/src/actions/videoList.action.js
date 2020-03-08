@@ -1,8 +1,8 @@
 import VIDEO_LIST_CONSTANTS from '../constants/videoList.constants'
 import videoListService from '../services/videoList.service'
 
-const getUserVideoLists = () => async dispatch => {
-  const res = await videoListService.getUserVideoLists()
+const getUserVideoLists = (userId) => async dispatch => {
+  const res = await videoListService.getUserVideoLists(userId)
   
   dispatch({
     type: VIDEO_LIST_CONSTANTS.SET_VIDEO_LISTS,
@@ -10,7 +10,7 @@ const getUserVideoLists = () => async dispatch => {
   })
 }
 
-const createNewVideoList = (name) => async dispatch => {
+const createNewVideoList = name => async dispatch => {
   await videoListService.createVideoList(name)
 
   const res = await videoListService.getUserVideoLists()
@@ -21,7 +21,13 @@ const createNewVideoList = (name) => async dispatch => {
   })
 }
 
+const getVideoListVideos = id => async dispatch => {
+  const res = await videoListService.getVideosFromVideoList(id)
+  console.log(res)
+}
+
 export default {
   getUserVideoLists,
-  createNewVideoList
+  createNewVideoList,
+  getVideoListVideos
 }

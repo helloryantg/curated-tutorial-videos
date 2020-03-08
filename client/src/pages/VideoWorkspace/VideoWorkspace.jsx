@@ -4,26 +4,38 @@ import NavBar from '../../components/NavBar/NavBar'
 import videoListAction from '../../actions/videoList.action'
 import { connect } from 'react-redux'
 import VideoCard from '../../components/VideoCard/VideoCard'
+import { isEmpty } from '../../utils/object'
 
 function VideoWorkspace(props) {
   const {
     videoLists,
     dispatch,
+    user
   } = props
+
+  // console.log(user)
 
   const [isAdding, setAdding] = useState(false)
   const [activeTabIndex, setActiveTabIndex] = useState(0)
   const [newVideoList, setNewVideoList] = useState('')
 
+  // useEffect(() => {
+    
+  // }, [])
+
   useEffect(() => {
-    dispatch(videoListAction.getUserVideoLists())
-  }, [])
+    if (!isEmpty(user)) {
+      dispatch(videoListAction.getUserVideoLists(user._id))
+    }
+  }, [user])
 
   useEffect(() => {
   }, [videoLists])
 
   useEffect(() => {
-    // dispatch(videoListAction.getVideos())
+    if (videoLists.length) {
+      dispatch(videoListAction.getVideoListVideos(videoLists[activeTabIndex]._id))
+    }
   }, [activeTabIndex])
 
   return (

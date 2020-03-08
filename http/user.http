@@ -17,3 +17,6 @@ GET {{base}}/users/{{id}}
 ### Delete user
 DELETE {{base}}/users/{{id}}
 {{application-json}}
+
+# ### Get all user video lists
+# GET {{base}}/users/{{id}}/
