@@ -33,10 +33,8 @@ router.get('/all', authMiddleware, async (req, res) => {
 
 // Create a video list
 router.post('/', authMiddleware, async (req, res) => {
-  const { 
-    name, 
-    userId 
-  } = req.body
+  const { name } = req.body
+  const { userId } = req
   
   try {
     const foundUser = User.findOne({ _id: userId })

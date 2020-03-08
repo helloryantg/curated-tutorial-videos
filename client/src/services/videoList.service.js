@@ -1,13 +1,16 @@
 import axios from 'axios'
+import tokenService from '../services/token.service'
+import { server } from '../interfaces/axios.interface'
 
-const BASE_URL = 'http://localhost:4000/videoLists'
+const getUserVideoLists = () => {
+  return server.get('/videoLists/user')
+}
 
-const getUserVideoLists = token => {
-  return axios.get(`${BASE_URL}/user`, {
-    headers: { 'Authorization': `${token}` }
-  })
+const createVideoList = name => {
+  return server.post('/videoLists', { name })
 }
 
 export default {
-  getUserVideoLists
+  getUserVideoLists,
+  createVideoList
 }

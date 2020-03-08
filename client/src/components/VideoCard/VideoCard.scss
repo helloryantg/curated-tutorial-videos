@@ -1,0 +1,22 @@
+.VideoCard {
+  width: 20%;
+  height: 20rem;
+  border-right: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  
+  & > .video {
+    height: 10rem;
+    background-color: #bdbdbd;
+    margin-bottom: 1rem;
+  }
+
+  & > .description {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
