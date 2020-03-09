@@ -41,7 +41,10 @@ function VideoCard(props) {
       <div className="description">
         <div className="header">
           <div className="title">{title}</div>
-          <div className="favorite">{isFavorited ? <IoIosHeart /> : <IoIosHeartEmpty />}</div>
+          <div 
+            className="favorite"
+            onClick={() => console.log('clicked')}
+          >{isFavorited ? <IoIosHeart /> : <IoIosHeartEmpty />}</div>
         </div>
         <div className="sub-header">
           <div className="likes">Likes: {likes}</div>

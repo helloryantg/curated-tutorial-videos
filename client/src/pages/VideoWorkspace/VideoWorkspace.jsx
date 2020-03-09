@@ -65,6 +65,7 @@ function VideoWorkspace(props) {
                 onClick={() => {
                   dispatch(videoListAction.createNewVideoList(newVideoList))
                   setAdding(false)
+                  setNewVideoList('')
                 }}
               >Add</button>
             </div>
