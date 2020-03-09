@@ -22,7 +22,7 @@ function VideoWorkspace(props) {
     if (!isEmpty(user)) {
       dispatch(videoListAction.getUserVideoLists(user._id))
     }
-  }, [user])
+  }, [user, dispatch])
 
   useEffect(() => {
   }, [videoLists, videos.length])
@@ -31,7 +31,7 @@ function VideoWorkspace(props) {
     if (videoLists.length) {
       dispatch(videoListAction.getVideoListVideos(videoLists[activeTabIndex]._id))
     }
-  }, [activeTabIndex])
+  }, [activeTabIndex, dispatch, videoLists])
 
   return (
     <div className="VideoWorkspace">

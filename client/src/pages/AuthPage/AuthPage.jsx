@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
 import './AuthPage.scss'
 import Login from '../../components/Login/Login'
 
@@ -24,10 +23,4 @@ function AuthPage(props) {
   )
 }
 
-const mapState = state => {
-  return {
-
-  }
-}
-
-export default connect(mapState)(AuthPage)
+export default AuthPage

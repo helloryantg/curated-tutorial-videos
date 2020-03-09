@@ -53,7 +53,7 @@ function Login(props) {
       email,
       password
     })
-  }, [creds.email, creds.password])
+  }, [creds.email, creds.password, error.email, error.password])
 
   return (
     <div className="Login">
