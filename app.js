@@ -22,6 +22,7 @@ app.use('/auth', require('./controllers/auth.controller'))
 app.use('/users', require('./controllers/user.controller'))
 app.use('/videoLists', require('./controllers/videoList.controller'))
 app.use('/videos', require('./controllers/video.controller'))
+app.use('/likes', require('./controllers/like.controller'))
 
 // Catch all route
 app.get('*', (req, res) => { res.send('404 not found!') })
