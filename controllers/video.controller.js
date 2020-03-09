@@ -21,14 +21,16 @@ router.post('/', authMiddleware, async (req, res) => {
   const {
     url,
     videoListId,
-    title
+    title,
+    description
   } = req.body
   try {
     const newVideo = new Video({
       url,
       userId: req.userId,
       videoListId,
-      title
+      title,
+      description
     })
 
     await newVideo.save()
@@ -63,7 +65,8 @@ router.put('/:id', authMiddleware, async (req, res) => {
     likes,
     views,
     isFavored,
-    title
+    title,
+    description
   } = req.body
 
   try {
@@ -77,7 +80,8 @@ router.put('/:id', authMiddleware, async (req, res) => {
       likes,
       views,
       isFavored,
-      title
+      title,
+      description
     }
 
     res
@@ -94,6 +98,7 @@ router.put('/:id', authMiddleware, async (req, res) => {
   }
 })
 
+// Deletes a video
 router.delete('/:id', authMiddleware, async (req, res) => {
   try {
     res

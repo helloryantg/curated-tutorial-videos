@@ -19,7 +19,8 @@ POST {{base}}/videos
 {
   "url": "https://www.youtube.com/watch?v=lt5Ad12RZiI",
   "videoListId": "{{videoListId}}",
-  "title": "The one with the bees"
+  "title": "The one with the bees",
+  "description": ""
 }
 
 ### Get a video
@@ -37,7 +38,8 @@ PUT {{base}}/videos/{{id}}
   "likes": 1,
   "views": 1,
   "isFavored": true,
-  "title": "Tutorial with the spiders"
+  "title": "Tutorial with the spiders",
+  "description": ""
 }
 
 ### Delete a video
