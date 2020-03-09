@@ -1,7 +1,7 @@
 .VideoCard {
-  width: 20%;
-  min-width: 14rem;
-  height: 20rem;
+  width: 25%;
+  min-width: 20rem;
+  height: 30rem;
   border-right: 1px solid #bdbdbd;
   border-bottom: 1px solid #bdbdbd;
   padding: 1rem;
@@ -9,15 +9,29 @@
   flex-direction: column;
   
   & > .video {
-    height: 10rem;
+    height: 14rem;
     background-color: #bdbdbd;
     margin-bottom: 1rem;
+
+    & > div:first-child {
+      height: 100%;
+      width: 100%;
+
+      & > iframe {
+        height: 100%;
+        width: 100%;
+      }
+    }
   }
 
   & > .description {
     flex: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    // align-items: center;
+
+    & > .favorite {
+      width: 100%;
+    }
   }
 }

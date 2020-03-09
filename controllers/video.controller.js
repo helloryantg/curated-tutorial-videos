@@ -20,13 +20,15 @@ router.get('/all', authMiddleware, async (req, res) => {
 router.post('/', authMiddleware, async (req, res) => {
   const {
     url,
-    videoListId
+    videoListId,
+    title
   } = req.body
   try {
     const newVideo = new Video({
       url,
       userId: req.userId,
-      videoListId
+      videoListId,
+      title
     })
 
     await newVideo.save()
@@ -60,7 +62,8 @@ router.put('/:id', authMiddleware, async (req, res) => {
     url,
     likes,
     views,
-    isFavored
+    isFavored,
+    title
   } = req.body
 
   try {
@@ -73,7 +76,8 @@ router.put('/:id', authMiddleware, async (req, res) => {
       url,
       likes,
       views,
-      isFavored
+      isFavored,
+      title
     }
 
     res

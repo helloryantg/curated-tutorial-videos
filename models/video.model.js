@@ -25,6 +25,11 @@ const videoSchema = new Schema({
   videoListId: {
     type: String,
     required: true
+  },
+  title: {
+    type: String,
+    required: true,
+    max: 150
   }
 }, { timestamps: true })
 

@@ -25,7 +25,7 @@ function VideoWorkspace(props) {
   }, [user])
 
   useEffect(() => {
-  }, [videoLists])
+  }, [videoLists, videos.length])
 
   useEffect(() => {
     if (videoLists.length) {
@@ -74,7 +74,10 @@ function VideoWorkspace(props) {
         <div className="videos-list">
           <div className="title">{videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}</div>
           <div className="list">
-            {videos.map(video => <VideoCard key={video._id} />)}
+            {videos.length ? 
+              videos.map(video => <VideoCard key={video._id} video={video} />)
+              : <div className="empty">No videos</div>
+            }
           </div>
         </div>
       </div>

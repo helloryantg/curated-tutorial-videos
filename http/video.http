@@ -1,8 +1,8 @@
 @base = http://localhost:4000
 @application-json = Content-Type: application/json
-@id = 5e61c024888fa1609f4e6f21
+@id = 5e6577fbb46d8860a3b2fb26
 @userId = 5e61892041a37762ae86eb0a
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJfaWQiOiI1ZTYxODkyMDQxYTM3NzYyYWU4NmViMGEiLCJmaXJzdE5hbWUiOiJSeWFuIiwibGFzdE5hbWUiOiJHb256YWxlcyIsImRpc3BsYXlOYW1lIjoicmdvbnphbGVzIiwiZW1haWwiOiJ0ZXN0QGVtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjAtMDMtMDVUMjM6MjA6MDAuNDY3WiIsInVwZGF0ZWRBdCI6IjIwMjAtMDMtMDVUMjM6MjA6MDAuNDY3WiIsIl9fdiI6MH0sImlhdCI6MTU4MzYxMTMwNiwiZXhwIjoxNTgzNjk3NzA2fQ.d448BA1i0g745FQ9BVYJZ3yjoMkBhOl5f7PfCiTmi5A
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJfaWQiOiI1ZTYxODkyMDQxYTM3NzYyYWU4NmViMGEiLCJmaXJzdE5hbWUiOiJSeWFuIiwibGFzdE5hbWUiOiJHb256YWxlcyIsImRpc3BsYXlOYW1lIjoicmdvbnphbGVzIiwiZW1haWwiOiJ0ZXN0QGVtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjAtMDMtMDVUMjM6MjA6MDAuNDY3WiIsInVwZGF0ZWRBdCI6IjIwMjAtMDMtMDVUMjM6MjA6MDAuNDY3WiIsIl9fdiI6MH0sImlhdCI6MTU4MzcwODExNCwiZXhwIjoxNTgzNzk0NTE0fQ.GReG3Abd2Qu2pELn002RwI47Dgo6BSDS7ej_jcqaM6Y
 @authorization = Authorization: {{token}}
 @videoListId = 5e6411e05d938c317b873924
 
@@ -17,8 +17,9 @@ POST {{base}}/videos
 {{authorization}}
 
 {
-  "url": "http://test-url-4.com",
-  "videoListId": "{{videoListId}}"
+  "url": "https://www.youtube.com/watch?v=lt5Ad12RZiI",
+  "videoListId": "{{videoListId}}",
+  "title": "The one with the bees"
 }
 
 ### Get a video
@@ -32,10 +33,11 @@ PUT {{base}}/videos/{{id}}
 {{authorization}}
 
 {
-  "url": "http://test-url-3.com",
+  "url": "https://www.youtube.com/watch?v=RHqB8MZ0yK0",
   "likes": 1,
   "views": 1,
-  "isFavored": true
+  "isFavored": true,
+  "title": "Tutorial with the spiders"
 }
 
 ### Delete a video
