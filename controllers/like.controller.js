@@ -40,4 +40,19 @@ router.post('/', authMiddleware, async (req, res) => {
 })
 
 
+// Get a like
+router.get('/:id', authMiddleware, async (req, res) => {
+  try {
+    res
+      .status(HttpStatus.OK)
+      .send(await Like.findOne({ _id: req.params.id }))
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
+
+
 module.exports = router
