@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import './Login.scss'
-import { login } from '../../actions/user.action'
+import './SignUp.scss'
+import userAction from '../../actions/user.action'
 import { Link } from 'react-router-dom'
 
 const initialCreds = {
   email: '',
-  password: ''
+  password: '',
+  confirmPassword: ''
 }
 
 const initialError = {
   email: '',
-  password: ''
+  password: '',
+  confirmPassword: ''
 }
 
-function Login(props) {
+function SignUp(props) {
   const {
     setLoginPage
   } = props
@@ -22,7 +24,7 @@ function Login(props) {
   const [creds, setCreds] = useState(initialCreds)
   const [error, setError] = useState(initialError)
 
-  const submitLogin = () => {
+  const submitSignUp = () => {
     let email = ''
     if (!creds.email) {
       email = 'Email is required'
@@ -33,14 +35,20 @@ function Login(props) {
       password = 'Password is required'
     }
 
-    if (!creds.email || !creds.password) {
+    let confirmPassword = ''
+    if (!creds.confirmPassword) {
+      confirmPassword = 'Password is required'
+    }
+
+    if (!creds.email || !creds.password || !creds.confirmPassword) {
       return setError({
         email,
-        password
+        password,
+        confirmPassword
       })
     }
     
-    props.dispatch(login(creds))
+    props.dispatch(userAction.signUp(creds))
   }
 
   useEffect(() => {
@@ -54,23 +62,29 @@ function Login(props) {
       password = ''
     }
 
+    let confirmPassword = error.confirmPassword
+    if (creds.confirmPassword) {
+      confirmPassword = ''
+    }
+
     setError({
       email,
-      password
+      password,
+      confirmPassword
     })
-  }, [creds.email, creds.password, error.email, error.password])
+  }, [creds.email, creds.password, creds.confirmPassword, error.email, error.password, error.confirmPassword])
 
   return (
-    <div className="Login">
+    <div className="SignUp">
       <div className="header">
-        <div className="title">LOGIN</div>
+        <div className="title">SIGNUP</div>
         <div className="description">
-          If you have an account, please log in. 
+          Welcome! If you already have an account, please login.
           <Link 
             href="/"
-            onClick={() => setLoginPage(false)}
+            onClick={() => setLoginPage(true)}
           >
-            Sign Up
+            Login
           </Link>
         </div>
       </div>
@@ -102,12 +116,26 @@ function Login(props) {
           />
           <div className="error">{error.password}</div>
         </div>
+
+        <div className="confirm-password">
+          <div className="title">Confirm Password</div>
+          <input
+            type="password"
+            placeholder='**********'
+            value={creds.confirmPassword}
+            onChange={({ target }) => setCreds({
+              ...creds,
+              confirmPassword: target.value
+            })}
+          />
+          <div className="error">{error.confirmPassword}</div>
+        </div>
       </div>
 
       <div className="button-container">
         <button
-          onClick={() => submitLogin()}
-        >LOGIN</button>
+          onClick={() => submitSignUp()}
+        >SIGN UP</button>
       </div>
     </div>
   )
@@ -117,4 +145,4 @@ const mapState = state => {
 
 }
 
-export default connect(mapState)(Login)
+export default connect(mapState)(SignUp)

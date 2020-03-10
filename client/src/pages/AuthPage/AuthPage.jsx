@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './AuthPage.scss'
 import Login from '../../components/Login/Login'
+import SignUp from '../../components/SignUp/SignUp'
 
 function AuthPage(props) {
   const [isLoginPage, setLoginPage] = useState(true)
@@ -16,7 +17,15 @@ function AuthPage(props) {
           <div className="bottom"></div>
         </div>
         <div className="forms-container">
-          {isLoginPage ? <Login /> : null}
+          {isLoginPage ? 
+            <Login 
+              setLoginPage={setLoginPage} 
+            /> 
+            : 
+            <SignUp
+              setLoginPage={setLoginPage} 
+            />
+            }
         </div>
       </div>
     </div>
