@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import './App.scss'
 import { 
@@ -9,30 +9,40 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from 'react-router-dom';
 import VideoWorkspace from '../../pages/VideoWorkspace/VideoWorkspace'
-// import { isEmpty } from '../../utils/object'
+import { isEmpty } from '../../utils/object'
 
 function App(props) {
-  // const [isLoggedIn, setLoggedIn] = useState(!isEmpty(props.user))
   const {
-    dispatch
+    dispatch,
+    user
   } = props
+
+  const [isLoggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
     dispatch(getUserFromToken())
   }, [dispatch])
+
+  useEffect(() => {
+    setLoggedIn(!isEmpty(user))
+  }, [user])
+
+  let body
+  if (isLoggedIn) {
+    body = <VideoWorkspace />
+  } else {
+    body = <AuthPage />
+  }
 
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route exact path='/'>
-            {/* {!isEmpty(props.user) ? <Redirect to='/auth' /> : <VideoWorkspace />} */}
-            <VideoWorkspace />
-          </Route>
-          <Route exact path='/auth'>  
-            <AuthPage />
+            {body}
           </Route>
         </Switch>
       </Router>
