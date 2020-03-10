@@ -8,8 +8,7 @@ import AuthPage from '../../pages/AuthPage/AuthPage'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect
+  Route
 } from 'react-router-dom';
 import VideoWorkspace from '../../pages/VideoWorkspace/VideoWorkspace'
 import { isEmpty } from '../../utils/object'

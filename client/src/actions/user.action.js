@@ -16,6 +16,16 @@ export const login = creds => async dispatch => {
   })
 }
 
+export const logout = () => async dispatch => {
+  userService.logout()
+
+  console.log('logging out')
+
+  dispatch({
+    type: USER_CONSTANTS.LOGOUT,
+    payload: ''
+  })
+}
 export const getUserFromToken = () => async dispatch => {
   dispatch({
     type: USER_CONSTANTS.SET_USER,
@@ -33,4 +43,11 @@ export const setUser = user => dispatch => {
     type: USER_CONSTANTS.SET_USER,
     payload: user
   })
+}
+
+export default {
+  login,
+  logout,
+  getUserFromToken,
+  setUser
 }
