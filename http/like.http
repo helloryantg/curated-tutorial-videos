@@ -4,8 +4,29 @@
 @userId = 5e61892041a37762ae86eb0a
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJfaWQiOiI1ZTYxODkyMDQxYTM3NzYyYWU4NmViMGEiLCJmaXJzdE5hbWUiOiJSeWFuIiwibGFzdE5hbWUiOiJHb256YWxlcyIsImRpc3BsYXlOYW1lIjoicmdvbnphbGVzIiwiZW1haWwiOiJ0ZXN0QGVtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjAtMDMtMDVUMjM6MjA6MDAuNDY3WiIsInVwZGF0ZWRBdCI6IjIwMjAtMDMtMDVUMjM6MjA6MDAuNDY3WiIsIl9fdiI6MH0sImlhdCI6MTU4Mzc5NDU1OCwiZXhwIjoxNTgzODgwOTU4fQ.-cEf0ckaKBBYT7zLO_SFFj1TRLCl2ICoGbCrj1QIfqo
 @authorization = Authorization: {{token}}
+@videoId = 5e6577fbb46d8860a3b2fb26
 
 ### Get all likes
 GET {{base}}/likes/all
+{{application-json}}
+{{authorization}}
+
+### Create a like
+POST {{base}}/likes
+{{application-json}}
+{{authorization}}
+
+{
+  "userId": "{{userId}}",
+  "videoId": "{{videoId}}"
+}
+
+### Get a like
+GET {{base}}/likes/{{id}}
+{{application-json}}
+{{authorization}}
+
+### Deletes a like
+DELETE {{base}}/likes/{{id}}
 {{application-json}}
 {{authorization}}
