@@ -4,6 +4,7 @@ const authMiddleware = require('../middlewares/auth')
 const VideoList = require('../models/videoList.model')
 const User = require('../models/user.model')
 const Video = require('../models/video.model')
+const Like = require('../models/like.model')
 
 // Create a video list
 router.post('/', authMiddleware, async (req, res) => {

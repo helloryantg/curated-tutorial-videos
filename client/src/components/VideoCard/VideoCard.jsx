@@ -5,14 +5,21 @@ import {
   IoIosHeart,
   IoIosHeartEmpty
 } from 'react-icons/io'
+import likeAction from '../../actions/like.action'
+import { connect } from 'react-redux'
 
 function VideoCard(props) {
+  const {
+    dispatch
+  } = props
+
   const {
     isFavorited,
     likes,
     title,
     views,
-    url
+    url,
+    _id
   } = props.video
 
   const videoId = url.split('=')[1]
@@ -43,7 +50,7 @@ function VideoCard(props) {
           <div className="title">{title}</div>
           <div 
             className="favorite"
-            onClick={() => console.log('clicked')}
+            onClick={() => dispatch(likeAction.createLike(_id))}
           >{isFavorited ? <IoIosHeart /> : <IoIosHeartEmpty />}</div>
         </div>
         <div className="sub-header">
@@ -55,4 +62,8 @@ function VideoCard(props) {
   )
 }
 
-export default VideoCard
+const mapState = state => {
+  return {}
+}
+
+export default connect(mapState)(VideoCard)
