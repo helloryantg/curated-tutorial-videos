@@ -13,6 +13,8 @@ const signup = async user => {
   } else {
     throw new Error('Email already taken')
   }
+
+  return res.data
 }
 
 const login = async creds => {

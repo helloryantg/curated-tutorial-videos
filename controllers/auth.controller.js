@@ -28,7 +28,10 @@ router.post('/register', async (req, res) => {
 
     res
       .status(HttpStatus.OK)
-      .send({ token: createJWT(newUser.toJSON()) })
+      .send({ 
+        token: createJWT(newUser.toJSON()),
+        user: newUser.toJSON() 
+      })
   } catch (err) {
     res
       .status(HttpStatus.BAD_REQUEST)
