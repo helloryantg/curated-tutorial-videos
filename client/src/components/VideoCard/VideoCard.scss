@@ -51,6 +51,10 @@
           align-items: center;
           justify-content: center;
         }
+
+        & > .red {
+          fill: #FF1919;
+        }
       }
     }
 

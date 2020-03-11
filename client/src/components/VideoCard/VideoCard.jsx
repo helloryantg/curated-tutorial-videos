@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './VideoCard.scss'
 import YouTube from 'react-youtube'
 import {
@@ -10,19 +10,24 @@ import { connect } from 'react-redux'
 
 function VideoCard(props) {
   const {
-    dispatch
+    video,
+    dispatch,
+    user
   } = props
 
   const {
-    isFavorited,
     likes,
     title,
     views,
     url,
-    _id
-  } = props.video
+    _id,
+    likesArray
+  } = video
 
   const videoId = url.split('=')[1]
+
+  const [isFavorited, setFavorite] = useState(likesArray.some(like => like.userId === user._id))
+  const [likesCount, setLikesCount] = useState(likesArray.length)
 
   const opts = {
     // height: '160',
@@ -34,6 +39,24 @@ function VideoCard(props) {
 
   const onReady = event => {
     event.target.pauseVideo()
+  }
+
+  const toggleLike = () => {
+    if (isFavorited) {
+      const foundLike = likesArray.find(like => like.userId === user._id)
+
+      if (foundLike) {
+        dispatch(likeAction.deleteLike(foundLike._id))
+      } else {
+        throw Error('Unable to delete like')
+      }
+      setLikesCount(likesCount - 1)
+    } else {
+      dispatch(likeAction.createLike(_id))
+      setLikesCount(likesCount + 1)
+    }
+
+    setFavorite(!isFavorited)
   }
 
   return (
@@ -48,13 +71,13 @@ function VideoCard(props) {
       <div className="description">
         <div className="header">
           <div className="title">{title}</div>
-          <div 
+          <div
             className="favorite"
-            // onClick={() => dispatch(likeAction.createLike(_id))}
-          >{isFavorited ? <IoIosHeart /> : <IoIosHeartEmpty />}</div>
+            onClick={() => toggleLike()}
+          >{isFavorited ? <IoIosHeart className='red' /> : <IoIosHeartEmpty />}</div>
         </div>
         <div className="sub-header">
-          <div className="likes">Likes: {likes}</div>
+          <div className="likes">Likes: {likesCount}</div>
           <div className="views">Views: {views}</div>
         </div>
       </div>
@@ -62,9 +85,10 @@ function VideoCard(props) {
   )
 }
 
-const mapState = state => {
+const mapState = ({ reducers }) => {
   return {
-    videos: state.reducers.videos
+    videos: reducers.videos,
+    user: reducers.user
   }
 }
 
