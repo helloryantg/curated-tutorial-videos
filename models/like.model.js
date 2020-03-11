@@ -9,6 +9,10 @@ const likeSchema = new Schema({
   videoId: {
     type: String,
     required: true
+  },
+  type: {
+    type: String,
+    default: 'like'
   }
 }, { timestamps: true })
 

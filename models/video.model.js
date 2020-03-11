@@ -34,6 +34,10 @@ const videoSchema = new Schema({
   description: {
     type: String,
     max: 1500
+  },
+  type: {
+    type: String,
+    default: 'video'
   }
 }, { timestamps: true })
 

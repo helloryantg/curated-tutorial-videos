@@ -10,6 +10,10 @@ const videoListSchema = new Schema({
   userId: {
     type: String,
     required: true
+  },
+  type: {
+    type: String,
+    default: 'videoList'
   }
 }, { timestamps: true })
 
