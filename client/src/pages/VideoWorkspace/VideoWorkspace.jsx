@@ -73,7 +73,13 @@ function VideoWorkspace(props) {
         </div>
 
         <div className="videos-list">
-          <div className="title">{videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}</div>
+          <div className="title">
+            <div className="edit">Edit</div>
+            <div className="name">
+              {videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}
+            </div>
+            <div className="delete">Delete</div>
+          </div>
           <div className="list">
             {videos.length ? 
               videos.map(video => <VideoCard key={video._id} video={video} />)
