@@ -39,7 +39,6 @@ router.post('/', authMiddleware, async (req, res) => {
   }
 })
 
-
 // Get a like
 router.get('/:id', authMiddleware, async (req, res) => {
   try {
@@ -59,6 +58,19 @@ router.delete('/:id', authMiddleware, async (req, res) => {
     res
       .status(HttpStatus.NO_CONTENT)
       .send(await Like.findOneAndDelete({ _id: req.params.id }))
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
+// Get a like by video id
+router.get('/:videoId/video', authMiddleware, async (req, res) => {
+  try {
+    res
+      .status(HttpStatus.OK)
+      .send(await Like.find({ videoId: req.params.videoId }))
   } catch (err) {
     res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)
