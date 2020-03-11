@@ -50,7 +50,7 @@ function VideoCard(props) {
           <div className="title">{title}</div>
           <div 
             className="favorite"
-            onClick={() => dispatch(likeAction.createLike(_id))}
+            // onClick={() => dispatch(likeAction.createLike(_id))}
           >{isFavorited ? <IoIosHeart /> : <IoIosHeartEmpty />}</div>
         </div>
         <div className="sub-header">
@@ -63,7 +63,9 @@ function VideoCard(props) {
 }
 
 const mapState = state => {
-  return {}
+  return {
+    videos: state.reducers.videos
+  }
 }
 
 export default connect(mapState)(VideoCard)
