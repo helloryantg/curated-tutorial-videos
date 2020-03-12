@@ -17,7 +17,7 @@
   }
 
   & > .search {
-    border: 1px solid blue;
+
   }
 
   & > .user {
@@ -33,10 +33,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #1261A0;
+      // background-color: #1261A0;
       border-radius: 20px;
-      color: #fff;
+      // color: #fff;
       font-size: 90%;
+      margin-right: .4rem;
     }
   }
 }
