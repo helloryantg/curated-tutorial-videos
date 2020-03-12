@@ -39,7 +39,9 @@ function EditVideoListModal(props) {
 
         <div className="button-container">
           <button
-            onClick={() => dispatch(videoListAction.updateVideoList(videoList))}
+            onClick={() => {
+              dispatch(videoListAction.updateVideoList(videoList))
+            }}
           >EDIT</button>
         </div>
       </div>

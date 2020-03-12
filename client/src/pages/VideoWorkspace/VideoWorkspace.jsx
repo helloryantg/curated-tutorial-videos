@@ -30,7 +30,9 @@ function VideoWorkspace(props) {
   }, [videoLists, videos.length])
 
   useEffect(() => {
-    if (videoLists.length) {
+    if (activeTabIndex > (videoLists.length - 1)) {
+      setActiveTabIndex(0)
+    } else if (videoLists.length) {
       dispatch(videoListAction.getVideoListVideos(videoLists[activeTabIndex]._id))
     }
   }, [activeTabIndex, dispatch, videoLists])
@@ -90,7 +92,12 @@ function VideoWorkspace(props) {
             <div className="name">
               {videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}
             </div>
-            <div className="delete">Delete</div>
+            <div 
+              className="delete"
+              onClick={() => {
+                dispatch(videoListAction.deleteVideoList(videoLists[activeTabIndex]._id))
+              }}
+            >Delete</div>
           </div>
           <div className="list">
             {videos.length ?

@@ -17,9 +17,14 @@ const updateVideoList = videoList => {
     .then(({ data }) => data)
 }
 
+const deleteVideoList = id => {
+  return server.delete(`videoLists/${id}`)
+}
+
 export default {
   getUserVideoLists,
   createVideoList,
   getVideosFromVideoList,
-  updateVideoList
+  updateVideoList,
+  deleteVideoList
 }

@@ -55,9 +55,23 @@ const updateVideoList = videoList => async (dispatch, getState) => {
   })
 }
 
+const deleteVideoList = id => async (dispatch, getState) => {
+  await videoListService.deleteVideoList(id)
+
+  const { videoLists } = getState().reducers
+
+  const filteredList = [...videoLists.filter(video => video._id !== id)]
+
+  dispatch({
+    type: VIDEO_LIST_CONSTANTS.SET_VIDEO_LISTS,
+    payload: filteredList
+  })
+}
+
 export default {
   getUserVideoLists,
   createNewVideoList,
   getVideoListVideos,
-  updateVideoList
+  updateVideoList,
+  deleteVideoList
 }
