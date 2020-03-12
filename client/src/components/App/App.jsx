@@ -35,10 +35,10 @@ function App(props) {
   }, [modal])
 
   let body
-  if (isLoggedIn) {
-    body = <VideoWorkspace />
-  } else {
+  if (!isLoggedIn) {
     body = <AuthPage />
+  } else {
+    body = <VideoWorkspace />
   }
 
   return (

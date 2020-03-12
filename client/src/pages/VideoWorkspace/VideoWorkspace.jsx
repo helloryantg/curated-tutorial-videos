@@ -7,6 +7,7 @@ import VideoCard from '../../components/VideoCard/VideoCard'
 import { isEmpty } from '../../utils/object'
 import modalActions from '../../actions/modal.action'
 import MODAL_CONSTANTS from '../../constants/modal.constants'
+import Loader from 'react-loader-spinner'
 
 function VideoWorkspace(props) {
   const {
@@ -19,6 +20,7 @@ function VideoWorkspace(props) {
   const [isAdding, setAdding] = useState(false)
   const [activeTabIndex, setActiveTabIndex] = useState(0)
   const [newVideoList, setNewVideoList] = useState('')
+  const [isFetching, setFetching] = useState(false)
 
   useEffect(() => {
     if (!isEmpty(user)) {
@@ -27,6 +29,9 @@ function VideoWorkspace(props) {
   }, [user, dispatch])
 
   useEffect(() => {
+    if (videoLists.length) {
+      setFetching(false)
+    }
   }, [videoLists, videos.length])
 
   useEffect(() => {
@@ -40,73 +45,84 @@ function VideoWorkspace(props) {
   return (
     <div className="VideoWorkspace">
       <NavBar />
-      <div className="main">
-        <div className="tabs">
-          <div className="title">My Lists</div>
-          {videoLists.length ?
-            videoLists.map((video, index) => (
-              <div
-                className={`tab ${activeTabIndex === index ? 'active' : ''}`}
-                key={video._id}
-                onClick={() => setActiveTabIndex(index)}
-              >{
-                  video.name}
-              </div>
-            ))
-            : <div className="tab">No video lists so far.</div>
-          }
-          <div className="add-container">
-            <button
-              onClick={() => setAdding(!isAdding)}
-            >Add New List</button>
-            <div className={`hidden ${isAdding ? 'active' : ''}`}>
-              <input
-                type="text"
-                value={newVideoList}
-                onChange={({ target }) => setNewVideoList(target.value)}
-              />
-              <button
-                onClick={() => {
-                  dispatch(videoListAction.createNewVideoList(newVideoList))
-                  setAdding(false)
-                  setNewVideoList('')
-                }}
-              >Add</button>
-            </div>
-          </div>
-        </div>
-
-        <div className="videos-list">
-          <div className="title">
-            <div
-              className="edit"
-              onClick={() => {
-                dispatch(modalActions.showModal({
-                  modalType: MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL,
-                  modalProps: {
-                    videoList: videoLists[activeTabIndex]
-                  }
-                }))
-              }}
-            >Edit</div>
-            <div className="name">
-              {videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}
-            </div>
-            <div 
-              className="delete"
-              onClick={() => {
-                dispatch(videoListAction.deleteVideoList(videoLists[activeTabIndex]._id))
-              }}
-            >Delete</div>
-          </div>
-          <div className="list">
-            {videos.length ?
-              videos.map(video => <VideoCard key={video._id} video={video} />)
-              : <div className="empty">No videos</div>
+      {isFetching ?
+        <Loader
+          type="Oval"
+          className="loader"
+          color="#00BFFF"
+          height={200}
+          width={200}
+          // timeout={3000} //3 secs
+        />
+        :
+        <div className="main">
+          <div className="tabs">
+            <div className="title">My Lists</div>
+            {videoLists.length ?
+              videoLists.map((video, index) => (
+                <div
+                  className={`tab ${activeTabIndex === index ? 'active' : ''}`}
+                  key={video._id}
+                  onClick={() => setActiveTabIndex(index)}
+                >{
+                    video.name}
+                </div>
+              ))
+              : <div className="tab">No video lists so far.</div>
             }
+            <div className="add-container">
+              <button
+                onClick={() => setAdding(!isAdding)}
+              >Add New List</button>
+              <div className={`hidden ${isAdding ? 'active' : ''}`}>
+                <input
+                  type="text"
+                  value={newVideoList}
+                  onChange={({ target }) => setNewVideoList(target.value)}
+                />
+                <button
+                  onClick={() => {
+                    dispatch(videoListAction.createNewVideoList(newVideoList))
+                    setAdding(false)
+                    setNewVideoList('')
+                  }}
+                >Add</button>
+              </div>
+            </div>
+          </div>
+
+          <div className="videos-list">
+            <div className="title">
+              <div
+                className="edit"
+                onClick={() => {
+                  dispatch(modalActions.showModal({
+                    modalType: MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL,
+                    modalProps: {
+                      videoList: videoLists[activeTabIndex]
+                    }
+                  }))
+                }}
+              >Edit</div>
+              <div className="name">
+                {videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}
+              </div>
+              <div
+                className="delete"
+                onClick={() => {
+                  dispatch(videoListAction.deleteVideoList(videoLists[activeTabIndex]._id))
+                }}
+              >Delete</div>
+            </div>
+            <div className="list">
+              {videos.length ?
+                videos.map(video => <VideoCard key={video._id} video={video} />)
+                : <div className="empty">No videos</div>
+              }
+            </div>
           </div>
         </div>
-      </div>
+      }
     </div>
   )
 }
