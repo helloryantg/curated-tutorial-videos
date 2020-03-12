@@ -67,7 +67,7 @@ function Login(props) {
         <div className="description">
           If you have an account, please log in. 
           <Link 
-            href="/"
+            to="/"
             onClick={() => setLoginPage(false)}
           >
             Sign Up

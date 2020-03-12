@@ -76,12 +76,16 @@ function VideoWorkspace(props) {
 
         <div className="videos-list">
           <div className="title">
-            <div 
+            <div
               className="edit"
-              onClick={() => dispatch(modalActions.showModal({
-                modalType: MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL,
-                modalProps: ''
-              }))}
+              onClick={() => {
+                dispatch(modalActions.showModal({
+                  modalType: MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL,
+                  modalProps: {
+                    videoList: videoLists[activeTabIndex]
+                  }
+                }))
+              }}
             >Edit</div>
             <div className="name">
               {videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}
@@ -89,7 +93,7 @@ function VideoWorkspace(props) {
             <div className="delete">Delete</div>
           </div>
           <div className="list">
-            {videos.length ? 
+            {videos.length ?
               videos.map(video => <VideoCard key={video._id} video={video} />)
               : <div className="empty">No videos</div>
             }

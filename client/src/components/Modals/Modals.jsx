@@ -2,13 +2,13 @@ import React from 'react'
 import './Modals.scss'
 import { hideModal } from '../../actions/modal.action'
 import { connect } from 'react-redux'
-import EditVideoListModal from './EditVideoListModal/EditVideoListModal'
+import EditVideoListModal from './EditVideoListModal/EditVideoListModal.jsx'
 import MODAL_CONSTANTS from '../../constants/modal.constants'
 
 const ModalType = ({ type, data }) => {
   switch (type) {
     case MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL:
-      return <EditVideoListModal />
+      return <EditVideoListModal data={data} />
 
     default:
       return <div>Empty Modal</div>

@@ -40,8 +40,24 @@ const getVideoListVideos = id => async dispatch => {
   })
 }
 
+const updateVideoList = videoList => async (dispatch, getState) => {
+  const data = await videoListService.updateVideoList(videoList)
+
+  const videoLists = getState().reducers.videoLists
+  const videoIndex = videoLists.findIndex(video => video._id === videoList._id)
+  videoLists.splice(videoIndex, 1, data)
+
+  const newVideoList = [...videoLists]
+
+  dispatch({
+    type: VIDEO_LIST_CONSTANTS.SET_VIDEO_LISTS,
+    payload: newVideoList
+  })
+}
+
 export default {
   getUserVideoLists,
   createNewVideoList,
-  getVideoListVideos
+  getVideoListVideos,
+  updateVideoList
 }
