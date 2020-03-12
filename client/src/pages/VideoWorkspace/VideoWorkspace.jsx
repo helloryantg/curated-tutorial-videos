@@ -5,6 +5,8 @@ import videoListAction from '../../actions/videoList.action'
 import { connect } from 'react-redux'
 import VideoCard from '../../components/VideoCard/VideoCard'
 import { isEmpty } from '../../utils/object'
+import modalActions from '../../actions/modal.action'
+import MODAL_CONSTANTS from '../../constants/modal.constants'
 
 function VideoWorkspace(props) {
   const {
@@ -74,7 +76,13 @@ function VideoWorkspace(props) {
 
         <div className="videos-list">
           <div className="title">
-            <div className="edit">Edit</div>
+            <div 
+              className="edit"
+              onClick={() => dispatch(modalActions.showModal({
+                modalType: MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL,
+                modalProps: ''
+              }))}
+            >Edit</div>
             <div className="name">
               {videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}
             </div>

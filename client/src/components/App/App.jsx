@@ -12,11 +12,13 @@ import {
 } from 'react-router-dom';
 import VideoWorkspace from '../../pages/VideoWorkspace/VideoWorkspace'
 import { isEmpty } from '../../utils/object'
+import Modal from '../Modals/Modals'
 
 function App(props) {
   const {
     dispatch,
-    user
+    user,
+    modal
   } = props
 
   const [isLoggedIn, setLoggedIn] = useState(false)
@@ -29,6 +31,9 @@ function App(props) {
     setLoggedIn(!isEmpty(user))
   }, [user])
 
+  useEffect(() => {
+  }, [modal])
+
   let body
   if (isLoggedIn) {
     body = <VideoWorkspace />
@@ -38,6 +43,7 @@ function App(props) {
 
   return (
     <div className="App">
+      {modal.modalProps.open ? <Modal modal={modal} /> : null}
       <Router>
         <Switch>
           <Route exact path='/'>
@@ -49,9 +55,10 @@ function App(props) {
   )
 }
 
-const mapState = (state) => {
+const mapState = ({ reducers, modalReducers }) => {
   return {
-    user: state.reducers.user
+    user: reducers.user,
+    modal: modalReducers
   }
 }
 
