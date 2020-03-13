@@ -15,6 +15,10 @@ function AddVideoCard(props) {
 
   const [list, setList] = useState(currentList)
 
+  useEffect(() => {
+    setList(currentList)
+  }, [currentList])
+
   return (
     <div className="AddVideoCard">
       <IoIosAdd

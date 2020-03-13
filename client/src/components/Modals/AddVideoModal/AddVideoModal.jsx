@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './AddVideoModal.scss'
 import { connect } from 'react-redux'
 import modalActions from '../../../actions/modal.action'
+import videoAction from '../../../actions/video.action'
 
 const emptyVideo = {
   title: '',
@@ -15,7 +16,12 @@ function AddVideoModal(props) {
     data
   } = props
 
-  const [video, setVideo] = useState(emptyVideo)
+  const [video, setVideo] = useState({
+    title: '',
+    url: '',
+    description: '',
+    videoListId: data.videoList._id
+  })
 
   return (
     <div className="AddVideoModal">
@@ -66,9 +72,9 @@ function AddVideoModal(props) {
         <div className="button-container">
           <button
             onClick={() => {
-              // dispatch(videoListAction.updateVideoList(videoList))
+              dispatch(videoAction.createVideo(video))
             }}
-          >EDIT</button>
+          >ADD</button>
         </div>
       </div>
     </div>

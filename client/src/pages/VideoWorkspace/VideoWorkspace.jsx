@@ -8,6 +8,7 @@ import { isEmpty } from '../../utils/object'
 import modalActions from '../../actions/modal.action'
 import MODAL_CONSTANTS from '../../constants/modal.constants'
 import Loader from 'react-loader-spinner'
+import AddVideoCard from '../../components/AddVideoCard/AddVideoCard'
 
 function VideoWorkspace(props) {
   const {
@@ -52,7 +53,7 @@ function VideoWorkspace(props) {
           color="#00BFFF"
           height={200}
           width={200}
-          // timeout={3000} //3 secs
+        // timeout={3000} //3 secs
         />
         :
         <div className="main">
@@ -117,7 +118,14 @@ function VideoWorkspace(props) {
             <div className="list">
               {videos.length ?
                 videos.map(video => <VideoCard key={video._id} video={video} />)
-                : <div className="empty">No videos</div>
+                : null
+              }
+              {!isEmpty(videoLists[activeTabIndex]) ?
+                <AddVideoCard
+                  currentList={videoLists[activeTabIndex]}
+                />
+                :
+                null
               }
             </div>
           </div>
