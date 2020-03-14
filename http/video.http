@@ -35,9 +35,7 @@ PUT {{base}}/videos/{{id}}
 
 {
   "url": "https://www.youtube.com/watch?v=RHqB8MZ0yK0",
-  "likes": 1,
   "views": 1,
-  "isFavored": true,
   "title": "Tutorial with the spiders",
   "description": ""
 }
