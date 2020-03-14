@@ -20,16 +20,16 @@ function Modals(props) {
 
   let modalType
   switch (modal.modalType) {
-    case MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL:
-      modalType = <EditVideoListModal data={data} />
-      break
-
     case MODAL_CONSTANTS.ADD_VIDEO_TO_LIST_MODAL:
       modalType = <AddVideoModal data={data} />
       break
 
     case MODAL_CONSTANTS.EDIT_VIDEO_MODAL:
       modalType = <EditVideoModal data={data} />
+      break
+
+    case MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL:
+      modalType = <EditVideoListModal data={data} />
       break
 
     default:

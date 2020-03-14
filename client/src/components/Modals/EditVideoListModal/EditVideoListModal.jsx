@@ -1,6 +1,10 @@
+// React
 import React, { useState } from 'react'
-import './EditVideoListModal.scss'
+// Redux
 import { connect } from 'react-redux'
+// Styles
+import './EditVideoListModal.scss'
+// Actions
 import modalActions from '../../../actions/modal.action'
 import videoListAction from '../../../actions/videoList.action'
 
