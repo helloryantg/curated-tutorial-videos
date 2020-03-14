@@ -1,8 +1,8 @@
 @base = http://localhost:4000
 @application-json = Content-Type: application/json
-@id = 5e6577fbb46d8860a3b2fb26
+@id = 5e6c60901467beb2cfb2be7d
 @userId = 5e61892041a37762ae86eb0a
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJfaWQiOiI1ZTYxODkyMDQxYTM3NzYyYWU4NmViMGEiLCJmaXJzdE5hbWUiOiJSeWFuIiwibGFzdE5hbWUiOiJHb256YWxlcyIsImRpc3BsYXlOYW1lIjoicmdvbnphbGVzIiwiZW1haWwiOiJ0ZXN0QGVtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjAtMDMtMDVUMjM6MjA6MDAuNDY3WiIsInVwZGF0ZWRBdCI6IjIwMjAtMDMtMDVUMjM6MjA6MDAuNDY3WiIsIl9fdiI6MH0sImlhdCI6MTU4Mzc5NDU1OCwiZXhwIjoxNTgzODgwOTU4fQ.-cEf0ckaKBBYT7zLO_SFFj1TRLCl2ICoGbCrj1QIfqo
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJ0eXBlIjoidXNlciIsIl9pZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImZpcnN0TmFtZSI6IlJ5YW4iLCJsYXN0TmFtZSI6IkdvbnphbGVzIiwiZGlzcGxheU5hbWUiOiJyZ29uemFsZXMiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiY3JlYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwidXBkYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwiX192IjowfSwiaWF0IjoxNTg0MTYwODQ3LCJleHAiOjE1ODQyNDcyNDd9.cISh8zRSV5q5DDfrDn92VeAH9_AnMSuyZV2LBqca8s0
 @authorization = Authorization: {{token}}
 @videoListId = 5e6411e05d938c317b873924
 
@@ -17,10 +17,10 @@ POST {{base}}/videos
 {{authorization}}
 
 {
-  "url": "https://www.youtube.com/watch?v=lt5Ad12RZiI",
+  "url": "https//ryangonz.com",
   "videoListId": "{{videoListId}}",
-  "title": "The one with the bees",
-  "description": ""
+  "title": "Delete Me",
+  "description": "This is the one to be deleted"
 }
 
 ### Get a video
