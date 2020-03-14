@@ -10,17 +10,9 @@ const videoSchema = new Schema({
     type: String,
     required: true
   },
-  likes: {
-    type: Number,
-    default: 0
-  },
   views: {
     type: Number,
     default: 0
-  },
-  isFavorited: {
-    type: Boolean,
-    default: false
   },
   videoListId: {
     type: String,
