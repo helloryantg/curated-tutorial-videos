@@ -16,7 +16,6 @@ function VideoCard(props) {
   } = props
 
   const {
-    likes,
     title,
     views,
     url,
