@@ -1,14 +1,22 @@
+// React
 import React, { useState, useEffect } from 'react'
-import './VideoWorkspace.scss'
-import NavBar from '../../components/NavBar/NavBar'
-import videoListAction from '../../actions/videoList.action'
+// Redux
 import { connect } from 'react-redux'
-import VideoCard from '../../components/VideoCard/VideoCard'
-import { isEmpty } from '../../utils/object'
-import modalActions from '../../actions/modal.action'
-import MODAL_CONSTANTS from '../../constants/modal.constants'
-import Loader from 'react-loader-spinner'
+// Styles
+import './VideoWorkspace.scss'
+// Components
 import AddVideoCard from '../../components/AddVideoCard/AddVideoCard'
+import NavBar from '../../components/NavBar/NavBar'
+import VideoCard from '../../components/VideoCard/VideoCard'
+// Actions
+import modalActions from '../../actions/modal.action'
+import videoListAction from '../../actions/videoList.action'
+// Utils
+import { isEmpty } from '../../utils/object'
+// Constants
+import MODAL_CONSTANTS from '../../constants/modal.constants'
+// Dependencies
+import Loader from 'react-loader-spinner'
 
 function VideoWorkspace(props) {
   const {
