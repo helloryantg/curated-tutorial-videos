@@ -60,6 +60,14 @@ function VideoCard(props) {
 
   return (
     <div className="VideoCard">
+      <div className="header">
+        <div className="edit">
+          Edit
+        </div>
+        <div className="delete">
+          Delete
+        </div>
+      </div>
       <div className="video">
         <YouTube
           videoId={videoId}
