@@ -1,6 +1,5 @@
 import React from 'react'
 import './Modals.scss'
-import { hideModal } from '../../actions/modal.action'
 import { connect } from 'react-redux'
 import MODAL_CONSTANTS from '../../constants/modal.constants'
 import EditVideoListModal from './EditVideoListModal/EditVideoListModal.jsx'
@@ -21,7 +20,6 @@ const ModalType = ({ type, data }) => {
 
 function Modals(props) {
   const {
-    dispatch,
     modal
   } = props
 

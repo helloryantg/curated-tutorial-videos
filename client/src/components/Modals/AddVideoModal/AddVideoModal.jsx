@@ -4,12 +4,6 @@ import { connect } from 'react-redux'
 import modalActions from '../../../actions/modal.action'
 import videoAction from '../../../actions/video.action'
 
-const emptyVideo = {
-  title: '',
-  url: '',
-  description: ''
-}
-
 function AddVideoModal(props) {
   const {
     dispatch,
