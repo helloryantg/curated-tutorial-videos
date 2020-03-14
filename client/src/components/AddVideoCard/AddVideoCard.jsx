@@ -1,10 +1,16 @@
+// React
 import React, { useState, useEffect } from 'react'
+// Redux
+import { connect } from 'react-redux'
+// Styles
 import './AddVideoCard.scss'
+// Dependencies
 import {
   IoIosAdd
 } from 'react-icons/io'
-import { connect } from 'react-redux'
+// Actions
 import modalActions from '../../actions/modal.action'
+// Constants
 import MODAL_CONSTANTS from '../../constants/modal.constants'
 
 function AddVideoCard(props) {
@@ -24,7 +30,7 @@ function AddVideoCard(props) {
       <IoIosAdd
         onClick={() => {
           dispatch(modalActions.showModal({
-            modalType: MODAL_CONSTANTS.ADD_VIDEO_TO_LIST,
+            modalType: MODAL_CONSTANTS.ADD_VIDEO_TO_LIST_MODAL,
             modalProps: {
               videoList: list
             }

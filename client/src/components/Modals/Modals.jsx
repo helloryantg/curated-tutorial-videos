@@ -1,34 +1,44 @@
+// React
 import React from 'react'
-import './Modals.scss'
+// Redux
 import { connect } from 'react-redux'
+// Styles
+import './Modals.scss'
+// Constants
 import MODAL_CONSTANTS from '../../constants/modal.constants'
-import EditVideoListModal from './EditVideoListModal/EditVideoListModal.jsx'
+// Components
 import AddVideoModal from './AddVideoModal/AddVideoModal'
-
-const ModalType = ({ type, data }) => {
-  switch (type) {
-    case MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL:
-      return <EditVideoListModal data={data} />
-    
-    case MODAL_CONSTANTS.ADD_VIDEO_TO_LIST:
-      return <AddVideoModal data={data} />
-
-    default:
-      return <div>Empty Modal</div>
-  }
-} 
+import EditVideoModal from './EditVideoModal/EditVideoModal'
+import EditVideoListModal from './EditVideoListModal/EditVideoListModal.jsx'
 
 function Modals(props) {
   const {
     modal
   } = props
 
+  const data = modal.modalProps
+
+  let modalType
+  switch (modal.modalType) {
+    case MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL:
+      modalType = <EditVideoListModal data={data} />
+      break
+
+    case MODAL_CONSTANTS.ADD_VIDEO_TO_LIST_MODAL:
+      modalType = <AddVideoModal data={data} />
+      break
+
+    case MODAL_CONSTANTS.EDIT_VIDEO_MODAL:
+      modalType = <EditVideoModal data={data} />
+      break
+
+    default:
+      return <div>Empty Modal</div>
+  }
+
   return (
     <div className="Modals">
-      <ModalType 
-        type={modal.modalType}
-        data={modal.modalProps}
-      />
+      {modalType}
     </div>
   )
 }
