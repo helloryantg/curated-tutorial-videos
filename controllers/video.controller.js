@@ -62,9 +62,7 @@ router.get('/:id', authMiddleware, async (req, res) => {
 router.put('/:id', authMiddleware, async (req, res) => {
   const {
     url,
-    likes,
     views,
-    isFavored,
     title,
     description
   } = req.body
@@ -77,9 +75,7 @@ router.put('/:id', authMiddleware, async (req, res) => {
 
     const updates = {
       url,
-      likes,
       views,
-      isFavored,
       title,
       description
     }
