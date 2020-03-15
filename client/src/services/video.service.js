@@ -5,6 +5,12 @@ const createVideo = video => {
     .then(({ data }) => data)
 }
 
+const editVideo = video => {
+  return server.put(`/videos/${video._id}`, video)
+    .then(({ data }) => data)
+}
+
 export default {
-  createVideo
+  createVideo,
+  editVideo
 }

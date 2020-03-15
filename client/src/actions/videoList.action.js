@@ -2,7 +2,7 @@ import VIDEO_LIST_CONSTANTS from '../constants/videoList.constants'
 import videoListService from '../services/videoList.service'
 import likeService from '../services/like.service'
 
-const getUserVideoLists = (userId) => async dispatch => {
+const getUserVideoLists = userId => async dispatch => {
   const res = await videoListService.getUserVideoLists(userId)
 
   dispatch({
