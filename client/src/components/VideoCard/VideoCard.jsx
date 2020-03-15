@@ -101,6 +101,7 @@ function VideoCard(props) {
           <div className="likes">Likes: {likesCount}</div>
           <div className="views">Views: {currentVideo.views}</div>
         </div>
+        <div className="notes">{currentVideo.description}</div>
       </div>
     </div>
   )
