@@ -1,8 +1,12 @@
+// React
 import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
-import './SignUp.scss'
-import userAction from '../../actions/user.action'
 import { Link } from 'react-router-dom'
+// Redux
+import { connect } from 'react-redux'
+// Styles
+import './SignUp.scss'
+// Actions
+import userAction from '../../actions/user.action'
 
 const initialCreds = {
   email: '',
