@@ -1,8 +1,13 @@
+// React
 import React from 'react'
-import './NavBar.scss'
-import { connect } from 'react-redux'
-import { isEmpty } from '../../utils/object'
 import { Link } from 'react-router-dom'
+// Redux
+import { connect } from 'react-redux'
+// Styles
+import './NavBar.scss'
+// Utils
+import { isEmpty } from '../../utils/object'
+// Actions
 import userActions from '../../actions/user.action'
 
 function NavBar(props) {
