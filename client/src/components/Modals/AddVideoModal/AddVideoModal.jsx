@@ -2,6 +2,9 @@
 import React, { useState } from 'react'
 // Redux
 import { connect } from 'react-redux'
+// Styles
+import './AddVideoModal.scss'
+// Actions
 import modalActions from '../../../actions/modal.action'
 import videoAction from '../../../actions/video.action'
 
