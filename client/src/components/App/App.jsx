@@ -1,18 +1,25 @@
+// React
 import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
-import './App.scss'
-import { 
-  getUserFromToken 
-} from '../../actions/user.action'
-import AuthPage from '../../pages/AuthPage/AuthPage'
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
-import VideoWorkspace from '../../pages/VideoWorkspace/VideoWorkspace'
-import { isEmpty } from '../../utils/object'
+// Redux
+import { connect } from 'react-redux'
+// Styles
+import './App.scss'
+// Actions
+import { 
+  getUserFromToken 
+} from '../../actions/user.action'
+// Pages
+import AuthPage from '../../pages/AuthPage/AuthPage'
+// Components
 import Modal from '../Modals/Modals'
+import VideoWorkspace from '../../pages/VideoWorkspace/VideoWorkspace'
+// Utils
+import { isEmpty } from '../../utils/object'
 
 function App(props) {
   const {
