@@ -1,5 +1,5 @@
 // React
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // Redux
 import { connect } from 'react-redux'
 // Styles
@@ -7,13 +7,23 @@ import './EditVideoModal.scss'
 // Actions
 import modalActions from '../../../actions/modal.action'
 import videoActions from '../../../actions/video.action'
+// Services
+import videoServices from '../../../services/video.service'
 
 function EditVideoModal(props) {
   const {
     dispatch
   } = props
 
-  const [video, setVideo] = useState(props.data.video)
+  const [video, setVideo] = useState({})
+
+  useEffect(() => {
+    getVideo()
+  }, [])
+
+  const getVideo = async () => {
+    setVideo(await videoServices.getVideo(props.data.video))
+  }
 
   return (
     <div className="EditVideoModal">
