@@ -12,7 +12,7 @@ import videoServices from '../../../services/video.service'
 
 function EditVideoModal(props) {
   const {
-    dispatch
+    dispatch,
   } = props
 
   const [video, setVideo] = useState({})
