@@ -13,6 +13,7 @@ import {
 // Actions
 import likeAction from '../../actions/like.action'
 import modalActions from '../../actions/modal.action'
+import videoActions from '../../actions/video.action'
 // Constants
 import MODAL_CONSTANTS from '../../constants/modal.constants'
 
@@ -77,7 +78,9 @@ function VideoCard(props) {
           Edit
         </div>
         <div className="delete"
-          onClick={() => console.log('deleting')}
+          onClick={() => {
+            dispatch(videoActions.deleteVideo(currentVideo))
+          }}
         >
           Delete
         </div>

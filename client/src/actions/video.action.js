@@ -17,7 +17,12 @@ const editVideo = video => async dispatch => {
   // TODO - update the list 
 }
 
+const deleteVideo = video => async dispatch => {
+  await videoService.deleteVideo(video)
+}
+
 export default {
   createVideo,
-  editVideo
+  editVideo,
+  deleteVideo
 }
