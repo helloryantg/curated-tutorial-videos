@@ -73,8 +73,8 @@ function VideoWorkspace(props) {
                   className={`tab ${activeTabIndex === index ? 'active' : ''}`}
                   key={video._id}
                   onClick={() => setActiveTabIndex(index)}
-                >{
-                    video.name}
+                >
+                  {video.name}
                 </div>
               ))
               : <div className="tab">No video lists so far.</div>
@@ -128,13 +128,13 @@ function VideoWorkspace(props) {
                 videos.map(video => <VideoCard key={video._id} video={video} />)
                 : null
               }
-              {!isEmpty(videoLists[activeTabIndex]) ?
+              {/* {!isEmpty(videoLists[activeTabIndex]) ?
                 <AddVideoCard
                   currentList={videoLists[activeTabIndex]}
                 />
                 :
                 null
-              }
+              } */}
             </div>
           </div>
         </div>
