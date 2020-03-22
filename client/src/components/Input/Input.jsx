@@ -18,7 +18,7 @@ function Input(props) {
     <div className="Input">
       <label>{stringUtils.camelCaseToTitleCase(option)}</label>
       <input
-        type="text"
+        type={['password', 'confirmPassword'].includes(option) ? 'password' : 'text'}
         placeholder={placeholder}
         value={value}
         onChange={({ target }) => onChange(target)}

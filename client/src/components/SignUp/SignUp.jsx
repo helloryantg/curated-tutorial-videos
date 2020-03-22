@@ -28,6 +28,15 @@ const initialError = {
   displayName: ''
 }
 
+const options = [
+  { option: 'email', placeholder: 'someone@email.com' },
+  { option: 'password', placeholder: '********' },
+  { option: 'confirmPassword', placeholder: '********' },
+  { option: 'firstName', placeholder: 'John' },
+  { option: 'lastName', placeholder: 'Smith' },
+  { option: 'displayName', placeholder: 'jsmith' },
+]
+
 function SignUp(props) {
   const {
     setLoginPage
@@ -141,19 +150,10 @@ function SignUp(props) {
     error.displayName
   ])
 
-  const options = [
-    { option: 'email', placeholder: 'someone@email.com' },
-    { option: 'password', placeholder: '********' },
-    { option: 'confirmPassword', placeholder: '********' },
-    { option: 'firstName', placeholder: 'John' },
-    { option: 'lastName', placeholder: 'Smith' },
-    { option: 'displayName', placeholder: 'jsmith' },
-  ]
-
   return (
     <div className="SignUp">
       <div className="header">
-        <div className="title">SIGNUP</div>
+        <div className="title">Signup</div>
         <div className="description">
           Welcome! If you already have an account, please {' '}
           <Link
@@ -165,6 +165,7 @@ function SignUp(props) {
           .
         </div>
       </div>
+      
       <div className="form">
         {options.map(({ option, placeholder }, index) => {
           return (
@@ -185,7 +186,7 @@ function SignUp(props) {
       <div className="button-container">
         <button
           onClick={() => submitSignUp()}
-        >SIGN UP</button>
+        >Join</button>
       </div>
     </div>
   )

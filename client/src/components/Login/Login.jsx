@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import './Login.scss'
 // Actions
 import { login } from '../../actions/user.action'
+// Components
+import Input from '../../components/Input/Input'
 
 const initialCreds = {
   email: '',
@@ -17,6 +19,11 @@ const initialError = {
   email: '',
   password: ''
 }
+
+const options = [
+  { option: 'email', placeholder: 'someone@email.com' },
+  { option: 'password', placeholder: '********' },
+]
 
 function Login(props) {
   const {
@@ -43,7 +50,7 @@ function Login(props) {
         password
       })
     }
-    
+
     props.dispatch(login(creds))
   }
 
@@ -62,56 +69,51 @@ function Login(props) {
       email,
       password
     })
-  }, [creds.email, creds.password, error.email, error.password])
+  }, [
+    creds.email,
+    creds.password,
+    error.email,
+    error.password,
+  ])
 
   return (
     <div className="Login">
       <div className="header">
-        <div className="title">LOGIN</div>
+        <div className="title">Login</div>
         <div className="description">
-          If you have an account, please log in. 
-          <Link 
+          If you don't have an account, please {' '}
+          <Link
             to="/"
             onClick={() => setLoginPage(false)}
           >
-            Sign Up
+            sign up
           </Link>
+          .
         </div>
       </div>
-      <div className="form">
-        <div className="email">
-          <div className="title">Email</div>
-          <input
-            type="text"
-            placeholder='someone@email.com'
-            value={creds.email}
-            onChange={({ target }) => setCreds({
-              ...creds,
-              email: target.value
-            })}
-          />
-          <div className="error">{error.email}</div>
-        </div>
 
-        <div className="password">
-          <div className="title">Password</div>
-          <input
-            type="password"
-            placeholder='**********'
-            value={creds.password}
-            onChange={({ target }) => setCreds({
-              ...creds,
-              password: target.value
-            })}
-          />
-          <div className="error">{error.password}</div>
-        </div>
+      <div className="form">
+        {options.map(({ option, placeholder }, index) => {
+          return (
+            <Input
+              key={index}
+              option={option}
+              placeholder={placeholder}
+              value={creds[option]}
+              onChange={({ value }) => setCreds({
+                ...creds,
+                [option]: value
+              })}
+              error={error[option]}
+            />
+          )
+        })}
       </div>
 
       <div className="button-container">
         <button
           onClick={() => submitLogin()}
-        >LOGIN</button>
+        >Go</button>
       </div>
     </div>
   )
