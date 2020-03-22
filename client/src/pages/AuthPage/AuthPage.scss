@@ -6,32 +6,24 @@
   background-color: #718aab;
 
   & > .container {
-    height: 70%;
-    width: 80%;
     box-shadow: 4px 4px 2px 1px rgba(0,0,0,0.55);
     background-color: #fff;
     display: flex;
 
+    height: 800px;
+    width: 600px;
+    flex-direction: column;
+
     & > .logo-container {
       background-color: #1261A0;
-      width: 40%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      & > .top {
+      & > .title {
         font-size: 300%;
         color: #fff;
-        height: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        & > .title {
-          text-align: center;
-          margin: 0 2rem;
-        }
-      }
-
-      & > .bottom {
-
       }
     }
 
