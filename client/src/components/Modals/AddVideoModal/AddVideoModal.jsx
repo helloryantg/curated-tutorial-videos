@@ -32,6 +32,7 @@ function AddVideoModal(props) {
           Close
         </div>
       </header>
+
       <div className="main">
         <div className="item">
           <label>Title: </label>
@@ -71,6 +72,7 @@ function AddVideoModal(props) {
           <button
             onClick={() => {
               dispatch(videoAction.createVideo(video))
+              dispatch(modalActions.hideModal())
             }}
           >ADD</button>
         </div>

@@ -8,7 +8,7 @@ import VIDEO_LIST_CONSTANTS from '../constants/videoList.constants'
 const createVideo = video => async dispatch => {
   const data = await videoService.createVideo(video)
 
-  console.log(data)
+  // TODO - add to state
 }
 
 const editVideo = video => async dispatch => {

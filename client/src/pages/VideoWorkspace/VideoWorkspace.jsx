@@ -81,13 +81,10 @@ function VideoWorkspace(props) {
             }
             <div className="add-container">
               <button
-                // onClick={() => setAdding(!isAdding)}
                 onClick={() => {
                   dispatch(modalActions.showModal({
                     modalType: MODAL_CONSTANTS.ADD_VIDEO_LIST_MODAL,
-                    modalProps: {
-                      // videoList: videoLists[activeTabIndex]
-                    }
+                    modalProps: {}
                   }))
                 }}
               >Add New List</button>
@@ -110,17 +107,36 @@ function VideoWorkspace(props) {
 
           <div className="videos-list">
             <div className="title">
-              <div
-                className="edit"
-                onClick={() => {
-                  dispatch(modalActions.showModal({
-                    modalType: MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL,
-                    modalProps: {
-                      videoList: videoLists[activeTabIndex]
-                    }
-                  }))
-                }}
-              >Edit</div>
+              <div className="left">
+                <div
+                  className="add"
+                  onClick={() => {
+                    dispatch(modalActions.showModal({
+                      modalType: MODAL_CONSTANTS.ADD_VIDEO_TO_LIST_MODAL,
+                      modalProps: {
+                        videoList: videoLists[activeTabIndex]
+                      }
+                    }))
+                  }}
+                >
+                  Add
+                </div>
+
+                <div
+                  className="edit"
+                  onClick={() => {
+                    dispatch(modalActions.showModal({
+                      modalType: MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL,
+                      modalProps: {
+                        videoList: videoLists[activeTabIndex]
+                      }
+                    }))
+                  }}
+                >
+                  Edit
+                </div>
+              </div>
+
               <div className="name">
                 {videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}
               </div>
@@ -136,13 +152,6 @@ function VideoWorkspace(props) {
                 videos.map(video => <VideoCard key={video._id} video={video} />)
                 : null
               }
-              {/* {!isEmpty(videoLists[activeTabIndex]) ?
-                <AddVideoCard
-                  currentList={videoLists[activeTabIndex]}
-                />
-                :
-                null
-              } */}
             </div>
           </div>
         </div>

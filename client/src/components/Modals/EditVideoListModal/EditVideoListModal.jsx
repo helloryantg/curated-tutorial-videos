@@ -31,13 +31,13 @@ function EditVideoListModal(props) {
       <div className="main">
         <div className="item">
           <label>Name: </label>
-          <input 
+          <input
             type="text"
             value={videoList.name}
             onChange={({ target }) => setVideoList({
               ...videoList,
               name: target.value
-            })} 
+            })}
           />
         </div>
 

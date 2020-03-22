@@ -101,9 +101,19 @@
         background-color: #1261A0;
         color: #fff;
 
-        & > .edit {
-          text-decoration: underline;
-          cursor: pointer;
+        & > .left {
+          display: flex;
+          align-items: center;
+
+          & > .add,
+          & > .edit {
+            margin-right: 1rem;
+            cursor: pointer;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
 
         & > .name {
@@ -111,8 +121,11 @@
         }
 
         & > .delete {
-          text-decoration: underline;
           cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
 
