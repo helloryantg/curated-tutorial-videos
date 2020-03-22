@@ -7,6 +7,7 @@ import './Modals.scss'
 // Constants
 import MODAL_CONSTANTS from '../../constants/modal.constants'
 // Components
+import AddVideoListModal from './AddVideoListModal/AddVideoListModal'
 import AddVideoModal from './AddVideoModal/AddVideoModal'
 import EditVideoModal from './EditVideoModal/EditVideoModal'
 import EditVideoListModal from './EditVideoListModal/EditVideoListModal.jsx'
@@ -20,6 +21,10 @@ function Modals(props) {
 
   let modalType
   switch (modal.modalType) {
+    case MODAL_CONSTANTS.ADD_VIDEO_LIST_MODAL:
+      modalType = <AddVideoListModal data={data} />
+      break
+
     case MODAL_CONSTANTS.ADD_VIDEO_TO_LIST_MODAL:
       modalType = <AddVideoModal data={data} />
       break

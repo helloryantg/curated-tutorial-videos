@@ -43,6 +43,7 @@
 
       & > .add-container {
         height: 3.6rem;
+        margin-top: auto;
 
         & > button {
           cursor: pointer;
@@ -93,7 +94,7 @@
       flex-direction: column;
 
       & > .title {
-        padding: 1rem 2rem;
+        padding: 1rem 1rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -101,7 +102,6 @@
         color: #fff;
 
         & > .edit {
-          margin-left: 1rem;
           text-decoration: underline;
           cursor: pointer;
         }
@@ -111,7 +111,6 @@
         }
 
         & > .delete {
-          margin-right: 1rem;
           text-decoration: underline;
           cursor: pointer;
         }

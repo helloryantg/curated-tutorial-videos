@@ -11,8 +11,8 @@ const getUserVideoLists = userId => async dispatch => {
   })
 }
 
-const createNewVideoList = name => async dispatch => {
-  await videoListService.createVideoList(name)
+const createNewVideoList = videoList => async dispatch => {
+  await videoListService.createVideoList(videoList.name)
 
   const res = await videoListService.getUserVideoLists()
 

@@ -81,7 +81,15 @@ function VideoWorkspace(props) {
             }
             <div className="add-container">
               <button
-                onClick={() => setAdding(!isAdding)}
+                // onClick={() => setAdding(!isAdding)}
+                onClick={() => {
+                  dispatch(modalActions.showModal({
+                    modalType: MODAL_CONSTANTS.ADD_VIDEO_LIST_MODAL,
+                    modalProps: {
+                      // videoList: videoLists[activeTabIndex]
+                    }
+                  }))
+                }}
               >Add New List</button>
               <div className={`hidden ${isAdding ? 'active' : ''}`}>
                 <input
