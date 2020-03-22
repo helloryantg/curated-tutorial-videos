@@ -1,0 +1,27 @@
+.Input {
+  width: calc(100% - 34px);
+  height: 4rem;
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  & > label {
+    margin-bottom: .4rem;
+  }
+
+  & > input {
+    display: block;
+    width: 100%;
+    height: 2rem; 
+    min-height: 2rem;
+    padding: 0 .4rem;
+    font-size: 110%;
+  }
+
+  & > .error {
+    margin-bottom: 1rem;
+    color: #FF1919;
+    height: 20px;
+  }
+}

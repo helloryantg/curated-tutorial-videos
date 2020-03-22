@@ -20,10 +20,8 @@
   }
 
   & > .form {
-    flex: 6;
     display: flex;
     flex-direction: column;
-    margin: 1rem;
 
     & > .email,
     & > .password {
