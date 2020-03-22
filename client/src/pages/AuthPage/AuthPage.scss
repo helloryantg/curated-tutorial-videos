@@ -16,13 +16,14 @@
 
     & > .logo-container {
       background-color: #1261A0;
-      height: 200px;
+      height: 80px;
+      min-height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
 
       & > .title {
-        font-size: 300%;
+        font-size: 200%;
         color: #fff;
       }
     }

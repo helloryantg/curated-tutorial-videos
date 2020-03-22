@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import './SignUp.scss'
 // Actions
 import userAction from '../../actions/user.action'
+// Components
+import Input from '../../components/Input/Input'
 
 const initialCreds = {
   email: '',
@@ -139,107 +141,46 @@ function SignUp(props) {
     error.displayName
   ])
 
+  const options = [
+    { option: 'email', placeholder: 'someone@email.com' },
+    { option: 'password', placeholder: '********' },
+    { option: 'confirmPassword', placeholder: '********' },
+    { option: 'firstName', placeholder: 'John' },
+    { option: 'lastName', placeholder: 'Smith' },
+    { option: 'displayName', placeholder: 'jsmith' },
+  ]
+
   return (
     <div className="SignUp">
       <div className="header">
         <div className="title">SIGNUP</div>
         <div className="description">
-          Welcome! If you already have an account, please login.
+          Welcome! If you already have an account, please {' '}
           <Link
             href="/"
             onClick={() => setLoginPage(true)}
           >
-            Login
+            login
           </Link>
+          .
         </div>
       </div>
       <div className="form">
-        <div className="left">
-          <div className="first-name">
-            <div className="title">First Name</div>
-            <input
-              type="text"
-              placeholder='John'
-              value={creds.firstName}
-              onChange={({ target }) => setCreds({
+        {options.map(({ option, placeholder }, index) => {
+          return (
+            <Input 
+              key={index}
+              option={option}
+              placeholder={placeholder}
+              value={creds[option]}
+              onChange={({ value }) => setCreds({
                 ...creds,
-                firstName: target.value
+                [option]: value
               })}
+              error={error[option]}
             />
-            <div className="error">{error.firstName}</div>
-          </div>
-
-          <div className="last-name">
-            <div className="title">Last Name</div>
-            <input
-              type="text"
-              placeholder='Smith'
-              value={creds.lastName}
-              onChange={({ target }) => setCreds({
-                ...creds,
-                lastName: target.value
-              })}
-            />
-            <div className="error">{error.lastName}</div>
-          </div>
-
-          <div className="display-name">
-            <div className="title">Display Name</div>
-            <input
-              type="text"
-              placeholder='jsmith'
-              value={creds.displayName}
-              onChange={({ target }) => setCreds({
-                ...creds,
-                displayName: target.value
-              })}
-            />
-            <div className="error">{error.displayName}</div>
-          </div>
-        </div>
-        <div className="right">
-          <div className="email">
-            <div className="title">Email</div>
-            <input
-              type="text"
-              placeholder='someone@email.com'
-              value={creds.email}
-              onChange={({ target }) => setCreds({
-                ...creds,
-                email: target.value
-              })}
-            />
-            <div className="error">{error.email}</div>
-          </div>
-
-          <div className="password">
-            <div className="title">Password</div>
-            <input
-              type="password"
-              placeholder='**********'
-              value={creds.password}
-              onChange={({ target }) => setCreds({
-                ...creds,
-                password: target.value
-              })}
-            />
-            <div className="error">{error.password}</div>
-          </div>
-
-          <div className="confirm-password">
-            <div className="title">Confirm Password</div>
-            <input
-              type="password"
-              placeholder='**********'
-              value={creds.confirmPassword}
-              onChange={({ target }) => setCreds({
-                ...creds,
-                confirmPassword: target.value
-              })}
-            />
-            <div className="error">{error.confirmPassword}</div>
-          </div>
-        </div>
+          )
+        })}
       </div>
       <div className="button-container">
         <button
