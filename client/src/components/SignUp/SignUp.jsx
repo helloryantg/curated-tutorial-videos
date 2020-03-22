@@ -8,6 +8,7 @@ import './SignUp.scss'
 // Actions
 import userAction from '../../actions/user.action'
 // Components
+import CustomButton from '../../components/CustomButton/CustomButton'
 import Input from '../../components/Input/Input'
 
 const initialCreds = {
@@ -183,11 +184,11 @@ function SignUp(props) {
           )
         })}
       </div>
-      <div className="button-container">
-        <button
-          onClick={() => submitSignUp()}
-        >Join</button>
-      </div>
+
+      <CustomButton 
+        text='Join'
+        onClick={submitSignUp}
+      />
     </div>
   )
 }

@@ -8,6 +8,7 @@ import './Login.scss'
 // Actions
 import { login } from '../../actions/user.action'
 // Components
+import CustomButton from '../../components/CustomButton/CustomButton'
 import Input from '../../components/Input/Input'
 
 const initialCreds = {
@@ -110,11 +111,10 @@ function Login(props) {
         })}
       </div>
 
-      <div className="button-container">
-        <button
-          onClick={() => submitLogin()}
-        >Go</button>
-      </div>
+      <CustomButton
+        text='Go'
+        onClick={submitLogin}
+      />
     </div>
   )
 }
