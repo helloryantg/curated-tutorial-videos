@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 // Styles
 import './VideoWorkspace.scss'
 // Components
-import AddVideoCard from '../../components/AddVideoCard/AddVideoCard'
 import NavBar from '../../components/NavBar/NavBar'
 import VideoCard from '../../components/VideoCard/VideoCard'
 // Actions

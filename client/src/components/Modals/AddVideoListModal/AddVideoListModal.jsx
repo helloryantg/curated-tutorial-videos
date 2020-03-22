@@ -7,15 +7,24 @@ import './AddVideoListModal.scss'
 // Actions
 import modalActions from '../../../actions/modal.action'
 import videoListActions from '../../../actions/videoList.action'
+// Components
+import CustomButton from '../../../components/CustomButton/CustomButton'
+import Input from '../../../components/Input/Input'
 
-function AddVideoListModal(props) {
-  const {
-    dispatch,
-  } = props
+const initialVideoList = { name: '' }
 
-  const [videoList, setVideoList] = useState({
-    name: ''
-  })
+function AddVideoListModal({ dispatch }) {
+  const [videoList, setVideoList] = useState(initialVideoList)
+  const [error, setError] = useState('')
+
+  const onSubmit = () => {
+    if (!videoList.name) {
+      setError('Name field cannot be empty')
+    } else {
+      dispatch(videoListActions.createNewVideoList(videoList))
+      dispatch(modalActions.hideModal())
+    }
+  }
 
   return (
     <div className="AddVideoListModal">
@@ -30,34 +39,25 @@ function AddVideoListModal(props) {
       </header>
 
       <div className="main">
-        <div className="item">
-          <label>Name: </label>
-          <input
-            type="text"
-            value={videoList.name}
-            onChange={({ target }) => {
-              setVideoList({
-                name: target.value
-              })
-            }}
-          />
-        </div>
+        <Input
+          option='name'
+          placeholder='Video list name'
+          value={videoList.name}
+          onChange={({ value }) => {
+            setVideoList({
+              name: value
+            })
+          }}
+          error={error}
+        />
 
-        <div className="button-container">
-          <button
-            onClick={() => {
-              dispatch(videoListActions.createNewVideoList(videoList))
-              dispatch(modalActions.hideModal())
-            }}
-          >ADD</button>
-        </div>
+        <CustomButton
+          text='Add'
+          onClick={onSubmit}
+        />
       </div>
     </div>
   )
 }
 
-const mapState = state => {
-  return {}
-}
-
-export default connect(mapState)(AddVideoListModal)
+export default connect()(AddVideoListModal)

@@ -119,8 +119,4 @@ function Login(props) {
   )
 }
 
-const mapState = state => {
-
-}
-
-export default connect(mapState)(Login)
+export default connect()(Login)
