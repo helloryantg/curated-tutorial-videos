@@ -22,10 +22,14 @@
       flex-direction: column;
 
       & > .title {
-        padding: 1rem 2rem;
+        height: 3rem;
+        min-height: 3rem;
         text-align: center;
         background-color: #1261A0;
         color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       & > .tab {
@@ -94,12 +98,13 @@
       flex-direction: column;
 
       & > .title {
-        padding: 1rem 1rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
         background-color: #1261A0;
         color: #fff;
+        height: 3rem;
+        min-height: 3rem;
 
         & > .left {
           display: flex;
@@ -108,11 +113,19 @@
           & > .add,
           & > .edit {
             margin-right: 1rem;
+            margin-left: 1rem;
             cursor: pointer;
 
-            &:hover {
-              text-decoration: underline;
+            & > svg {
+              height: 1.6rem;
+              width: 1.6rem;
+              display: block;
+              margin: auto;
             }
+
+            // &:hover {
+            //   text-decoration: underline;
+            // }
           }
         }
 
@@ -121,10 +134,12 @@
         }
 
         & > .delete {
+          margin-right: 1rem;
           cursor: pointer;
 
-          &:hover {
-            text-decoration: underline;
+          & > svg {
+            height: 1.6rem;
+            width: 1.6rem;
           }
         }
       }

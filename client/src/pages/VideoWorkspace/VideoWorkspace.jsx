@@ -16,6 +16,14 @@ import { isEmpty } from '../../utils/object'
 import MODAL_CONSTANTS from '../../constants/modal.constants'
 // Dependencies
 import Loader from 'react-loader-spinner'
+import {
+  IoIosAdd,
+} from 'react-icons/io'
+import { 
+  FiEdit,
+  FiPlusSquare,
+  FiXSquare
+} from "react-icons/fi";
 
 function VideoWorkspace(props) {
   const {
@@ -118,7 +126,7 @@ function VideoWorkspace(props) {
                     }))
                   }}
                 >
-                  Add
+                  <FiPlusSquare />
                 </div>
 
                 <div
@@ -132,7 +140,7 @@ function VideoWorkspace(props) {
                     }))
                   }}
                 >
-                  Edit
+                  <FiEdit />
                 </div>
               </div>
 
@@ -144,7 +152,9 @@ function VideoWorkspace(props) {
                 onClick={() => {
                   dispatch(videoListAction.deleteVideoList(videoLists[activeTabIndex]._id))
                 }}
-              >Delete</div>
+              >
+                <FiXSquare />
+              </div>
             </div>
             <div className="list">
               {videos.length ?
