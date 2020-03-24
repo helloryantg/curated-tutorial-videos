@@ -45,22 +45,5 @@
         font-size: 110%;
       }
     }
-
-    & > .button-container {
-      margin: 1rem;
-      height: 4rem;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-
-      & > button {
-        background-color: #1261A0;
-        color: #fff;
-        height: 3rem;
-        width: 12rem;
-        font-size: 120%;
-        cursor: pointer;
-      }
-    }
   }
 }

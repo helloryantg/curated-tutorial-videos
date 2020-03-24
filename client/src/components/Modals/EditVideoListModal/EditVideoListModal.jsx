@@ -7,6 +7,8 @@ import './EditVideoListModal.scss'
 // Actions
 import modalActions from '../../../actions/modal.action'
 import videoListAction from '../../../actions/videoList.action'
+// Components
+import CustomButton from '../../../components/CustomButton/CustomButton'
 
 function EditVideoListModal(props) {
   const {
@@ -41,13 +43,12 @@ function EditVideoListModal(props) {
           />
         </div>
 
-        <div className="button-container">
-          <button
-            onClick={() => {
-              dispatch(videoListAction.updateVideoList(videoList))
-            }}
-          >EDIT</button>
-        </div>
+        <CustomButton 
+          text='Edit'
+          onClick={() => {
+            dispatch(videoListAction.updateVideoList(videoList))
+          }}
+        />
       </div>
     </div>
   )

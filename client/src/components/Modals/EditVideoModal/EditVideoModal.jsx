@@ -9,6 +9,8 @@ import modalActions from '../../../actions/modal.action'
 import videoActions from '../../../actions/video.action'
 // Services
 import videoServices from '../../../services/video.service'
+// Components
+import CustomButton from '../../../components/CustomButton/CustomButton'
 
 function EditVideoModal(props) {
   const {
@@ -82,13 +84,12 @@ function EditVideoModal(props) {
         </div>
       </div>
 
-      <div className="button">
-        <button
-          onClick={() => {
-            dispatch(videoActions.editVideo(video))
-          }}
-        >Edit</button>
-      </div>
+      <CustomButton 
+        text='Edit'
+        onClick={() => {
+          dispatch(videoActions.editVideo(video))
+        }}
+      />
     </div>
   )
 }

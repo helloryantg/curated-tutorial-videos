@@ -7,6 +7,8 @@ import './AddVideoModal.scss'
 // Actions
 import modalActions from '../../../actions/modal.action'
 import videoAction from '../../../actions/video.action'
+// Components
+import CustomButton from '../../../components/CustomButton/CustomButton'
 
 function AddVideoModal(props) {
   const {
@@ -68,14 +70,13 @@ function AddVideoModal(props) {
           />
         </div>
 
-        <div className="button-container">
-          <button
-            onClick={() => {
-              dispatch(videoAction.createVideo(video))
-              dispatch(modalActions.hideModal())
-            }}
-          >ADD</button>
-        </div>
+        <CustomButton
+          text='Add'
+          onClick={() => {
+            dispatch(videoAction.createVideo(video))
+            dispatch(modalActions.hideModal())
+          }}
+        />
       </div>
     </div>
   )
