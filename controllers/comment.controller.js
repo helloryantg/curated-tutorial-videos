@@ -16,6 +16,30 @@ router.get('/all', authMiddleware, async (req, res) => {
   }
 })
 
+// Create a comment
+router.post('/', authMiddleware, async (req, res) => {
+  const {
+    parentId,
+    body
+  } = req.body
+  try {
+    const comment = new Comment({
+      userId: req.userId,
+      parentId,
+      body
+    })
+
+    await comment.save()
+
+    res
+      .status(HttpStatus.OK)
+      .send(comment.id)
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
 
 
 module.exports = router
