@@ -54,4 +54,17 @@ router.get('/:id', authMiddleware, async (req, res) => {
   }
 })
 
+// Deletes a comment
+router.delete('/:id', authMiddleware, async (req, res) => {
+  try {
+    res
+      .status(HttpStatus.NO_CONTENT)
+      .send(await Comment.findOneAndDelete({ _id: req.params.id }))
+  } catch (err) {
+    res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
 module.exports = router
