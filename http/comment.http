@@ -1,0 +1,32 @@
+@base = http://localhost:4000
+@application-json = Content-Type: application/json
+@id = 5e67317e241d460a1d2f240b
+@userId = 5e61892041a37762ae86eb0a
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJ0eXBlIjoidXNlciIsIl9pZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImZpcnN0TmFtZSI6IlJ5YW4iLCJsYXN0TmFtZSI6IkdvbnphbGVzIiwiZGlzcGxheU5hbWUiOiJyZ29uemFsZXMiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiY3JlYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwidXBkYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwiX192IjowfSwiaWF0IjoxNTg0MTYwODQ3LCJleHAiOjE1ODQyNDcyNDd9.cISh8zRSV5q5DDfrDn92VeAH9_AnMSuyZV2LBqca8s0
+@authorization = Authorization: {{token}}
+@parentId = 
+
+### Get all comments
+GET {{base}}/comments/all
+{{application-json}}
+{{authorization}}
+
+### Create a comment
+POST {{base}}/comments
+{{application-json}}
+{{authorization}}
+
+{
+  "userId": "{{userId}}",
+  "parentId": "{{parentId}}"
+}
+
+### Get a comment
+GET {{base}}/comments/{{id}}
+{{application-json}}
+{{authorization}}
+
+### Deletes a comment
+DELETE {{base}}/comments/{{id}}
+{{application-json}}
+{{authorization}}
