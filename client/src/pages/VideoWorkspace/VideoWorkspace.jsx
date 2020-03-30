@@ -16,9 +16,6 @@ import { isEmpty } from '../../utils/object'
 import MODAL_CONSTANTS from '../../constants/modal.constants'
 // Dependencies
 import Loader from 'react-loader-spinner'
-import {
-  IoIosAdd,
-} from 'react-icons/io'
 import { 
   FiEdit,
   FiPlusSquare,
