@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 // Redux
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 // Styles
 import './VideoWorkspace.scss'
 // Components
