@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 // Styles
 import './VideoWorkspace.scss'
 // Components
+import LeftTab from '../../components/LeftTab/LeftTab'
 import NavBar from '../../components/NavBar/NavBar'
 import VideoCard from '../../components/VideoCard/VideoCard'
 // Actions
@@ -70,45 +71,15 @@ function VideoWorkspace(props) {
         />
         :
         <div className="main">
-          <div className="tabs">
-            <div className="title">My Lists</div>
-            {videoLists.length ?
-              videoLists.map((video, index) => (
-                <div
-                  className={`tab ${activeTabIndex === index ? 'active' : ''}`}
-                  key={video._id}
-                  onClick={() => setActiveTabIndex(index)}
-                >
-                  {video.name}
-                </div>
-              ))
-              : <div className="tab">No video lists so far.</div>
-            }
-            <div className="add-container">
-              <button
-                onClick={() => {
-                  dispatch(modalActions.showModal({
-                    modalType: MODAL_CONSTANTS.ADD_VIDEO_LIST_MODAL,
-                    modalProps: {}
-                  }))
-                }}
-              >Add New List</button>
-              <div className={`hidden ${isAdding ? 'active' : ''}`}>
-                <input
-                  type="text"
-                  value={newVideoList}
-                  onChange={({ target }) => setNewVideoList(target.value)}
-                />
-                <button
-                  onClick={() => {
-                    dispatch(videoListAction.createNewVideoList(newVideoList))
-                    setAdding(false)
-                    setNewVideoList('')
-                  }}
-                >Add</button>
-              </div>
-            </div>
-          </div>
+          <LeftTab 
+            activeTabIndex={activeTabIndex}
+            isAdding={isAdding}
+            newVideoList={newVideoList}
+            setActiveTabIndex={setActiveTabIndex}
+            setAdding={setAdding}
+            setNewVideoList={setNewVideoList}
+            videoLists={videoLists}
+          />
 
           <div className="videos-list">
             <div className="title">

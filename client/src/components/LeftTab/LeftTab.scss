@@ -1,3 +1,77 @@
 .LeftTab {
-  
+  width: 16rem;
+  min-width: 16rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & > .title {
+    height: 3rem;
+    min-height: 3rem;
+    text-align: center;
+    background-color: #1261A0;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & > .tab {
+    height: 3.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover,
+    &.active {
+      background-color: #bdbdbd;
+    }
+  }
+
+  & > .add-container {
+    height: 3.6rem;
+    margin-top: auto;
+
+    & > button {
+      cursor: pointer;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      font-size: 110%;
+      border: none;
+      background-color: #1261A0;
+      color: #fff;
+    }
+
+    & > .hidden {
+      visibility: hidden;
+      position: relative;
+      border: 1px solid #bdbdbd;
+      height: 3.6rem;
+      bottom: 3.6rem;
+      left: 16rem;
+      display: flex;
+      align-items: center;
+
+      &.active {
+        visibility: visible;
+        background-color: #fff;
+      }
+
+      & > input {
+        width: 80%;
+        height: 30px;
+        font-size: 120%;
+        padding-left: .4rem;
+        margin-left: .4rem;
+      }
+
+      & > button {
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+      }
+    }
+  }
 }
