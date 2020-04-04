@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import './VideoWorkspace.scss'
 // Components
 import LeftTab from '../../components/LeftTab/LeftTab'
+import List from '../../components/List/List'
 import NavBar from '../../components/NavBar/NavBar'
 import VideoCard from '../../components/VideoCard/VideoCard'
 // Actions
@@ -81,57 +82,9 @@ function VideoWorkspace(props) {
             videoLists={videoLists}
           />
 
-          <div className="videos-list">
-            <div className="title">
-              <div className="left">
-                <div
-                  className="add"
-                  onClick={() => {
-                    dispatch(modalActions.showModal({
-                      modalType: MODAL_CONSTANTS.ADD_VIDEO_TO_LIST_MODAL,
-                      modalProps: {
-                        videoList: videoLists[activeTabIndex]
-                      }
-                    }))
-                  }}
-                >
-                  <FiPlusSquare />
-                </div>
-
-                <div
-                  className="edit"
-                  onClick={() => {
-                    dispatch(modalActions.showModal({
-                      modalType: MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL,
-                      modalProps: {
-                        videoList: videoLists[activeTabIndex]
-                      }
-                    }))
-                  }}
-                >
-                  <FiEdit />
-                </div>
-              </div>
-
-              <div className="name">
-                {videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}
-              </div>
-              <div
-                className="delete"
-                onClick={() => {
-                  dispatch(videoListAction.deleteVideoList(videoLists[activeTabIndex]._id))
-                }}
-              >
-                <FiXSquare />
-              </div>
-            </div>
-            <div className="list">
-              {videos.length ?
-                videos.map(video => <VideoCard key={video._id} video={video} />)
-                : null
-              }
-            </div>
-          </div>
+          <List 
+            activeTabIndex={activeTabIndex}
+          />
         </div>
       }
     </div>
