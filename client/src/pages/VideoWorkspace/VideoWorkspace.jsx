@@ -10,6 +10,7 @@ import LeftTab from '../../components/LeftTab/LeftTab'
 import List from '../../components/List/List'
 import NavBar from '../../components/NavBar/NavBar'
 import VideoCard from '../../components/VideoCard/VideoCard'
+import VideoList from '../../components/VideoList/VideoList'
 // Actions
 import modalActions from '../../actions/modal.action'
 import videoListAction from '../../actions/videoList.action'
@@ -19,7 +20,7 @@ import { isEmpty } from '../../utils/object'
 import MODAL_CONSTANTS from '../../constants/modal.constants'
 // Dependencies
 import Loader from 'react-loader-spinner'
-import { 
+import {
   FiEdit,
   FiPlusSquare,
   FiXSquare
@@ -58,6 +59,31 @@ function VideoWorkspace(props) {
     }
   }, [activeTabIndex, dispatch, videoLists])
 
+  const renderPage = () => {
+    const page = 'videoLists'
+
+    let body
+
+    switch (page) {
+      case 'videoLists':
+        body = <VideoList
+          activeTabIndex={activeTabIndex}
+          isAdding={isAdding}
+          newVideoList={newVideoList}
+          setActiveTabIndex={setActiveTabIndex}
+          setAdding={setAdding}
+          setNewVideoList={setNewVideoList}
+          videoLists={videoLists}
+        />
+    }
+
+    return (
+      <div className="main">
+        {body}
+      </div>
+    )
+  }
+
   return (
     <div className="VideoWorkspace">
       <NavBar />
@@ -71,21 +97,7 @@ function VideoWorkspace(props) {
         // timeout={3000} //3 secs
         />
         :
-        <div className="main">
-          <LeftTab 
-            activeTabIndex={activeTabIndex}
-            isAdding={isAdding}
-            newVideoList={newVideoList}
-            setActiveTabIndex={setActiveTabIndex}
-            setAdding={setAdding}
-            setNewVideoList={setNewVideoList}
-            videoLists={videoLists}
-          />
-
-          <List 
-            activeTabIndex={activeTabIndex}
-          />
-        </div>
+        renderPage()
       }
     </div>
   )
