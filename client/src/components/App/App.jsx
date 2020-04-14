@@ -17,6 +17,7 @@ import {
 import AuthPage from '../../pages/AuthPage/AuthPage'
 // Components
 import Modal from '../Modals/Modals'
+import VideoPage from '../../pages/VideoPage/VideoPage'
 import VideoWorkspace from '../../pages/VideoWorkspace/VideoWorkspace'
 // Utils
 import { isEmpty } from '../../utils/object'
@@ -56,6 +57,7 @@ function App(props) {
           <Route exact path='/'>
             {body}
           </Route>
+          <Route exact path='/video' component={VideoPage}/>
         </Switch>
       </Router>
     </div>
