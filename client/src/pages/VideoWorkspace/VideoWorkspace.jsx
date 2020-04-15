@@ -87,7 +87,7 @@ function VideoWorkspace(props) {
   return (
     <div className="VideoWorkspace">
       <NavBar />
-      {isFetching ?
+      {isFetching || !videoLists.length ?
         <Loader
           type="Oval"
           className="loader"
