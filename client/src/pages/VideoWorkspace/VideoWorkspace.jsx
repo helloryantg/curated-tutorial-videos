@@ -37,7 +37,7 @@ function VideoWorkspace(props) {
   const [isAdding, setAdding] = useState(false)
   const [activeTabIndex, setActiveTabIndex] = useState(0)
   const [newVideoList, setNewVideoList] = useState('')
-  const [isFetching, setFetching] = useState(false)
+  const [isFetching, setFetching] = useState(true)
 
   useEffect(() => {
     if (!isEmpty(user)) {
@@ -59,46 +59,34 @@ function VideoWorkspace(props) {
     }
   }, [activeTabIndex, dispatch, videoLists])
 
-  const renderPage = () => {
-    const page = 'videoLists'
-
-    let body
-
-    switch (page) {
-      case 'videoLists':
-        body = <VideoList
-          activeTabIndex={activeTabIndex}
-          isAdding={isAdding}
-          newVideoList={newVideoList}
-          setActiveTabIndex={setActiveTabIndex}
-          setAdding={setAdding}
-          setNewVideoList={setNewVideoList}
-          videoLists={videoLists}
-        />
-    }
-
-    return (
-      <div className="main">
-        {body}
-      </div>
-    )
+  let body
+  if (!user || isFetching || !videoLists.length) {
+    body = <Loader
+      type="Oval"
+      className="loader"
+      color="#00BFFF"
+      height={200}
+      width={200}
+    // timeout={3000} //3 secs
+    />
+  } else {
+    body = <VideoList
+      activeTabIndex={activeTabIndex}
+      isAdding={isAdding}
+      newVideoList={newVideoList}
+      setActiveTabIndex={setActiveTabIndex}
+      setAdding={setAdding}
+      setNewVideoList={setNewVideoList}
+      videoLists={videoLists}
+    />
   }
 
   return (
     <div className="VideoWorkspace">
       <NavBar />
-      {isFetching || !videoLists.length ?
-        <Loader
-          type="Oval"
-          className="loader"
-          color="#00BFFF"
-          height={200}
-          width={200}
-        // timeout={3000} //3 secs
-        />
-        :
-        renderPage()
-      }
+      <div className="main">
+        {body}
+      </div>
     </div>
   )
 }

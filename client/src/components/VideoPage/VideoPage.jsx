@@ -11,6 +11,7 @@ import videoListAction from '../../actions/videoList.action'
 import Loader from 'react-loader-spinner'
 
 function VideoPage(props) {
+  console.log(props)
   return (
     <div className="VideoPage">
       VideoPage

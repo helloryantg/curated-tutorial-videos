@@ -106,6 +106,7 @@ router.get('/all', authMiddleware, async (req, res) => {
 
 // Get all user video lists
 router.get('/:userId/user', authMiddleware, async (req, res) => {
+  console.log('USER ID: ', req.userId)
   try {
     res
       .status(HttpStatus.OK)

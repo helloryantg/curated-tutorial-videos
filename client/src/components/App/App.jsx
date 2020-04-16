@@ -57,7 +57,7 @@ function App(props) {
           <Route exact path='/'>
             {body}
           </Route>
-          <Route exact path='/video' component={VideoPage}/>
+          <Route exact path='/video/:id' component={VideoPage}/>
         </Switch>
       </Router>
     </div>
