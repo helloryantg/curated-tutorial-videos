@@ -10,6 +10,7 @@ import {
   IoIosHeart,
   IoIosHeartEmpty
 } from 'react-icons/io'
+import { Link } from 'react-router-dom'
 // Actions
 import likeAction from '../../actions/like.action'
 import modalActions from '../../actions/modal.action'
@@ -94,7 +95,7 @@ function VideoCard(props) {
       </div>
       <div className="description">
         <div className="header">
-          <div className="title">{currentVideo.title}</div>
+          <Link to={`video/${_id}`} className="title">{currentVideo.title}</Link>
           <div
             className="favorite"
             onClick={() => toggleLike()}

@@ -31,7 +31,8 @@ function VideoWorkspace(props) {
     videoLists,
     dispatch,
     user,
-    videos
+    videos,
+    token
   } = props
 
   const [isAdding, setAdding] = useState(false)

@@ -8,7 +8,9 @@ import './VideoPage.scss'
 
 function VideoPage(props) {
   return (
-    <div className="VideoPage">VideoPage</div>
+    <div className="VideoPage">
+      Video Page
+    </div>
   )
 }
 

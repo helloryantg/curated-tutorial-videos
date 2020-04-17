@@ -106,11 +106,10 @@ router.get('/all', authMiddleware, async (req, res) => {
 
 // Get all user video lists
 router.get('/:userId/user', authMiddleware, async (req, res) => {
-  console.log('USER ID: ', req.userId)
   try {
     res
       .status(HttpStatus.OK)
-      .send(await VideoList.find({ userId: req.userId }))
+      .send(await VideoList.find({ userId: req.params.userId }))
   } catch (err) {
     res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)
