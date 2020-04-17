@@ -1,5 +1,40 @@
 .VideoPage {
-  border: 2px solid red;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  // & > .loader {
+  //   height: 100%;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
+
+  & > .main {
+    height: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: auto;
+
+    & > .video {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      min-height: 80%;
+      background-color: black;
+
+      & > div {
+        height: 100%;
+        width: 80%;
   
+        & > iframe {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
 }

@@ -61,7 +61,7 @@ function VideoWorkspace(props) {
   }, [activeTabIndex, dispatch, videoLists])
 
   let body
-  if (!user || isFetching || !videoLists.length) {
+  if (!user || isFetching) {
     body = <Loader
       type="Oval"
       className="loader"

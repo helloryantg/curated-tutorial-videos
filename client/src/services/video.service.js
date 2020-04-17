@@ -10,8 +10,8 @@ const editVideo = video => {
     .then(({ data }) => data)
 }
 
-const getVideo = video => {
-  return server.get(`/videos/${video._id}`)
+const getVideo = id => {
+  return server.get(`/videos/${id}`)
     .then(({ data }) => data)
 }
 

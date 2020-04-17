@@ -1,11 +1,13 @@
 import USER_CONSTANTS from '../constants/user.constants'
 import VIDEO_LIST_CONSTANTS from '../constants/videoList.constants'
+import VIDEO_CONSTANTS from '../constants/video.constants'
 
 const initialState = {
+  token: '',
   user: {},
+  video: {},
   videoLists: [],
   videos: [],
-  token: ''
 }
 
 const reducers = (state = initialState, action) => {
@@ -34,13 +36,15 @@ const reducers = (state = initialState, action) => {
         videos: action.payload
       }
 
-    case USER_CONSTANTS.LOGOUT:
+    case VIDEO_CONSTANTS.GET_VIDEO:
       return {
         ...state,
-        token: '',
-        user: {},
-        videos: [],
-        videoLists: []
+        video: action.payload,
+      }
+
+    case USER_CONSTANTS.LOGOUT:
+      return {
+        ...initialState
       }
 
     default:

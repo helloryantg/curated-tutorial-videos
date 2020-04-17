@@ -17,6 +17,8 @@ import modalActions from '../../actions/modal.action'
 import videoActions from '../../actions/video.action'
 // Constants
 import MODAL_CONSTANTS from '../../constants/modal.constants'
+// Utils
+import videoUtils from '../../utils/video.utils'
 
 function VideoCard(props) {
   const {
@@ -31,7 +33,7 @@ function VideoCard(props) {
     likesArray
   } = video
 
-  const videoId = url.split('=')[1]
+  const videoId = videoUtils(url)
 
   const [isFavorited, setFavorite] = useState(likesArray.some(like => like.userId === user._id))
   const [likesCount, setLikesCount] = useState(likesArray.length)
