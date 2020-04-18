@@ -1,5 +1,5 @@
 // React
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // Redux
 import { connect } from 'react-redux'
 // Styles
@@ -33,7 +33,7 @@ function VideoCard(props) {
     likesArray
   } = video
 
-  const videoId = videoUtils(url)
+  const videoId = videoUtils.getVideoIdFromUrl(url)
 
   const [isFavorited, setFavorite] = useState(likesArray.some(like => like.userId === user._id))
   const [likesCount, setLikesCount] = useState(likesArray.length)
