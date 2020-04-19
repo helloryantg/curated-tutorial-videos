@@ -21,6 +21,8 @@ function VideoPage(props) {
     video,
   } = props
 
+  console.log(video)
+
   const [videoId, setVideoId] = useState('')
 
   useEffect(() => {
@@ -55,6 +57,10 @@ function VideoPage(props) {
             opts={opts}
             onReady={onReady}
           />
+        </div>
+        <div className="details">
+          <div className="title">{video.title}</div>
+          <div className="description">{video.description}</div>
         </div>
       </div>
     </div>
