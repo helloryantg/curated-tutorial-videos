@@ -1,6 +1,6 @@
 import { server } from '../interfaces/axios.interface'
 
-const getUserVideoLists = (userId) => {
+const getUserVideoLists = userId => {
   return server.get(`/videoLists/${userId}/user`)
 }
 
