@@ -116,7 +116,7 @@ function VideoCard(props) {
 const mapState = ({ reducers }) => {
   return {
     videos: reducers.videos,
-    user: reducers.user
+    user: reducers.user,
   }
 }
 

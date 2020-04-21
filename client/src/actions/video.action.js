@@ -1,6 +1,5 @@
 // Services
-// import likeService from '../services/like.service'
-// import videoListService from '../services/videoList.service'
+import userService from '../services/user.service'
 import videoService from '../services/video.service'
 // Constants
 import VIDEO_LIST_CONSTANTS from '../constants/videoList.constants'
@@ -20,10 +19,16 @@ const getVideo = id => async dispatch => {
       type: VIDEO_CONSTANTS.GET_VIDEO, 
       payload: data, 
     })
+
+    const userData = await userService.getUserDetails(data.userId)
+
+    dispatch({
+      type: VIDEO_CONSTANTS.SET_VIDEO_PAGE_USER,
+      payload: userData,
+    })
   } catch (err) {
     throw new Error(err)
   }
-
 }
 
 const editVideo = video => async dispatch => {

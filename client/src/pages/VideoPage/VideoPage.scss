@@ -45,10 +45,8 @@
       display: flex;
       flex-direction: column;
 
-      & > .title {
-        margin: .4rem 1rem;
-      }
-
+      & > .title,
+      & > .userName,
       & > .description {
         margin: .4rem 1rem;
       }

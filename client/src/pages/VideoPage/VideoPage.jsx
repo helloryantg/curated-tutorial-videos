@@ -19,10 +19,10 @@ function VideoPage(props) {
   const {
     dispatch,
     video,
+    videoPageUser,
   } = props
 
-  console.log(video)
-
+  const [createdByUser, setCreatedByUser] = useState('')
   const [videoId, setVideoId] = useState('')
 
   useEffect(() => {
@@ -34,6 +34,12 @@ function VideoPage(props) {
       setVideoId(videoUtils.getVideoIdFromUrl(video.url))
     }
   }, [video])
+
+  useEffect(() => {
+    if (videoPageUser) {
+      setCreatedByUser(videoPageUser.displayName)
+    }
+  }, [videoPageUser])
 
   const onReady = event => {
     event.target.pauseVideo()
@@ -59,8 +65,9 @@ function VideoPage(props) {
           />
         </div>
         <div className="details">
-          <div className="title">{video.title}</div>
-          <div className="description">{video.description}</div>
+          <h2 className="title">{video.title}</h2>
+          <p className="userName">{createdByUser}</p>
+          <p className="description">{video.description}</p>
         </div>
       </div>
     </div>
@@ -68,7 +75,8 @@ function VideoPage(props) {
 }
 
 const mapState = ({ reducers }) => ({
-  video: reducers.video
+  video: reducers.video,
+  videoPageUser: reducers.videoPageUser,
 })
 
 export default connect(mapState)(VideoPage)
