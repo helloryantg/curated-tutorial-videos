@@ -20,9 +20,15 @@ const deleteVideo = video => {
     .then(({ data }) => data)
 }
 
+const getVideoComments = id => {
+  return server.get(`/videos/${id}/comments`)
+    .then(({ data }) => data)
+}
+
 export default {
   createVideo,
   editVideo,
   getVideo,
-  deleteVideo
+  deleteVideo,
+  getVideoComments,
 }
