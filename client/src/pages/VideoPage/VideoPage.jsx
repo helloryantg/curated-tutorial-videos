@@ -17,12 +17,14 @@ import { isEmpty } from '../../utils/object'
 
 function VideoPage(props) {
   const {
+    comments,
     dispatch,
     video,
     videoPageUser,
   } = props
 
   const [createdByUser, setCreatedByUser] = useState('')
+  const [videoComments, setVideoComments] = useState([])
   const [videoId, setVideoId] = useState('')
 
   useEffect(() => {
@@ -34,6 +36,12 @@ function VideoPage(props) {
       setVideoId(videoUtils.getVideoIdFromUrl(video.url))
     }
   }, [video])
+
+  useEffect(() => {
+    if (comments.length) {
+      setVideoComments(comments)
+    }
+  }, [comments])
 
   useEffect(() => {
     if (videoPageUser) {
@@ -68,6 +76,14 @@ function VideoPage(props) {
           <h2 className="title">{video.title}</h2>
           <p className="userName">{createdByUser}</p>
           <p className="description">{video.description}</p>
+          <div className="comments">
+            {videoComments.map(comment => {
+              return <div className="comment" key={comment._id}>
+                <div className="body">{comment.body}</div>
+                <div className="user">{comment.user.displayName}</div>
+              </div>
+            })}
+          </div>
         </div>
       </div>
     </div>
@@ -75,6 +91,7 @@ function VideoPage(props) {
 }
 
 const mapState = ({ reducers }) => ({
+  comments: reducers.comments,
   video: reducers.video,
   videoPageUser: reducers.videoPageUser,
 })
