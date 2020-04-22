@@ -1,8 +1,13 @@
+// Express
 const router = require('express').Router()
+// Dependencies
 const HttpStatus = require('http-status-codes')
+// Middleware
 const authMiddleware = require('../middlewares/auth')
-const Video = require('../models/video.model')
+// Models
+const Comment = require('../models/comment.model')
 const Like = require('../models/like.model')
+const Video = require('../models/video.model')
 
 // Get all videos
 router.get('/all', authMiddleware, async (req, res) => {
@@ -110,6 +115,21 @@ router.delete('/:id', authMiddleware, async (req, res) => {
   } catch (err) {
     res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
+router.get('/:id/comments', authMiddleware, async (req, res) => {
+  try {
+    const comments = await Comment.find({ parentId: req.params.id })
+      .populate('user')
+      .exec()
+
+    res.status(HttpStatus.OK)
+      .send(comments)
+
+  } catch (err) {
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR)
       .send({ msg: err })
   }
 })

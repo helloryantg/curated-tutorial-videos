@@ -16,6 +16,17 @@ router.get('/all', authMiddleware, async (req, res) => {
   }
 })
 
+// Deletes all comments
+router.delete('/all', authMiddleware, async (req, res) => {
+  try {
+    res.status(HttpStatus.NO_CONTENT)
+      .send(await Comment.deleteMany({}))
+  } catch (err) {
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
 // Create a comment
 router.post('/', authMiddleware, async (req, res) => {
   const {
@@ -24,9 +35,9 @@ router.post('/', authMiddleware, async (req, res) => {
   } = req.body
   try {
     const comment = new Comment({
-      userId: req.userId,
       parentId,
-      body
+      body,
+      user: req.userId,
     })
 
     await comment.save()
