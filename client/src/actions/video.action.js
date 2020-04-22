@@ -26,6 +26,13 @@ const getVideo = id => async dispatch => {
       type: VIDEO_CONSTANTS.SET_VIDEO_PAGE_USER,
       payload: userData,
     })
+
+    const comments = await videoService.getVideoComments(id)
+    
+    dispatch({
+      type: VIDEO_CONSTANTS.SET_VIDEO_COMMENTS,
+      payload: comments
+    })
   } catch (err) {
     throw new Error(err)
   }
