@@ -9,6 +9,7 @@ const initialState = {
   videoLists: [],
   videoPageUser: {},
   videos: [],
+  comments: [],
 }
 
 const reducers = (state = initialState, action) => {
@@ -23,6 +24,12 @@ const reducers = (state = initialState, action) => {
       return {
         ...state,
         token: action.payload
+      }
+
+    case VIDEO_CONSTANTS.SET_VIDEO_COMMENTS:
+      return {
+        ...state,
+        comments: action.payload,
       }
 
     case VIDEO_LIST_CONSTANTS.SET_VIDEO_LISTS:
