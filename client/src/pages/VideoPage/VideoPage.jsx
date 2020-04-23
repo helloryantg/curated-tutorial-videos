@@ -84,6 +84,10 @@ function VideoPage(props) {
               </div>
             })}
           </div>
+          <div className="addComment">
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <button>Add Comment</button>
+          </div>
         </div>
       </div>
     </div>
