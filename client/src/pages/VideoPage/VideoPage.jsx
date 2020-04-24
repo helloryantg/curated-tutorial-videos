@@ -10,6 +10,7 @@ import NavBar from '../../components/NavBar/NavBar'
 // Dependencies
 import YouTube from 'react-youtube'
 // Services
+import commentService from '../../services/comment.service'
 import videoActions from '../../actions/video.action'
 // Utils
 import videoUtils from '../../utils/video.utils'
@@ -19,12 +20,15 @@ function VideoPage(props) {
   const {
     comments,
     dispatch,
+    user,
     video,
     videoPageUser,
   } = props
 
   const [createdByUser, setCreatedByUser] = useState('')
+  const [body, setBody] = useState('')
   const [videoComments, setVideoComments] = useState([])
+  const [currentVideo, setCurrentVideo] = useState({})
   const [videoId, setVideoId] = useState('')
 
   useEffect(() => {
@@ -33,6 +37,7 @@ function VideoPage(props) {
 
   useEffect(() => {
     if (!isEmpty(video)) {
+      setCurrentVideo(video)
       setVideoId(videoUtils.getVideoIdFromUrl(video.url))
     }
   }, [video])
@@ -48,6 +53,24 @@ function VideoPage(props) {
       setCreatedByUser(videoPageUser.displayName)
     }
   }, [videoPageUser])
+
+  const createComment = async () => {
+    const newComment = {
+      parentId: currentVideo._id,
+      body,
+      user: user._id,
+    }
+    
+    try {
+      const commentId = await commentService.createComment(newComment)
+
+      setVideoComments([...videoComments, { ...newComment, user, _id: commentId }])
+    } catch {
+      throw new Error('Unable to create comment')
+    }
+
+    setBody('')
+  }
 
   const onReady = event => {
     event.target.pauseVideo()
@@ -85,8 +108,15 @@ function VideoPage(props) {
             })}
           </div>
           <div className="addComment">
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-            <button>Add Comment</button>
+            <textarea 
+              cols="30" 
+              rows="10"
+              onChange={({ target }) => setBody(target.value)}
+              value={body}
+            ></textarea>
+            <button
+              onClick={() => createComment()}
+            >Add Comment</button>
           </div>
         </div>
       </div>
@@ -98,6 +128,7 @@ const mapState = ({ reducers }) => ({
   comments: reducers.comments,
   video: reducers.video,
   videoPageUser: reducers.videoPageUser,
+  user: reducers.user,
 })
 
 export default connect(mapState)(VideoPage)

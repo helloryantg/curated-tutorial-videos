@@ -28,5 +28,5 @@ export default {
   createComment,
   editComment,
   getComment,
-  deleteComment
+  deleteComment,
 }
