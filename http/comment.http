@@ -27,6 +27,11 @@ GET {{base}}/comments/{{id}}
 {{application-json}}
 {{authorization}}
 
+### Updates a comment
+PUT {{base}}/comments/{{id}}
+{{application-json}}
+{{authorization}}
+
 ### Deletes a comment
 DELETE {{base}}/comments/{{id}}
 {{application-json}}

@@ -65,6 +65,29 @@ router.get('/:id', authMiddleware, async (req, res) => {
   }
 })
 
+// Updates a comment
+router.put('/:id', authMiddleware, async (req, res) => {
+  console.log('update comment ran')
+  try {
+    const options = {
+      useFindAndModify: false,
+      new: true
+    }
+
+    const updates = { body: req.body.body }
+
+    res.status(HttpStatus.OK)
+      .send(await Video.findOneAndUpdate(
+        { _id: req.params.id },
+        updates,
+        options
+      ))
+  } catch (err) {
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .send({ msg: err })
+  }
+})
+
 // Deletes a comment
 router.delete('/:id', authMiddleware, async (req, res) => {
   try {
