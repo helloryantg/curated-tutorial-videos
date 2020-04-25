@@ -84,6 +84,15 @@ function VideoPage(props) {
     // }
   }
 
+  const handleEditComment = async comment => {
+    try {
+      const response = await commentService.editComment(comment)
+      console.log('response', response) 
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   return (
     <div className="VideoPage">
       <NavBar />
@@ -108,7 +117,10 @@ function VideoPage(props) {
                 </div>
                 {(comment.user._id === user._id) 
                   ? <div className="settings">
-                      <div className="edit">Edit</div>
+                      <div 
+                        className="edit"
+                        onClick={() => handleEditComment(comment)}
+                      >Edit</div>
                       <div className="delete">Delete</div>
                     </div>
                   : null
