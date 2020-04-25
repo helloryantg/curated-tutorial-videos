@@ -61,9 +61,15 @@
         & > .comment {
           margin-left: 1rem;
 
-          & > .user {
-            color: grey;
-            margin-left: .4rem;
+          & > .body-user {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            & > .user {
+              color: grey;
+              margin-left: .4rem;
+            }
           }
         }
       }

@@ -60,7 +60,7 @@ function VideoPage(props) {
       body,
       user: user._id,
     }
-    
+
     try {
       const commentId = await commentService.createComment(newComment)
 
@@ -102,14 +102,17 @@ function VideoPage(props) {
           <div className="comments">
             {videoComments.map(comment => {
               return <div className="comment" key={comment._id}>
-                <div className="body">{comment.body}</div>
-                <div className="user">{comment.user.displayName}</div>
+                <div className="body-user">
+                  <div className="body">{comment.body}</div>
+                  <div className="user">{comment.user.displayName}</div>
+                </div>
+                <div className="edit">Edit</div>
               </div>
             })}
           </div>
           <div className="addComment">
-            <textarea 
-              cols="30" 
+            <textarea
+              cols="30"
               rows="10"
               onChange={({ target }) => setBody(target.value)}
               value={body}
