@@ -125,7 +125,15 @@ function VideoPage(props) {
               return <div className="comment" key={comment._id}>
                 <div className="body-user">
                   {(editComment && (editComment._id === comment._id))
-                    ? <textarea value={comment.body}></textarea>
+                    ? <textarea 
+                        value={editComment.body}
+                        onChange={({ target }) => {
+                          setEditComment({ 
+                            ...editComment,
+                            body: target.value,
+                          })
+                        }}
+                      ></textarea>
                     : <div className="body">{comment.body}</div> 
                   }
                   <div className="user">{comment.user.displayName}</div>
