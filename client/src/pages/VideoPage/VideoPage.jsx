@@ -106,7 +106,13 @@ function VideoPage(props) {
                   <div className="body">{comment.body}</div>
                   <div className="user">{comment.user.displayName}</div>
                 </div>
-                <div className="edit">Edit</div>
+                {(comment.user._id === user._id) 
+                  ? <div className="settings">
+                      <div className="edit">Edit</div>
+                      <div className="delete">Delete</div>
+                    </div>
+                  : null
+                }
               </div>
             })}
           </div>

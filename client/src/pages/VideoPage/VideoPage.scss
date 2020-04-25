@@ -71,6 +71,22 @@
               margin-left: .4rem;
             }
           }
+
+          & > .settings {
+            display: flex;
+            align-items: center;
+
+            & > .edit,
+            & > .delete {
+              margin-left: .6rem;
+              cursor: pointer;
+              color: grey;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
         }
       }
 
