@@ -1,6 +1,5 @@
 import { server } from '../interfaces/axios.interface'
 
-// Untested
 const createComment = comment => {
   return server.post('/comments', comment)
     .then(({ data }) => data)
@@ -14,13 +13,13 @@ const editComment = comment => {
 
 // Untested
 const getComment = id => {
-  return server.get(`'/videos/${id}`)
+  return server.get(`'/comments/${id}`)
     .then(({ data }) => data)
 }
 
 // Untested
 const deleteComment = id => {
-  return server.delete(`/videos/${id}`)
+  return server.delete(`/comments/${id}`)
     .then(({ data }) => data)
 }
 

@@ -85,11 +85,28 @@ function VideoPage(props) {
   }
 
   const handleEditComment = async comment => {
+    const updatedComment = {
+      ...comment,
+      user: comment.user._id,
+    }
+
     try {
-      const response = await commentService.editComment(comment)
+      const response = await commentService.editComment(updatedComment)
       console.log('response', response) 
     } catch (err) {
       console.error(err)
+    }
+  }
+
+  const handleDeleteComment = async comment => {
+    try {
+      await commentService.deleteComment(comment._id)
+      
+      const commentsList = videoComments.filter(vidComment => vidComment._id !== comment._id)
+
+      setVideoComments(commentsList)
+    } catch (err) {
+      throw new Error(err)
     }
   }
 
@@ -121,7 +138,10 @@ function VideoPage(props) {
                         className="edit"
                         onClick={() => handleEditComment(comment)}
                       >Edit</div>
-                      <div className="delete">Delete</div>
+                      <div 
+                        className="delete"
+                        onClick={() => handleDeleteComment(comment)}
+                      >Delete</div>
                     </div>
                   : null
                 }
