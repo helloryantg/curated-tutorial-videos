@@ -70,6 +70,14 @@
               color: grey;
               margin-left: .4rem;
             }
+
+            & > textarea {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              margin: auto;
+              padding: .4rem;
+            }
           }
 
           & > .settings {
@@ -77,7 +85,8 @@
             align-items: center;
 
             & > .edit,
-            & > .delete {
+            & > .delete,
+            & > .cancel {
               margin-left: .6rem;
               cursor: pointer;
               color: grey;

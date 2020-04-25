@@ -13,8 +13,8 @@ import YouTube from 'react-youtube'
 import commentService from '../../services/comment.service'
 import videoActions from '../../actions/video.action'
 // Utils
-import videoUtils from '../../utils/video.utils'
 import { isEmpty } from '../../utils/object'
+import videoUtils from '../../utils/video.utils'
 
 function VideoPage(props) {
   const {
@@ -24,11 +24,12 @@ function VideoPage(props) {
     video,
     videoPageUser,
   } = props
-
-  const [createdByUser, setCreatedByUser] = useState('')
+  
   const [body, setBody] = useState('')
-  const [videoComments, setVideoComments] = useState([])
+  const [createdByUser, setCreatedByUser] = useState('')
   const [currentVideo, setCurrentVideo] = useState({})
+  const [editComment, setEditComment] = useState({})
+  const [videoComments, setVideoComments] = useState([])
   const [videoId, setVideoId] = useState('')
 
   useEffect(() => {
@@ -85,17 +86,7 @@ function VideoPage(props) {
   }
 
   const handleEditComment = async comment => {
-    const updatedComment = {
-      ...comment,
-      user: comment.user._id,
-    }
-
-    try {
-      const response = await commentService.editComment(updatedComment)
-      console.log('response', response) 
-    } catch (err) {
-      console.error(err)
-    }
+    setEditComment(comment)
   }
 
   const handleDeleteComment = async comment => {
@@ -108,6 +99,10 @@ function VideoPage(props) {
     } catch (err) {
       throw new Error(err)
     }
+  }
+
+  const handleCancelComment = comment => {
+    setEditComment({})
   }
 
   return (
@@ -129,7 +124,10 @@ function VideoPage(props) {
             {videoComments.map(comment => {
               return <div className="comment" key={comment._id}>
                 <div className="body-user">
-                  <div className="body">{comment.body}</div>
+                  {(editComment && (editComment._id === comment._id))
+                    ? <textarea value={comment.body}></textarea>
+                    : <div className="body">{comment.body}</div> 
+                  }
                   <div className="user">{comment.user.displayName}</div>
                 </div>
                 {(comment.user._id === user._id) 
@@ -142,6 +140,14 @@ function VideoPage(props) {
                         className="delete"
                         onClick={() => handleDeleteComment(comment)}
                       >Delete</div>
+                      {!isEmpty(editComment)
+                        ? <div 
+                            className="cancel"
+                            onClick={() => handleCancelComment(comment)}
+                          >Cancel</div>
+                        : null
+                      }
+                      
                     </div>
                   : null
                 }
