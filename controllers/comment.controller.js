@@ -67,7 +67,6 @@ router.get('/:id', authMiddleware, async (req, res) => {
 
 // Updates a comment
 router.put('/:id', authMiddleware, async (req, res) => {
-  console.log('update comment ran')
   try {
     const options = {
       useFindAndModify: false,
@@ -77,7 +76,7 @@ router.put('/:id', authMiddleware, async (req, res) => {
     const updates = { body: req.body.body }
 
     res.status(HttpStatus.OK)
-      .send(await Video.findOneAndUpdate(
+      .send(await Comment.findOneAndUpdate(
         { _id: req.params.id },
         updates,
         options

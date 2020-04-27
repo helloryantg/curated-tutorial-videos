@@ -86,7 +86,27 @@ function VideoPage(props) {
   }
 
   const handleEditComment = async comment => {
-    setEditComment(comment)
+    if (comment._id === editComment._id) {
+      try {
+        commentService.editComment(editComment)
+      } catch (err) {
+        throw new Error(err)
+      }
+      
+      const commentIndex = videoComments.findIndex(vidComment => vidComment._id === editComment._id)
+      console.log(commentIndex)
+
+      if (commentIndex !== -1) {
+        setVideoComments(videoComments.splice(commentIndex, 1, editComment))
+      } else {
+        console.error('Could not find the index of the edited comment')
+      }
+
+      setVideoComments(videoComments)
+      setEditComment({})
+    } else {
+      setEditComment(comment)
+    }
   }
 
   const handleDeleteComment = async comment => {
