@@ -19,9 +19,9 @@ function NavBar(props) {
   
   return (
     <div className="NavBar">
-      <div className="logo">
+      <Link to="/" className="logo">
         CTV
-      </div>
+      </Link>
       <div className="search"></div>
       <div className="user">
         <div className="initials">{initials}</div>
