@@ -2,29 +2,17 @@
 import React, { useState, useEffect } from 'react'
 // Redux
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 // Styles
 import './VideoWorkspace.scss'
 // Components
-import LeftTab from '../../components/LeftTab/LeftTab'
-import List from '../../components/List/List'
 import NavBar from '../../components/NavBar/NavBar'
-import VideoCard from '../../components/VideoCard/VideoCard'
 import VideoList from '../../components/VideoList/VideoList'
 // Actions
-import modalActions from '../../actions/modal.action'
 import videoListAction from '../../actions/videoList.action'
 // Utils
 import { isEmpty } from '../../utils/object'
-// Constants
-import MODAL_CONSTANTS from '../../constants/modal.constants'
 // Dependencies
 import Loader from 'react-loader-spinner'
-import {
-  FiEdit,
-  FiPlusSquare,
-  FiXSquare
-} from "react-icons/fi";
 
 function VideoWorkspace(props) {
   const {
@@ -32,7 +20,6 @@ function VideoWorkspace(props) {
     dispatch,
     user,
     videos,
-    token
   } = props
 
   const [isAdding, setAdding] = useState(false)
