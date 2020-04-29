@@ -154,7 +154,7 @@ function VideoPage(props) {
                           })
                         }}
                       ></textarea>
-                    : <div className="body">{comment.body}</div> 
+                      : <div className="body">({new Date(comment.createdAt).toDateString()}) {comment.body}</div> 
                   }
                   <div className="user">{comment.user.displayName}</div>
                 </div>
