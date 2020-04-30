@@ -58,7 +58,7 @@ const reducers = (state = initialState, action) => {
 
     case USER_CONSTANTS.LOGOUT:
       return {
-        ...initialState
+        ...initialState,
       }
 
     default:

@@ -65,7 +65,7 @@ function VideoPage(props) {
     try {
       const commentId = await commentService.createComment(newComment)
 
-      setVideoComments([...videoComments, { ...newComment, user, _id: commentId }])
+      setVideoComments([...videoComments, { ...newComment, user, _id: commentId, createdAt: new Date() }])
     } catch {
       throw new Error('Unable to create comment')
     }
