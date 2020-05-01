@@ -28,7 +28,6 @@ const getVideo = id => async dispatch => {
     })
 
     const comments = await videoService.getVideoComments(id)
-    console.log('comments', comments)
     
     dispatch({
       type: VIDEO_CONSTANTS.SET_VIDEO_COMMENTS,

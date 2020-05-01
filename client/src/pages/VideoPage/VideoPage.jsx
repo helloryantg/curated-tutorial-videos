@@ -45,7 +45,9 @@ function VideoPage(props) {
 
   useEffect(() => {
     if (comments.length) {
-      setVideoComments(comments)
+      if (comments.some(comment => comment.parentId === currentVideo._id)) {
+        setVideoComments(comments)
+      }
     }
   }, [comments])
 
@@ -94,7 +96,6 @@ function VideoPage(props) {
       }
       
       const commentIndex = videoComments.findIndex(vidComment => vidComment._id === editComment._id)
-      console.log(commentIndex)
 
       if (commentIndex !== -1) {
         setVideoComments(videoComments.splice(commentIndex, 1, editComment))
