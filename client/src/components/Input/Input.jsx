@@ -3,7 +3,7 @@ import React from 'react'
 // Styles
 import './Input.scss'
 // Utils
-import stringUtils from '../../utils/string.utils'
+import { camelCaseToTitleCase } from '../../utils/string.utils'
 
 function Input(props) {
   const { 
@@ -16,7 +16,7 @@ function Input(props) {
 
   return (
     <div className="Input">
-      <label>{stringUtils.camelCaseToTitleCase(option)}</label>
+      <label>{camelCaseToTitleCase(option)}</label>
       <input
         type={['password', 'confirmPassword'].includes(option) ? 'password' : 'text'}
         placeholder={placeholder}

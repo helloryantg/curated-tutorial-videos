@@ -13,7 +13,12 @@ import YouTube from 'react-youtube'
 import commentService from '../../services/comment.service'
 import videoActions from '../../actions/video.action'
 // Utils
-import { isEmpty } from '../../utils/object'
+import { 
+  isEmpty
+} from '../../utils/object'
+import { 
+  isNullOrEmpty 
+} from '../../utils/string.utils'
 import videoUtils from '../../utils/video.utils'
 
 function VideoPage(props) {
@@ -56,21 +61,23 @@ function VideoPage(props) {
   }, [videoPageUser])
 
   const createComment = async () => {
-    const newComment = {
-      parentId: currentVideo._id,
-      body,
-      user: user._id,
+    if (!isNullOrEmpty(body)) {
+      const newComment = {
+        parentId: currentVideo._id,
+        body,
+        user: user._id,
+      }
+  
+      try {
+        const commentId = await commentService.createComment(newComment)
+  
+        setVideoComments([...videoComments, { ...newComment, user, _id: commentId, createdAt: new Date() }])
+      } catch {
+        throw new Error('Unable to create comment')
+      }
+  
+      setBody('')      
     }
-
-    try {
-      const commentId = await commentService.createComment(newComment)
-
-      setVideoComments([...videoComments, { ...newComment, user, _id: commentId, createdAt: new Date() }])
-    } catch {
-      throw new Error('Unable to create comment')
-    }
-
-    setBody('')
   }
 
   const onReady = event => {
