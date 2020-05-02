@@ -41,7 +41,7 @@ router.post('/', authMiddleware, async (req, res) => {
 router.get('/:id', authMiddleware, async (req, res) => {
   try {
     res
-      .status(HttpStatus.OK)
+    .status(HttpStatus.OK)
       .send(await VideoList.findById(req.params.id))
   } catch (err) {
     res
@@ -80,7 +80,20 @@ router.put('/:id', authMiddleware, async (req, res) => {
 
 // Delete a video
 router.delete('/:id', authMiddleware, async (req, res) => {
+  const videoListId = req.params.id
+
   try {
+    // TODO - delete all entities associated with the video
+    // Untested 5/2/20
+
+    // Start creating repos for the recusrive deletes
+
+    // Deletes all videos associated with the video
+    // Deletes all likes associated with the video
+    //  await Like.deleteMany({ videoId })
+     // Deletes all comments associated with the video
+    //  await Comment.deleteMany({ parentId: videoId })
+
     res
       .status(HttpStatus.NO_CONTENT)
       .send(await VideoList.findOneAndDelete({ _id: req.params.id }))

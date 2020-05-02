@@ -108,6 +108,10 @@ router.delete('/:id', authMiddleware, async (req, res) => {
     // Deletes all likes associated with the video
     await Like.deleteMany({ videoId })
 
+    // Untested 5/2/20
+    // Deletes all comments associated with the video
+    await Comment.deleteMany({ parentId: videoId })
+
     // Deletes the video
     res
       .status(HttpStatus.NO_CONTENT)
