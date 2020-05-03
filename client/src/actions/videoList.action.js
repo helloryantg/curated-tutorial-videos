@@ -11,10 +11,10 @@ const getUserVideoLists = userId => async dispatch => {
   })
 }
 
-const createNewVideoList = videoList => async dispatch => {
+const createNewVideoList = videoList => async (dispatch, getState) => {
   await videoListService.createVideoList(videoList.name)
 
-  const res = await videoListService.getUserVideoLists()
+  const res = await videoListService.getUserVideoLists(getState().reducers.user._id)
 
   dispatch({
     type: VIDEO_LIST_CONSTANTS.SET_VIDEO_LISTS,
