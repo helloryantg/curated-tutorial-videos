@@ -1,14 +1,24 @@
 // Services
 import userService from '../services/user.service'
 import videoService from '../services/video.service'
+import videoListService from '../services/videoList.service'
 // Constants
 import VIDEO_LIST_CONSTANTS from '../constants/videoList.constants'
 import VIDEO_CONSTANTS from '../constants/video.constants'
 
 const createVideo = video => async dispatch => {
-  const data = await videoService.createVideo(video)
+  try {
+    await videoService.createVideo(video)
 
-  // TODO - add to state
+    const { data } = await videoListService.getVideosFromVideoList(video.videoListId)
+
+    dispatch({
+      type: VIDEO_CONSTANTS.SET_VIDEOS_IN_VIDEO_LIST,
+      payload: data
+    })
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 const getVideo = id => async dispatch => {
@@ -28,7 +38,7 @@ const getVideo = id => async dispatch => {
     })
 
     const comments = await videoService.getVideoComments(id)
-    
+
     dispatch({
       type: VIDEO_CONSTANTS.SET_VIDEO_COMMENTS,
       payload: comments
@@ -48,7 +58,7 @@ const deleteVideo = video => async (dispatch, getState) => {
   await videoService.deleteVideo(video)
 
   const { videos } = getState().reducers
-  
+
   dispatch({
     type: VIDEO_LIST_CONSTANTS.SET_VIDEOS_IN_VIDEO_LIST,
     payload: videos.filter(vid => vid._id !== video._id)
