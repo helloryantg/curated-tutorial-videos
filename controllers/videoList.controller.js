@@ -1,10 +1,16 @@
+// Express
 const router = require('express').Router()
+// Dependencies
 const HttpStatus = require('http-status-codes')
+// Middlewares
 const authMiddleware = require('../middlewares/auth')
+// Models
 const VideoList = require('../models/videoList.model')
 const User = require('../models/user.model')
 const Video = require('../models/video.model')
 const Like = require('../models/like.model')
+// Operations
+const deleteVideoList = require('../operations/deleteVideoList')
 
 // Create a video list
 router.post('/', authMiddleware, async (req, res) => {
@@ -83,16 +89,8 @@ router.delete('/:id', authMiddleware, async (req, res) => {
   const videoListId = req.params.id
 
   try {
-    // TODO - delete all entities associated with the video
-    // Untested 5/2/20
-
-    // Start creating repos for the recusrive deletes
-
-    // Deletes all videos associated with the video
-    // Deletes all likes associated with the video
-    //  await Like.deleteMany({ videoId })
-     // Deletes all comments associated with the video
-    //  await Comment.deleteMany({ parentId: videoId })
+    // Deletes all likes, comments, and videos associated with this video list
+    await deleteVideoList(videoListId)
 
     res
       .status(HttpStatus.NO_CONTENT)
