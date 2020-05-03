@@ -39,6 +39,10 @@ function VideoCard(props) {
   // const [likesCount, setLikesCount] = useState(likesArray.length)
   const [currentVideo, setCurrentVideo] = useState(video)
 
+  useEffect(() => {
+    setCurrentVideo(video)
+  }, [video])
+
   const opts = {
     // height: '160',
     // width: '200',

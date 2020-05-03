@@ -17,7 +17,7 @@ function EditVideoModal(props) {
     dispatch,
   } = props
 
-  const [video, setVideo] = useState({})
+  const [video, setVideo] = useState({})  
 
   useEffect(() => {
     getVideo()

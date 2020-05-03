@@ -24,6 +24,13 @@ function List({
   videoLists,
   videos,
 }) {
+
+  const [currentVideos, setCurrentVideos] = useState(videos)
+
+  useEffect(() => {
+    setCurrentVideos(videos)
+  }, [videos])
+
   return (
     <div className="List">
       <div className="title">
@@ -70,8 +77,8 @@ function List({
         </div>
       </div>
       <div className="list">
-        {videos.length ?
-          videos.map(video => <VideoCard key={video._id} video={video} />)
+        {currentVideos.length ?
+          currentVideos.map(video => <VideoCard key={video._id} video={video} />)
           : null
         }
       </div>

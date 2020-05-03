@@ -58,8 +58,6 @@ const editVideo = video => async (dispatch, getState) => {
 
   videosArr.splice(videoIndex, 1, updated)
 
-  console.log(videosArr)
-
   dispatch({
     type: VIDEO_LIST_CONSTANTS.SET_VIDEOS_IN_VIDEO_LIST,
     payload: videosArr
