@@ -48,10 +48,22 @@ const getVideo = id => async dispatch => {
   }
 }
 
-const editVideo = video => async dispatch => {
+const editVideo = video => async (dispatch, getState) => {
   const updated = await videoService.editVideo(video)
 
-  // TODO - update the list 
+  const { videos } = getState().reducers
+  const videoIndex = videos.findIndex(vid => vid._id === updated._id)
+
+  const videosArr = [...videos]
+
+  videosArr.splice(videoIndex, 1, updated)
+
+  console.log(videosArr)
+
+  dispatch({
+    type: VIDEO_LIST_CONSTANTS.SET_VIDEOS_IN_VIDEO_LIST,
+    payload: videosArr
+  })
 }
 
 const deleteVideo = video => async (dispatch, getState) => {

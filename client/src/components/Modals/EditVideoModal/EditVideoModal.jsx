@@ -24,7 +24,7 @@ function EditVideoModal(props) {
   }, [])
 
   const getVideo = async () => {
-    setVideo(await videoServices.getVideo(props.data.video))
+    setVideo(await videoServices.getVideo(props.data.video._id))
   }
 
   return (
@@ -88,6 +88,7 @@ function EditVideoModal(props) {
         text='Edit'
         onClick={() => {
           dispatch(videoActions.editVideo(video))
+          dispatch(modalActions.hideModal())
         }}
       />
     </div>
