@@ -24,7 +24,9 @@ function EditVideoModal(props) {
   }, [])
 
   const getVideo = async () => {
-    setVideo(await videoServices.getVideo(props.data.video._id))
+    const video = await videoServices.getVideo(props.data.video._id)
+
+    setVideo(video)
   }
 
   return (
