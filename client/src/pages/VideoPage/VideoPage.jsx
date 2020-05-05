@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react'
 // Redux
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 // Styles
 import './VideoPage.scss'
 // Components
@@ -39,7 +38,7 @@ function VideoPage(props) {
 
   useEffect(() => {
     dispatch(videoActions.getVideo(props.match.params.id))
-  }, [])
+  }, [dispatch, props.match.params.id])
 
   useEffect(() => {
     if (!isEmpty(video)) {
@@ -54,7 +53,7 @@ function VideoPage(props) {
         setVideoComments(comments)
       }
     }
-  }, [comments])
+  }, [comments, currentVideo])
 
   useEffect(() => {
     if (videoPageUser) {

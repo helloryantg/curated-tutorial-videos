@@ -6,13 +6,8 @@ import { connect } from 'react-redux'
 import './VideoCard.scss'
 // Dependencies
 import YouTube from 'react-youtube'
-import {
-  IoIosHeart,
-  IoIosHeartEmpty
-} from 'react-icons/io'
 import { Link } from 'react-router-dom'
 // Actions
-import likeAction from '../../actions/like.action'
 import modalActions from '../../actions/modal.action'
 import videoActions from '../../actions/video.action'
 // Constants
@@ -24,13 +19,11 @@ function VideoCard(props) {
   const {
     video,
     dispatch,
-    user
   } = props
 
   const {
     url,
     _id,
-    likesArray
   } = video
 
   const videoId = videoUtils.getVideoIdFromUrl(url)

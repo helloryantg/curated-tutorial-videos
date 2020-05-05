@@ -1,7 +1,5 @@
 // React
-import React, { useState, useEffect } from 'react'
-// Redux
-import { connect } from 'react-redux'
+import React from 'react'
 // Styles
 import './VideoList.scss'
 // Components

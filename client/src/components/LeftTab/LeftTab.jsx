@@ -1,5 +1,5 @@
 // React
-import React, { useState } from 'react'
+import React from 'react'
 // Redux
 import { connect } from 'react-redux'
 // Styles
