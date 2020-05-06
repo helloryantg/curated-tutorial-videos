@@ -7,6 +7,7 @@ import './VideoWorkspace.scss'
 // Components
 import NavBar from '../../components/NavBar/NavBar'
 import VideoList from '../../components/VideoList/VideoList'
+import SearchPage from '../../pages/SearchPage/SearchPage'
 // Actions
 import videoListAction from '../../actions/videoList.action'
 // Utils
@@ -58,15 +59,17 @@ function VideoWorkspace(props) {
     // timeout={3000} //3 secs
     />
   } else {
-    body = <VideoList
-      activeTabIndex={activeTabIndex}
-      isAdding={isAdding}
-      newVideoList={newVideoList}
-      setActiveTabIndex={setActiveTabIndex}
-      setAdding={setAdding}
-      setNewVideoList={setNewVideoList}
-      videoLists={videoLists}
-    />
+    body = <SearchPage />
+
+    // body = <VideoList
+    //   activeTabIndex={activeTabIndex}
+    //   isAdding={isAdding}
+    //   newVideoList={newVideoList}
+    //   setActiveTabIndex={setActiveTabIndex}
+    //   setAdding={setAdding}
+    //   setNewVideoList={setNewVideoList}
+    //   videoLists={videoLists}
+    // />
   }
 
   return (
