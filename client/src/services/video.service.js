@@ -25,10 +25,16 @@ const getVideoComments = id => {
     .then(({ data }) => data)
 }
 
+const getAllVideos = () => {
+  return server.get('/videos/all')
+    .then(({ data }) => data)
+}
+
 export default {
   createVideo,
   editVideo,
   getVideo,
   deleteVideo,
   getVideoComments,
+  getAllVideos,
 }

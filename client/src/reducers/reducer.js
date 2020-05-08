@@ -3,6 +3,7 @@ import VIDEO_LIST_CONSTANTS from '../constants/videoList.constants'
 import VIDEO_CONSTANTS from '../constants/video.constants'
 
 const initialState = {
+  allVideos: [],
   token: '',
   user: {},
   video: {},
@@ -59,6 +60,12 @@ const reducers = (state = initialState, action) => {
     case USER_CONSTANTS.LOGOUT:
       return {
         ...initialState,
+      }
+
+    case VIDEO_CONSTANTS.GET_ALL_VIDEOS:
+      return {
+        ...state,
+        allVideos: action.payload,
       }
 
     default:
