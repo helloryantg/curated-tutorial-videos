@@ -77,6 +77,7 @@ const deleteVideo = video => async (dispatch, getState) => {
 
 const getAllVideos = () => async dispatch => {
   const allVideos = await videoService.getAllVideos()
+
   dispatch({
     type: VIDEO_CONSTANTS.GET_ALL_VIDEOS,
     payload: allVideos
