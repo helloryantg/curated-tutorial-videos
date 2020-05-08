@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import './SearchPage.scss'
 // Services
 import videoAction from '../../actions/video.action'
+// Components
+import VideoCard from '../../components/VideoCard/VideoCard'
 
 function SearchPage(props) {
   const {
@@ -35,7 +37,11 @@ function SearchPage(props) {
         <input type="text" value={searchText} onChange={({ target }) => setSearchText(target.value)} />
       </div>
       <div className="videos">
-
+        {allVideos.map(video => {
+          return <VideoCard 
+            video={video}
+          />
+        })}
       </div>      
     </div>
   )

@@ -18,4 +18,10 @@
       padding: 0 .4rem;
     }
   }
+
+  & > .videos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
