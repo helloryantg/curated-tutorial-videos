@@ -22,6 +22,12 @@ function SearchPage(props) {
   }, [])
 
   useEffect(() => {
+    const filteredVideos = videos.filter(video => video.title.toLowerCase().includes(searchText.toLocaleLowerCase()))
+    console.log(filteredVideos)
+    setVideos(filteredVideos)
+  }, [searchText])
+
+  useEffect(() => {
     if (allVideos.length) {
       setVideos(allVideos)
     } else {
@@ -29,7 +35,7 @@ function SearchPage(props) {
     }
   }, [allVideos])
 
-  console.log(videos)
+  // console.log(videos)
 
   return (
     <div className="SearchPage">
