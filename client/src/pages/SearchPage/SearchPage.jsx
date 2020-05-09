@@ -22,12 +22,6 @@ function SearchPage(props) {
   }, [])
 
   useEffect(() => {
-    const filteredVideos = videos.filter(video => video.title.toLowerCase().includes(searchText.toLocaleLowerCase()))
-    console.log(filteredVideos)
-    setVideos(filteredVideos)
-  }, [searchText])
-
-  useEffect(() => {
     if (allVideos.length) {
       setVideos(allVideos)
     } else {
@@ -43,7 +37,9 @@ function SearchPage(props) {
         <input type="text" value={searchText} onChange={({ target }) => setSearchText(target.value)} />
       </div>
       <div className="videos">
-        {allVideos.map(video => {
+        {videos
+          .filter(video => video.title.toLowerCase().includes(searchText.toLocaleLowerCase()))
+          .map(video => {
           return <VideoCard 
             video={video}
           />
