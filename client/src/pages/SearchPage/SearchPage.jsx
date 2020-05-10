@@ -14,12 +14,12 @@ function SearchPage(props) {
     dispatch,
   } = props
 
-  const [searchText, setSearchText] = useState('')
+  // const [searchText, setSearchText] = useState('')
   const [videos, setVideos] = useState([])
 
   useEffect(() => {
     dispatch(videoAction.getAllVideos())
-  }, [])
+  }, []) 
 
   useEffect(() => {
     if (allVideos.length) {
@@ -33,12 +33,12 @@ function SearchPage(props) {
 
   return (
     <div className="SearchPage">
-      <div className="search-bar">
+      {/* <div className="search-bar">
         <input type="text" value={searchText} onChange={({ target }) => setSearchText(target.value)} />
-      </div>
+      </div> */}
       <div className="videos">
         {videos
-          .filter(video => video.title.toLowerCase().includes(searchText.toLocaleLowerCase()))
+          // .filter(video => video.title.toLowerCase().includes(searchText.toLocaleLowerCase()))
           .map(video => {
           return <VideoCard 
             video={video}

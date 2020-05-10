@@ -31,7 +31,12 @@ function NavBar(props) {
         CTV
       </Link>
       <div className="search">
-        <input type="text" value={searchText} onChange={({ target }) => setSearchText(target.value)} />
+        <input 
+          type="text" 
+          value={searchText} 
+          onChange={({ target }) => setSearchText(target.value)} 
+          placeholder={'Find Videos'}
+        />
         <button>
           <IoMdSearch />
         </button>

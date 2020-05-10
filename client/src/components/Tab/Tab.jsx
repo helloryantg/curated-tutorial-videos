@@ -9,6 +9,10 @@ import {
 } from "react-icons/io"
 
 function Tab(props) {
+  const {
+    setCurrentTab
+  } = props
+
   const tabs = [
     { label: 'Search', icon: IoMdSearch },
     { label: 'My Lists', icon: IoIosList },
@@ -17,8 +21,12 @@ function Tab(props) {
   return (
     <div className="Tab">
       <div className="tabs">
-        {tabs.map(tab => (
-          <div className="tab">
+        {tabs.map((tab, index) => (
+          <div 
+            className="tab" 
+            key={`${tab.label}-${index}`}
+            onClick={() => setCurrentTab(tab.label)}
+          >
             <tab.icon />
             <p>{tab.label}</p>
           </div>
