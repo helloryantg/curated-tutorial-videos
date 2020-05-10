@@ -7,6 +7,8 @@ import './VideoCard.scss'
 // Dependencies
 import YouTube from 'react-youtube'
 import { Link } from 'react-router-dom'
+// TEMP - test
+import ReactPlayer from 'react-player'
 // Actions
 import modalActions from '../../actions/modal.action'
 import videoActions from '../../actions/video.action'
@@ -45,6 +47,7 @@ function VideoCard(props) {
   }
 
   const onReady = event => {
+    console.log(event)
     event.target.pauseVideo()
   }
 
@@ -86,10 +89,14 @@ function VideoCard(props) {
         </div>
       </div>
       <div className="video">
-        <YouTube
+        {/* <YouTube
           videoId={videoId}
           opts={opts}
           onReady={onReady}
+        /> */}
+        <ReactPlayer
+          url={video.url}
+          light={true}
         />
       </div>
       <div className="description">

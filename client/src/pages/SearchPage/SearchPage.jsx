@@ -42,6 +42,7 @@ function SearchPage(props) {
           .map(video => {
           return <VideoCard 
             video={video}
+            key={video._id}
           />
         })}
       </div>      
