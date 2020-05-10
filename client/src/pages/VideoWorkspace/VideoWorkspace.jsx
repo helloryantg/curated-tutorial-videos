@@ -58,17 +58,17 @@ function VideoWorkspace(props) {
     // timeout={3000} //3 secs
     />
   } else {
-    body = <SearchPage />
+    // body = <SearchPage />
 
-    // body = <VideoList
-    //   activeTabIndex={activeTabIndex}
-    //   isAdding={isAdding}
-    //   newVideoList={newVideoList}
-    //   setActiveTabIndex={setActiveTabIndex}
-    //   setAdding={setAdding}
-    //   setNewVideoList={setNewVideoList}
-    //   videoLists={videoLists}
-    // />
+    body = <VideoList
+      activeTabIndex={activeTabIndex}
+      isAdding={isAdding}
+      newVideoList={newVideoList}
+      setActiveTabIndex={setActiveTabIndex}
+      setAdding={setAdding}
+      setNewVideoList={setNewVideoList}
+      videoLists={videoLists}
+    />
   }
 
   return (
