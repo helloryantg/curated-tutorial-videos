@@ -89,11 +89,6 @@ function VideoCard(props) {
         </div>
       </div>
       <div className="video">
-        {/* <YouTube
-          videoId={videoId}
-          opts={opts}
-          onReady={onReady}
-        /> */}
         <ReactPlayer
           url={video.url}
           light={true}

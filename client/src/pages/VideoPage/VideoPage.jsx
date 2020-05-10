@@ -8,6 +8,7 @@ import './VideoPage.scss'
 import NavBar from '../../components/NavBar/NavBar'
 // Dependencies
 import YouTube from 'react-youtube'
+import ReactPlayer from 'react-player'
 // Services
 import commentService from '../../services/comment.service'
 import videoActions from '../../actions/video.action'
@@ -137,10 +138,14 @@ function VideoPage(props) {
       <NavBar />
       <div className="main">
         <div className="video">
-          <YouTube
+          {/* <YouTube
             videoId={videoId}
             opts={opts}
             onReady={onReady}
+          /> */}
+          <ReactPlayer
+            url={video.url}
+            light={true}
           />
         </div>
         <div className="details">

@@ -28,8 +28,8 @@
       background-color: black;
 
       & > div {
-        height: 100%;
-        width: 80%;
+        height: 100% !important;
+        width: 80% !important;
         margin: 0 auto;
   
         & > iframe {
