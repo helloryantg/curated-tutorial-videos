@@ -26,16 +26,6 @@
     background-color: #bdbdbd;
     margin-bottom: 1rem;
     box-shadow: 4px 4px 2px 1px rgba(0,0,0,0.55);
-
-    & > div:first-child {
-      height: 100% !important;
-      width: 100% !important;
-
-      // & > iframe {
-      //   height: 100%;
-      //   width: 100%;
-      // }
-    }
   }
 
   & > .description {

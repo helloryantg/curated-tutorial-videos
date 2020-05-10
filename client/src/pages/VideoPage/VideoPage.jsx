@@ -7,7 +7,6 @@ import './VideoPage.scss'
 // Components
 import NavBar from '../../components/NavBar/NavBar'
 // Dependencies
-import YouTube from 'react-youtube'
 import ReactPlayer from 'react-player'
 // Services
 import commentService from '../../services/comment.service'
@@ -146,6 +145,8 @@ function VideoPage(props) {
           <ReactPlayer
             url={video.url}
             light={true}
+            width={'80%'}
+            height={'100%'}
           />
         </div>
         <div className="details">

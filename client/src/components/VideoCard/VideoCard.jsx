@@ -5,9 +5,7 @@ import { connect } from 'react-redux'
 // Styles
 import './VideoCard.scss'
 // Dependencies
-import YouTube from 'react-youtube'
 import { Link } from 'react-router-dom'
-// TEMP - test
 import ReactPlayer from 'react-player'
 // Actions
 import modalActions from '../../actions/modal.action'
@@ -37,19 +35,6 @@ function VideoCard(props) {
   useEffect(() => {
     setCurrentVideo(video)
   }, [video])
-
-  const opts = {
-    // height: '160',
-    // width: '200',
-    // playerVars: {
-    //   autoplay: 1
-    // }
-  }
-
-  const onReady = event => {
-    console.log(event)
-    event.target.pauseVideo()
-  }
 
   // const toggleLike = () => {
   //   if (isFavorited) {
@@ -92,18 +77,15 @@ function VideoCard(props) {
         <ReactPlayer
           url={video.url}
           light={true}
+          height={'100%'}
+          width={'100%'}
         />
       </div>
       <div className="description">
         <div className="header">
           <Link to={`video/${_id}`} className="title">{currentVideo.title}</Link>
-          {/* <div
-            className="favorite"
-            onClick={() => toggleLike()}
-          >{isFavorited ? <IoIosHeart className='red' /> : <IoIosHeartEmpty />}</div> */}
         </div>
         <div className="sub-header">
-          {/* <div className="likes">Likes: {likesCount}</div> */}
           <div className="views">Views: {currentVideo.views}</div>
         </div>
         <div className="notes">{currentVideo.description}</div>
