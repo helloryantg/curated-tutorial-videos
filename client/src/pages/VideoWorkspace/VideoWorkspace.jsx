@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 // Styles
 import './VideoWorkspace.scss'
 // Components
-import NavBar from '../../components/NavBar/NavBar'
 import VideoList from '../../components/VideoList/VideoList'
 import SearchPage from '../../pages/SearchPage/SearchPage'
 // Actions

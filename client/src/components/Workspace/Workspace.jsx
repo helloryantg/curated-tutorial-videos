@@ -5,12 +5,12 @@ import { connect } from 'react-redux'
 // Styles
 import './Workspace.scss'
 // Components
-
+import Tab from '../../components/Tab/Tab'
 
 function Workspace(props) {
   return (
     <div className="Workspace">
-      Workspace
+      <Tab />
     </div>
   )
 }

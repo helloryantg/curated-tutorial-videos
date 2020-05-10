@@ -1,3 +1,22 @@
 .Tab {
-  
+  height: 100vh;
+  width: 15rem;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+
+  & > .tabs {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    & > .tab {
+      height: 2.5rem;
+      width: 100%;
+      border-bottom: 1px solid grey;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }

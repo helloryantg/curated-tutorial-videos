@@ -53,7 +53,7 @@ function App(props) {
 
   return (
     <div className="App">
-       <NavBar />
+      <NavBar />
       {modal.modalProps.open ? <Modal modal={modal} /> : null}
       <Router>
         <Switch>

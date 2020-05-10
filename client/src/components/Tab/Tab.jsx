@@ -4,9 +4,17 @@ import React from 'react'
 import './Tab.scss'
 
 function Tab(props) {
+  const tabs = [
+    'Search'
+  ]
+
   return (
     <div className="Tab">
-      Tab
+      <div className="tabs">
+        {tabs.map(tab => (
+          <div className="tab">{tab}</div>
+        ))}
+      </div>
     </div>
   )
 }
