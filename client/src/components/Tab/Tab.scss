@@ -1,8 +1,6 @@
 .Tab {
   height: 100vh;
   width: 15rem;
-  border-right: 1px solid grey;
-  border-top: 1px solid grey;
 
   & > .tabs {
     height: 100%;
@@ -13,10 +11,28 @@
     & > .tab {
       height: 2.5rem;
       width: 100%;
-      border-bottom: 1px solid grey;
       display: flex;
       align-items: center;
-      justify-content: center;
+      padding: 0 1.5rem;
+
+      &:hover {
+        background-color: #CCCCCC;
+      // #CCCCCC
+      // #AAAAAA
+      // #909090
+      // #717171
+      // #606060
+      }
+
+      & > svg {
+        margin-right: 1.5rem;
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+
+      & > p {
+        font-size: 1.2rem;
+      }
     }
   }
 }

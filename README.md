@@ -9,3 +9,4 @@ Technologies:
 
 Dependencies:
 - react-player
+- react-icons
