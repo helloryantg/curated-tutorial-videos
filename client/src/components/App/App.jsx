@@ -17,6 +17,7 @@ import {
 import AuthPage from '../../pages/AuthPage/AuthPage'
 // Components
 import Modal from '../Modals/Modals'
+import NavBar from '../../components/NavBar/NavBar'
 import VideoPage from '../../pages/VideoPage/VideoPage'
 import VideoWorkspace from '../../pages/VideoWorkspace/VideoWorkspace'
 import Workspace from '../../components/Workspace/Workspace'
@@ -52,6 +53,7 @@ function App(props) {
 
   return (
     <div className="App">
+       <NavBar />
       {modal.modalProps.open ? <Modal modal={modal} /> : null}
       <Router>
         <Switch>

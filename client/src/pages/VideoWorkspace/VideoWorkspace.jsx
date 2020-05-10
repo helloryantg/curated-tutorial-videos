@@ -74,7 +74,6 @@ function VideoWorkspace(props) {
 
   return (
     <div className="VideoWorkspace">
-      <NavBar />
       <div className="main">
         {body}
       </div>
