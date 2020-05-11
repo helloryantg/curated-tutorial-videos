@@ -1,6 +1,7 @@
 import USER_CONSTANTS from '../constants/user.constants'
 import VIDEO_LIST_CONSTANTS from '../constants/videoList.constants'
 import VIDEO_CONSTANTS from '../constants/video.constants'
+import SEARCH_CONSTANTS from '../constants/search.constants'
 
 const initialState = {
   allVideos: [],
@@ -11,6 +12,7 @@ const initialState = {
   videoPageUser: {},
   videos: [],
   comments: [],
+  searchText: ''
 }
 
 const reducers = (state = initialState, action) => {
@@ -66,6 +68,12 @@ const reducers = (state = initialState, action) => {
       return {
         ...state,
         allVideos: action.payload,
+      }
+
+    case SEARCH_CONSTANTS.SET_SEARCH_TEXT:
+      return {
+        ...state,
+        searchText: action.payload
       }
 
     default:

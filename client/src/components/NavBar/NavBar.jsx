@@ -13,12 +13,14 @@ import userActions from '../../actions/user.action'
 import { 
   IoMdSearch
 } from "react-icons/io"
+// Constants
+import SEARCH_CONSTANTS from '../../constants/search.constants'
 
 
 function NavBar(props) {
   const { 
     user,
-    dispatch
+    dispatch,
   } = props
 
   const [searchText, setSearchText] = useState('')
@@ -37,7 +39,10 @@ function NavBar(props) {
           onChange={({ target }) => setSearchText(target.value)} 
           placeholder={'Find Videos'}
         />
-        <button>
+        <button onClick={() => dispatch({
+            type: SEARCH_CONSTANTS.SET_SEARCH_TEXT,
+            payload: searchText
+          })}>
           <IoMdSearch />
         </button>
       </div>
@@ -54,7 +59,7 @@ function NavBar(props) {
 
 const mapState = ({ reducers }) => {
   return {
-    user: reducers.user
+    user: reducers.user,
   }
 }
 

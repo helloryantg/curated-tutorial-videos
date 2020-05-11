@@ -14,7 +14,6 @@ function SearchPage(props) {
     dispatch,
   } = props
 
-  // const [searchText, setSearchText] = useState('')
   const [videos, setVideos] = useState([])
 
   useEffect(() => {
@@ -29,16 +28,10 @@ function SearchPage(props) {
     }
   }, [allVideos])
 
-  // console.log(videos)
-
   return (
     <div className="SearchPage">
-      {/* <div className="search-bar">
-        <input type="text" value={searchText} onChange={({ target }) => setSearchText(target.value)} />
-      </div> */}
       <div className="videos">
         {videos
-          // .filter(video => video.title.toLowerCase().includes(searchText.toLocaleLowerCase()))
           .map(video => {
           return <VideoCard 
             video={video}
@@ -51,7 +44,8 @@ function SearchPage(props) {
 }
 
 const mapState = ({ reducers }) => ({
-  allVideos: reducers.allVideos,
+  allVideos: reducers.allVideos.filter(video => video.title.toLowerCase().includes(reducers.searchText.toLowerCase())),
+  reduxSearchText: reducers.searchText,
 })
 
 export default connect(mapState)(SearchPage)
