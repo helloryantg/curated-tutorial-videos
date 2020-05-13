@@ -49,10 +49,25 @@ const getUserDetails = async id => {
   }
 }
 
+const USER_BASE_URL = 'http://localhost:4000/users'
+
+const getUserById = async id => {
+  try {
+    const res = await server.get(`${USER_BASE_URL}/${id}`)
+
+    console.log(res)
+
+    return res.data
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 export default {
   signup,
   login,
   getUser,
   logout,
-  getUserDetails
+  getUserDetails,
+  getUserById,
 }

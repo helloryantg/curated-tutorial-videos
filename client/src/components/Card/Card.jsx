@@ -5,6 +5,8 @@ import './Card.scss'
 // Dependencies
 import { Link } from 'react-router-dom'
 import ReactPlayer from 'react-player'
+// Service
+import userService from '../../services/user.service'
 
 function Card(props) {
   const {
@@ -13,9 +15,13 @@ function Card(props) {
   } = props
 
   const [currentVideo, setCurrentVideo] = useState(video)
+  const [videoUser, setVideoUser] = useState({})
 
   useEffect(() => {
     setCurrentVideo(video)
+    console.log(video)
+    const user = userService.getUserById(video.userId)
+    console.log('user', user)
   }, [video])
 
   return (
@@ -28,8 +34,13 @@ function Card(props) {
           width={'100%'}
         />
       </div>
-      <div className="description">
-        <div className="title">{currentVideo.title}</div>
+      <div className="details">
+        <div className="logo-container">
+          <div className="logo"></div>
+        </div>
+        <div className="title">
+          <p>{currentVideo.title}</p>
+        </div>
       </div>
     </div>
   )
