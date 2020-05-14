@@ -5,8 +5,6 @@ import './Card.scss'
 // Dependencies
 import { Link } from 'react-router-dom'
 import ReactPlayer from 'react-player'
-// Service
-import userService from '../../services/user.service'
 
 function Card(props) {
   const {
@@ -15,13 +13,9 @@ function Card(props) {
   } = props
 
   const [currentVideo, setCurrentVideo] = useState(video)
-  const [videoUser, setVideoUser] = useState({})
 
   useEffect(() => {
     setCurrentVideo(video)
-    console.log(video)
-    const user = userService.getUserById(video.userId)
-    console.log('user', user)
   }, [video])
 
   return (
@@ -40,7 +34,7 @@ function Card(props) {
         </div>
         <div className="detail">
           <p className="title">{currentVideo.title}</p>
-          <p className="description">{currentVideo.description}</p>
+          <p className="user">{Object.keys(currentVideo).includes('user') ? currentVideo.user.displayName : 'Broken'}</p>
         </div>
       </div>
     </div>

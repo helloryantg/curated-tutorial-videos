@@ -12,12 +12,15 @@ const Video = require('../models/video.model')
 // Get all videos
 router.get('/all', authMiddleware, async (req, res) => {
   try {
-    res
-      .status(HttpStatus.OK)
-      .send(await Video.find({}))
+    const videos = await Video
+      .find()
+      .populate({ path: 'user', model: 'User' })
+      .exec()
+
+    res.status(HttpStatus.OK)
+      .send(videos)
   } catch (err) {
-    res
-      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR)
       .send({ msg: err })
   }
 })
@@ -28,15 +31,18 @@ router.post('/', authMiddleware, async (req, res) => {
     url,
     videoListId,
     title,
-    description
+    description,
+    userId,
   } = req.body
+  
   try {
     const newVideo = new Video({
       url,
       userId: req.userId,
       videoListId,
       title,
-      description
+      description,
+      user: userId,
     })
 
     await newVideo.save()

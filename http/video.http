@@ -2,9 +2,10 @@
 @application-json = Content-Type: application/json
 @id = 5eae2f74527cbc603cc0cd4c
 @userId = 5e61892041a37762ae86eb0a
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJ0eXBlIjoidXNlciIsIl9pZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImZpcnN0TmFtZSI6IlJ5YW4iLCJsYXN0TmFtZSI6IkdvbnphbGVzIiwiZGlzcGxheU5hbWUiOiJyZ29uemFsZXMiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiY3JlYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwidXBkYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwiX192IjowfSwiaWF0IjoxNTg4NDQzMDU5LCJleHAiOjE1ODg1Mjk0NTl9.-CY8T1tW_BdFY6jTnX1MuNq0SiaYxk5tSNaofi9HI9Q
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJ0eXBlIjoidXNlciIsIl9pZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImZpcnN0TmFtZSI6IlJ5YW4iLCJsYXN0TmFtZSI6IkdvbnphbGVzIiwiZGlzcGxheU5hbWUiOiJyZ29uemFsZXMiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiY3JlYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwidXBkYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwiX192IjowfSwiaWF0IjoxNTg5NDI3Njc4LCJleHAiOjE1ODk1MTQwNzh9.YNKHS_gPsp1T4qBJbNRKUyvJGT1xtkGK41C8ozd7O3s
 @authorization = Authorization: {{token}}
 @videoListId = 5e6411e05d938c317b873924
+@userId = 5e61892041a37762ae86eb0a
 
 ### Get all videos
 GET {{base}}/videos/all
@@ -17,10 +18,11 @@ POST {{base}}/videos
 {{authorization}}
 
 {
-  "url": "https//ryangonz.com",
+  "url": "https://www.youtube.com/watch?v=RHqB8MZ0yK0",
   "videoListId": "{{videoListId}}",
-  "title": "Delete Me",
-  "description": "This is the one to be deleted"
+  "title": "Newest video with user",
+  "description": "This is the one with the user",
+  "userId": "{{userId}}"
 }
 
 ### Get a video
@@ -35,7 +37,7 @@ PUT {{base}}/videos/{{id}}
 
 {
   "url": "https://www.youtube.com/watch?v=RHqB8MZ0yK0",
-  "views": 1,
+  "views": 0,
   "title": "Tutorial with the spiders",
   "description": ""
 }

@@ -13,14 +13,16 @@ import CustomButton from '../../../components/CustomButton/CustomButton'
 function AddVideoModal(props) {
   const {
     dispatch,
-    data
+    data,
+    user,
   } = props
 
   const [video, setVideo] = useState({
     title: '',
     url: '',
     description: '',
-    videoListId: data.videoList._id
+    videoListId: data.videoList._id,
+    userId: user._id,
   })
 
   return (
@@ -82,8 +84,8 @@ function AddVideoModal(props) {
   )
 }
 
-const mapState = state => {
-  return {}
-}
+const mapState = ({ reducers }) => ({
+  user: reducers.user
+})
 
 export default connect(mapState)(AddVideoModal)

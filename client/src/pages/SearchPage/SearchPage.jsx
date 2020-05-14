@@ -6,7 +6,6 @@ import './SearchPage.scss'
 // Services
 import videoAction from '../../actions/video.action'
 // Components
-import VideoCard from '../../components/VideoCard/VideoCard'
 import Card from '../../components/Card/Card'
 
 function SearchPage(props) {
@@ -34,10 +33,6 @@ function SearchPage(props) {
       <div className="videos">
         {videos
           .map(video => {
-            // return <VideoCard 
-            //   video={video}
-            //   key={video._id}
-            // />
             return <Card 
               video={video}
               key={video._id}
