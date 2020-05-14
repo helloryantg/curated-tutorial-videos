@@ -38,8 +38,9 @@ function Card(props) {
         <div className="logo-container">
           <div className="logo"></div>
         </div>
-        <div className="title">
-          <p>{currentVideo.title}</p>
+        <div className="detail">
+          <p className="title">{currentVideo.title}</p>
+          <p className="description">{currentVideo.description}</p>
         </div>
       </div>
     </div>
