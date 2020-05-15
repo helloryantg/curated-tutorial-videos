@@ -5,6 +5,7 @@ import './Card.scss'
 // Dependencies
 import { Link } from 'react-router-dom'
 import ReactPlayer from 'react-player'
+import moment from 'moment'
 
 function Card(props) {
   const {
@@ -34,7 +35,8 @@ function Card(props) {
         </div>
         <div className="detail">
           <p className="title">{currentVideo.title}</p>
-          <p className="user">{Object.keys(currentVideo).includes('user') ? currentVideo.user.displayName : 'Broken'}</p>
+          <p className="user">{Object.keys(currentVideo).includes('user') ? currentVideo.user.displayName : 'user'}</p>
+          <p className="created-time">{moment(currentVideo.createdAt).format("MMM Do YY")}</p>
         </div>
       </div>
     </div>
