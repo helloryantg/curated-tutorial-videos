@@ -27,6 +27,7 @@ function Card(props) {
           light={true}
           height={'100%'}
           width={'100%'}
+          controls={true}
         />
       </div>
       <div className="details">
