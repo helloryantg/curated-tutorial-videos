@@ -15,11 +15,14 @@ function Workspace(props) {
   const [currentTab, setCurrentTab] = useState(DEFAULT_TAB)
 
   const renderBody = tab => {
-    switch(tab) {
-      case 'Search':
+    switch(tab.name) {
+      case 'search':
         return <SearchPage />
-      case 'My Lists':
+      case 'my_lists':
         return <VideoWorkspace />
+      case 'user_lists':
+        console.log(tab)
+        return <div>{tab.label}</div>
 
       default:
         return <div>Empty</div>

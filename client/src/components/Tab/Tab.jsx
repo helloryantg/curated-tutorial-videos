@@ -22,8 +22,8 @@ function Tab(props) {
   }
 
   const tabs = [
-    { label: 'Search', icon: IoMdSearch },
-    { label: 'My Lists', icon: IoIosList, onClick: toggleList },
+    { label: 'Search', name: 'search', icon: IoMdSearch },
+    { label: 'My Lists', name: 'my_lists', icon: IoIosList, onClick: toggleList },
   ]
 
   const [allTabs, setAllTabs] = useState([...tabs])
@@ -47,6 +47,7 @@ function Tab(props) {
         return {
           className: 'user-list',
           label: list.name,
+          name: 'user_lists',
           icon: IoIosArrowForward,
           list,
         }
@@ -67,9 +68,9 @@ function Tab(props) {
           return (
             <div 
               className={`tab ${tabClassName}`} 
-              key={`${tab.label}-${index}`}
+              key={`${tab.name}-${index}`}
               onClick={() => {
-                setCurrentTab(tab.label)
+                setCurrentTab(tab)
 
                 if (secondaryClick !== null) {
                   if (tab.label === 'My Lists') {
