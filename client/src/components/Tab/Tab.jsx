@@ -15,19 +15,25 @@ import { isEmpty } from '../../utils/object'
 import videoListAction from '../../actions/videoList.action'
 
 function Tab(props) {
+  const [toggled, setToggled] = useState(true)
+
+  const toggleList = (toggled) => {
+    setToggled(!toggled)
+  }
+
+  const tabs = [
+    { label: 'Search', icon: IoMdSearch },
+    { label: 'My Lists', icon: IoIosList, onClick: toggleList },
+  ]
+
+  const [allTabs, setAllTabs] = useState([...tabs])
+
   const {
     setCurrentTab,
     user,
     dispatch,
     videoLists
   } = props
-
-  const tabs = [
-    { label: 'Search', icon: IoMdSearch },
-    { label: 'My Lists', icon: IoIosList },
-  ]
-
-  const [allTabs, setAllTabs] = useState([...tabs])
 
   useEffect(() => {
     if (!isEmpty(user)) {
@@ -36,32 +42,47 @@ function Tab(props) {
   }, [user, dispatch])
 
   useEffect(() => {
-    const userTabs = videoLists.map(list => {
-      return {
-        label: list.name,
-        icon: IoIosArrowForward,
-        list,
-      }
-    })
-
-    setAllTabs([...tabs, ...userTabs])
-  }, [videoLists])
-
-  console.log(videoLists)
+    if (toggled) {
+      const userTabs = videoLists.map(list => {
+        return {
+          className: 'user-list',
+          label: list.name,
+          icon: IoIosArrowForward,
+          list,
+        }
+      })
+  
+      setAllTabs([...tabs, ...userTabs])
+    } else {
+      setAllTabs([...tabs])
+    }
+  }, [videoLists, toggled])
 
   return (
     <div className="Tab">
       <div className="tabs">
-        {allTabs.map((tab, index) => (
-          <div 
-            className="tab" 
-            key={`${tab.label}-${index}`}
-            onClick={() => setCurrentTab(tab.label)}
-          >
-            <tab.icon />
-            <p>{tab.label}</p>
-          </div>
-        ))}
+        {allTabs.map((tab, index) => {
+          const tabClassName = Object.keys(tab).includes('className') ? tab.className : ''
+          const secondaryClick = Object.keys(tab).includes('onClick') ? tab.onClick : null
+          return (
+            <div 
+              className={`tab ${tabClassName}`} 
+              key={`${tab.label}-${index}`}
+              onClick={() => {
+                setCurrentTab(tab.label)
+
+                if (secondaryClick !== null) {
+                  if (tab.label === 'My Lists') {
+                    secondaryClick(toggled)
+                  }
+                }
+              }}
+            >
+              <tab.icon />
+              <p>{tab.label}</p>
+            </div>
+          )
+        })}
       </div>
     </div>
   )
