@@ -10,7 +10,7 @@ import VideoWorkspace from '../../pages/VideoWorkspace/VideoWorkspace'
 import SearchPage from '../../pages/SearchPage/SearchPage'
 import UserLists from '../../components/UserLists/UserLists'
 
-const DEFAULT_TAB = 'Search'
+const DEFAULT_TAB = { name: 'search' }
 
 function Workspace(props) {
   const [currentTab, setCurrentTab] = useState(DEFAULT_TAB)
