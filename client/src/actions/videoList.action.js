@@ -25,18 +25,9 @@ const createNewVideoList = videoList => async (dispatch, getState) => {
 const getVideoListVideos = id => async dispatch => {
   const res = await videoListService.getVideosFromVideoList(id)
 
-  let fullVideosArray = await Promise.all(res.data.map(async vid => {
-    let fullVideo = {
-      ...vid,
-      likesArray: await likeService.getLikesByVideoId(vid._id)
-    }
-
-    return fullVideo
-  }))
-
   dispatch({
     type: VIDEO_LIST_CONSTANTS.SET_VIDEOS_IN_VIDEO_LIST,
-    payload: fullVideosArray
+    payload: res.data
   })
 }
 
