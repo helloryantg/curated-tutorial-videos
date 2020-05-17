@@ -16,10 +16,7 @@ function UserLists(props) {
     tab,
     dispatch,
     reducerVideos,
-    searchText
   } = props
-
-  console.log('searchText', searchText)
 
   const [videos, setVideos] = useState([])
 
@@ -33,7 +30,6 @@ function UserLists(props) {
     setVideos(reducerVideos)
   }, [reducerVideos])
 
-  console.log(videos)
   return (
     <div className="UserLists">
       {videos.map(video => {
@@ -49,8 +45,7 @@ function UserLists(props) {
 }
 
 const mapState = ({ reducers }) => ({
-  reducerVideos: reducers.videos,
-  searchText: reducers.searchText,
+  reducerVideos: reducers.videos.filter(video => video.title.toLowerCase().includes(reducers.searchText.toLowerCase())),
 })
 
 export default connect(mapState)(UserLists)
