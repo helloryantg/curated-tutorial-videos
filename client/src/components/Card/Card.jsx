@@ -35,7 +35,8 @@ function Card(props) {
           <div className="logo"></div>
         </div>
         <div className="detail">
-          <p className="title">{currentVideo.title}</p>
+          {/* <p className="title">{currentVideo.title}</p> */}
+          <Link to={`video/${currentVideo._id}`} className="title">{currentVideo.title}</Link>
           <p className="user">{Object.keys(currentVideo).includes('user') ? currentVideo.user.displayName : 'user'}</p>
           <p className="created-time">{moment(currentVideo.createdAt).format("MMM Do YY")}</p>
         </div>

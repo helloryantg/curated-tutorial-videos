@@ -134,7 +134,6 @@ function VideoPage(props) {
 
   return (
     <div className="VideoPage">
-      <NavBar />
       <div className="main">
         <div className="video">
           {/* <YouTube
