@@ -48,7 +48,6 @@ function Tab(props) {
           className: 'user-list',
           label: list.name,
           name: 'user_lists',
-          icon: IoIosArrowForward,
           list,
         }
       })
@@ -79,7 +78,7 @@ function Tab(props) {
                 }
               }}
             >
-              <tab.icon />
+              {Object.keys(tab).includes('icon') ? <tab.icon /> : null}
               <p>{tab.label}</p>
             </div>
           )

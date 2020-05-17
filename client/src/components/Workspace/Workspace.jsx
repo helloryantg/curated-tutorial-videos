@@ -20,7 +20,7 @@ function Workspace(props) {
       case 'search':
         return <SearchPage />
       case 'my_lists':
-        return <VideoWorkspace />
+        return <SearchPage />
       case 'user_lists':
         return <UserLists 
           tab={tab}

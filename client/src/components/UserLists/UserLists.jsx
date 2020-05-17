@@ -8,6 +8,8 @@ import './UserLists.scss'
 import videoListActions from '../../actions/videoList.action'
 // Utils
 import { isEmpty } from '../../utils/object'
+// Components
+import Card from '../../components/Card/Card'
 
 function UserLists(props) {
   const {
@@ -31,7 +33,13 @@ function UserLists(props) {
   console.log(videos)
   return (
     <div className="UserLists">
-      
+      {videos.map(video => {
+        return (
+          <Card 
+            video={video}
+          />
+        )
+      })}
     </div>
   )
 }
