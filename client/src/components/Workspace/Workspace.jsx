@@ -8,6 +8,7 @@ import './Workspace.scss'
 import Tab from '../../components/Tab/Tab'
 import VideoWorkspace from '../../pages/VideoWorkspace/VideoWorkspace'
 import SearchPage from '../../pages/SearchPage/SearchPage'
+import UserLists from '../../components/UserLists/UserLists'
 
 const DEFAULT_TAB = 'Search'
 
@@ -21,8 +22,9 @@ function Workspace(props) {
       case 'my_lists':
         return <VideoWorkspace />
       case 'user_lists':
-        console.log(tab)
-        return <div>{tab.label}</div>
+        return <UserLists 
+          tab={tab}
+        />
 
       default:
         return <div>Empty</div>
