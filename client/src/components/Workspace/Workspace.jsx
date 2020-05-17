@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import './Workspace.scss'
 // Components
 import Tab from '../../components/Tab/Tab'
-import VideoWorkspace from '../../pages/VideoWorkspace/VideoWorkspace'
 import SearchPage from '../../pages/SearchPage/SearchPage'
 import UserLists from '../../components/UserLists/UserLists'
 

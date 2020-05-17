@@ -16,7 +16,10 @@ function UserLists(props) {
     tab,
     dispatch,
     reducerVideos,
+    searchText
   } = props
+
+  console.log('searchText', searchText)
 
   const [videos, setVideos] = useState([])
 
@@ -35,7 +38,8 @@ function UserLists(props) {
     <div className="UserLists">
       {videos.map(video => {
         return (
-          <Card 
+          <Card
+            key={video._id} 
             video={video}
           />
         )
@@ -46,6 +50,7 @@ function UserLists(props) {
 
 const mapState = ({ reducers }) => ({
   reducerVideos: reducers.videos,
+  searchText: reducers.searchText,
 })
 
 export default connect(mapState)(UserLists)
