@@ -44,11 +44,10 @@ function App(props) {
   useEffect(() => {
   }, [modal])
 
-  let body
   if (!isLoggedIn) {
-    body = <AuthPage />
-  } else {
-    body = <VideoWorkspace />
+    return <div className="App">
+      <AuthPage />
+    </div>
   }
 
   return (
@@ -57,10 +56,7 @@ function App(props) {
       {modal.modalProps.open ? <Modal modal={modal} /> : null}
       <Router>
         <Switch>
-          <Route exact path='/'>
-            {body}
-          </Route>
-          <Route exact path='/workspace' component={Workspace}/>
+          <Route exact path='/' component={Workspace}/>
           <Route exact path='/video/:id' component={VideoPage}/>
         </Switch>
       </Router>
