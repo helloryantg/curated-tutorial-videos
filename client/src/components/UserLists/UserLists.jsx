@@ -32,14 +32,19 @@ function UserLists(props) {
 
   return (
     <div className="UserLists">
-      {videos.map(video => {
+      {videos.length ? videos.map(video => {
         return (
           <Card
             key={video._id} 
             video={video}
           />
         )
-      })}
+      })
+      :
+      <div className="empty-list">
+        <div className="add-video">Add Video to List</div>
+      </div>
+    }
     </div>
   )
 }
