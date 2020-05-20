@@ -6,10 +6,13 @@ import { connect } from 'react-redux'
 import './UserLists.scss'
 // Actions
 import videoListActions from '../../actions/videoList.action'
+import modalActions from '../../actions/modal.action'
 // Utils
 import { isEmpty } from '../../utils/object'
 // Components
 import Card from '../../components/Card/Card'
+// Constants
+import MODAL_CONSTANTS from '../../constants/modal.constants'
 
 function UserLists(props) {
   const {
@@ -42,7 +45,17 @@ function UserLists(props) {
       })
       :
       <div className="empty-list">
-        <div className="add-video">Add Video to List</div>
+        <div 
+          className="add-video"
+          onClick={() => {
+            dispatch(modalActions.showModal({
+              modalType: MODAL_CONSTANTS.ADD_VIDEO_TO_LIST_MODAL,
+              modalProps: {
+                videoList: tab.list
+              }
+            }))
+          }}
+        >Add Video to List</div>
       </div>
     }
     </div>
