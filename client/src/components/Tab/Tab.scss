@@ -1,54 +1,33 @@
 .Tab {
-  height: 100vh;
   min-width: 15rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
 
-  & > .tabs {
+  & > .row {
     height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    align-items: center;
 
-    & > .tab {
-      height: 2.5rem;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      padding: 0 1.5rem;
-      cursor: pointer;
-
-      &.user-list {
-        margin-left: 0.5rem;
-        width: calc(100% - 0.5rem);
-        
-        & > p {
-          font-size: 80%;
-          height: 100%;
-          width: 100%;
-          display: flex;
-          align-items: center;
-        }
-      }
-
-      &:hover {
-        background-color: #CCCCCC;
-      // #CCCCCC
-      // #AAAAAA
-      // #909090
-      // #717171
-      // #606060
-      }
+    & > .icon {
+      height: 1.6rem;
+      width: 1.6rem;
+      margin-left: 1.5rem;
 
       & > svg {
-        margin-right: 1.5rem;
-        height: 1.5rem;
-        width: 1.5rem;
-      }
-
-      & > p {
-        font-size: 1.1rem;
-        position: relative;
-        bottom: 1px;
+        height: 100%;
+        width: 100%;
       }
     }
+
+    & > .label {
+      margin-left: 1.5rem;
+      font-size: 110%;
+    }
+  }
+
+  &:hover {
+    background-color: #CCCCCC;
   }
 }

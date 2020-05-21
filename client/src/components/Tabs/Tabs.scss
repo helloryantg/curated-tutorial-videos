@@ -1,0 +1,54 @@
+.Tabs {
+  height: 100vh;
+  min-width: 15rem;
+
+  & > .tabs {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    & > .tab {
+      height: 2.5rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      cursor: pointer;
+
+      &.user-list {
+        margin-left: 0.5rem;
+        width: calc(100% - 0.5rem);
+        
+        & > p {
+          font-size: 80%;
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      &:hover {
+        background-color: #CCCCCC;
+      // #CCCCCC
+      // #AAAAAA
+      // #909090
+      // #717171
+      // #606060
+      }
+
+      & > svg {
+        margin-right: 1.5rem;
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+
+      & > p {
+        font-size: 1.1rem;
+        position: relative;
+        bottom: 1px;
+      }
+    }
+  }
+}

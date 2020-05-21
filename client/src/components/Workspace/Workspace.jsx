@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 // Styles
 import './Workspace.scss'
 // Components
-import Tab from '../../components/Tab/Tab'
+import Tabs from '../../components/Tabs/Tabs'
 import SearchPage from '../../pages/SearchPage/SearchPage'
 import UserLists from '../../components/UserLists/UserLists'
 
@@ -32,7 +32,7 @@ function Workspace(props) {
 
   return (
     <div className="Workspace">
-      <Tab 
+      <Tabs 
         currentTab={currentTab} 
         setCurrentTab={setCurrentTab}
       />

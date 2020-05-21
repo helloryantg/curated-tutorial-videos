@@ -1,6 +1,5 @@
 // React
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 // Styles
 import './Tab.scss'
 // Dependencies
@@ -9,88 +8,33 @@ import {
   IoIosList,
   IoIosArrowForward
 } from "react-icons/io"
-// Utils
-import { isEmpty } from '../../utils/object'
-// Actions
-import videoListAction from '../../actions/videoList.action'
+
+const table = {
+  search: IoMdSearch,
+}
 
 function Tab(props) {
-  const [toggled, setToggled] = useState(true)
-
-  const toggleList = (toggled) => {
-    setToggled(!toggled)
-  }
-
-  const tabs = [
-    { label: 'Search', name: 'search', icon: IoMdSearch },
-    { label: 'My Lists', name: 'my_lists', icon: IoIosList, onClick: toggleList },
-  ]
-
-  const [allTabs, setAllTabs] = useState([...tabs])
-
-  const {
-    setCurrentTab,
-    user,
-    dispatch,
-    videoLists
+  const { 
+    label,
   } = props
 
-  useEffect(() => {
-    if (!isEmpty(user)) {
-      dispatch(videoListAction.getUserVideoLists(user._id))
+  const renderIcon = () => {
+    switch(props.label) {
+      case 'Search':
+        return <IoMdSearch />
+      default:
+        return <div>E</div>
     }
-  }, [user, dispatch])
-
-  useEffect(() => {
-    if (toggled) {
-      const userTabs = videoLists.map(list => {
-        return {
-          className: 'user-list',
-          label: list.name,
-          name: 'user_lists',
-          list,
-        }
-      })
-  
-      setAllTabs([...tabs, ...userTabs])
-    } else {
-      setAllTabs([...tabs])
-    }
-  }, [videoLists, toggled])
+  }
 
   return (
     <div className="Tab">
-      <div className="tabs">
-        {allTabs.map((tab, index) => {
-          const tabClassName = Object.keys(tab).includes('className') ? tab.className : ''
-          const secondaryClick = Object.keys(tab).includes('onClick') ? tab.onClick : null
-          return (
-            <div 
-              className={`tab ${tabClassName}`} 
-              key={`${tab.name}-${index}`}
-              onClick={() => {
-                setCurrentTab(tab)
-
-                if (secondaryClick !== null) {
-                  if (tab.label === 'My Lists') {
-                    secondaryClick(toggled)
-                  }
-                }
-              }}
-            >
-              {Object.keys(tab).includes('icon') ? <tab.icon /> : null}
-              <p>{tab.label}</p>
-            </div>
-          )
-        })}
+      <div className="row">
+        <div className="icon">{renderIcon()}</div>
+        <div className="label">{label}</div>
       </div>
     </div>
   )
 }
 
-const mapState = ({ reducers }) => ({
-  videoLists: reducers.videoLists,
-  user: reducers.user,
-})
-
-export default connect(mapState)(Tab)
+export default Tab
