@@ -1,5 +1,7 @@
 // React
-import React from 'react'
+import React, { useEffect } from 'react'
+// Redux
+import { connect } from 'react-redux'
 // Styles
 import './Tab.scss'
 // Dependencies
@@ -8,33 +10,54 @@ import {
   IoIosList,
   IoIosArrowForward
 } from "react-icons/io"
-
-const table = {
-  search: IoMdSearch,
-}
+// Utils
+import { isEmpty } from '../../utils/object'
+// Actions
+import videoListAction from '../../actions/videoList.action'
 
 function Tab(props) {
   const { 
-    label,
+    tab,
+    user,
+    dispatch,
+    videoLists,
+    clickedTab,
+    setClickedTab,
   } = props
 
+  useEffect(() => {
+    if (tab.label === 'My Lists' && !isEmpty(user)) {
+      dispatch(videoListAction.getUserVideoLists(user._id))
+    }
+  }, [user, dispatch])
+
   const renderIcon = () => {
-    switch(props.label) {
+    switch(tab.label) {
       case 'Search':
         return <IoMdSearch />
+      case 'My Lists':
+        return <IoIosList />
       default:
         return <div>E</div>
     }
   }
 
   return (
-    <div className="Tab">
+    <div 
+      className={`Tab ${clickedTab.label === tab.label ? 'active' : ''}`}
+      onClick={() => setClickedTab(tab)}  
+    >
       <div className="row">
         <div className="icon">{renderIcon()}</div>
-        <div className="label">{label}</div>
+        <div className="label">{tab.label}</div>
       </div>
     </div>
   )
 }
 
-export default Tab
+const mapState = ({ reducers }) => ({
+  user: reducers.user,
+  videoLists: reducers.videoLists
+})
+
+export default connect(mapState)(Tab)
