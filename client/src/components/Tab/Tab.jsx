@@ -1,5 +1,5 @@
 // React
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 // Redux
 import { connect } from 'react-redux'
 // Styles
@@ -20,16 +20,24 @@ function Tab(props) {
     tab,
     user,
     dispatch,
-    videoLists,
+    reducerVideoLists,
     clickedTab,
     setClickedTab,
   } = props
+
+  const [videoLists, setVideoLists] = useState([])
 
   useEffect(() => {
     if (tab.label === 'My Lists' && !isEmpty(user)) {
       dispatch(videoListAction.getUserVideoLists(user._id))
     }
   }, [user, dispatch])
+
+  useEffect(() => {
+    if (reducerVideoLists.length) {
+      setVideoLists(reducerVideoLists)
+    }
+  }, [reducerVideoLists])
 
   const renderIcon = () => {
     switch(tab.label) {
@@ -57,7 +65,7 @@ function Tab(props) {
 
 const mapState = ({ reducers }) => ({
   user: reducers.user,
-  videoLists: reducers.videoLists
+  reducerVideoLists: reducers.videoLists
 })
 
 export default connect(mapState)(Tab)
