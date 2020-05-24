@@ -5,8 +5,16 @@ import { connect } from 'react-redux'
 import './Tabs.scss'
 // Components
 import Tab from '../../components/Tab/Tab'
+// Actions
+import videoListAction from '../../actions/videoList.action'
 
 function Tabs(props) {
+  const {
+    user,
+    dispatch,
+    reducerVideoLists,
+  } = props
+
   const tabs = [
     { label: 'Search' },
     { label: 'My Lists' }
@@ -14,6 +22,19 @@ function Tabs(props) {
 
   const [allTabs, setAllTabs] = useState([...tabs])
   const [clickedTab, setClickedTab] = useState(allTabs[0])
+  const [videoLists, setVideoLists] = useState([])
+
+  useEffect(() => {
+    dispatch(videoListAction.getUserVideoLists(user._id))
+  }, [user, dispatch])
+
+  useEffect(() => {
+    if (reducerVideoLists.length) {
+      setVideoLists(reducerVideoLists)
+    }
+  }, [reducerVideoLists])
+
+  console.log(videoLists)
 
   return (
     <div className="Tabs">
@@ -33,6 +54,9 @@ function Tabs(props) {
   )
 }
 
-const mapState = ({ reducers }) => ({})
+const mapState = ({ reducers }) => ({
+  reducerVideoLists: reducers.videoLists,
+  user: reducers.user
+})
 
 export default connect(mapState)(Tabs)

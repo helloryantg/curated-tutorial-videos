@@ -12,8 +12,8 @@ import {
 } from "react-icons/io"
 // Utils
 import { isEmpty } from '../../utils/object'
-// Actions
-import videoListAction from '../../actions/videoList.action'
+// // Actions
+// import videoListAction from '../../actions/videoList.action'
 
 function Tab(props) {
   const { 
@@ -25,19 +25,19 @@ function Tab(props) {
     setClickedTab,
   } = props
 
-  const [videoLists, setVideoLists] = useState([])
+  // const [videoLists, setVideoLists] = useState([])
 
-  useEffect(() => {
-    if (tab.label === 'My Lists' && !isEmpty(user)) {
-      dispatch(videoListAction.getUserVideoLists(user._id))
-    }
-  }, [user, dispatch])
+  // useEffect(() => {
+  //   if (tab.label === 'My Lists' && !isEmpty(user)) {
+  //     dispatch(videoListAction.getUserVideoLists(user._id))
+  //   }
+  // }, [user, dispatch])
 
-  useEffect(() => {
-    if (reducerVideoLists.length) {
-      setVideoLists(reducerVideoLists)
-    }
-  }, [reducerVideoLists])
+  // useEffect(() => {
+  //   if (reducerVideoLists.length) {
+  //     setVideoLists(reducerVideoLists)
+  //   }
+  // }, [reducerVideoLists])
 
   const renderIcon = () => {
     switch(tab.label) {
