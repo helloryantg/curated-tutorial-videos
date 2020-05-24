@@ -49,6 +49,16 @@ function Tabs(props) {
             />
           )
         })}
+        {videoLists.map(list => {
+          return (
+            <Tab 
+              key={list._id}
+              tab={{ label: list.name}}
+              clickedTab={clickedTab}
+              setClickedTab={setClickedTab}
+            />
+          )
+        })}
       </div>
     </div>
   )
