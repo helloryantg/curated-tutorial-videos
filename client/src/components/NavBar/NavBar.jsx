@@ -16,7 +16,6 @@ import {
 // Constants
 import SEARCH_CONSTANTS from '../../constants/search.constants'
 
-
 function NavBar(props) {
   const { 
     user,
@@ -29,7 +28,7 @@ function NavBar(props) {
   
   return (
     <div className="NavBar">
-      <Link to="/" className="logo">
+      <Link to="/" className="logo" onClick={() => window.location = "/"} >
         CTV
       </Link>
       <div className="search">
