@@ -22,6 +22,7 @@ function Tabs(props) {
 
   const [allTabs, setAllTabs] = useState([...tabs])
   const [clickedTab, setClickedTab] = useState(allTabs[0])
+  const [toggleList, setToggleList] = useState(false)
   const [videoLists, setVideoLists] = useState([])
 
   useEffect(() => {
@@ -34,7 +35,14 @@ function Tabs(props) {
     }
   }, [reducerVideoLists])
 
-  console.log(videoLists)
+  const handleClickTab = (clickedTab) => {
+    
+    setClickedTab(clickedTab)
+
+    if (clickedTab.label === 'My Lists') {
+      setToggleList(!toggleList)
+    }
+  }
 
   return (
     <div className="Tabs">
@@ -45,20 +53,20 @@ function Tabs(props) {
               key={tab.label} 
               tab={tab}
               clickedTab={clickedTab}
-              setClickedTab={setClickedTab}
+              setClickedTab={handleClickTab}
             />
           )
         })}
-        {videoLists.map(list => {
+        {toggleList ? videoLists.map(list => {
           return (
             <Tab 
               key={list._id}
               tab={{ label: list.name}}
               clickedTab={clickedTab}
-              setClickedTab={setClickedTab}
+              setClickedTab={handleClickTab}
             />
           )
-        })}
+        }) : null}
       </div>
     </div>
   )
