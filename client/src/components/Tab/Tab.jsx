@@ -57,7 +57,7 @@ function Tab(props) {
     >
       <div className="row">
         <div className="icon">{renderIcon()}</div>
-        <div className="label">{tab.label}</div>
+        <div className="label" title={tab.label}>{tab.label}</div>
       </div>
     </div>
   )
