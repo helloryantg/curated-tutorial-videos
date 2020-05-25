@@ -1,5 +1,5 @@
 // React
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // Redux
 import { connect } from 'react-redux'
 // Styles
@@ -15,13 +15,13 @@ function Workspace(props) {
   const [currentTab, setCurrentTab] = useState(DEFAULT_TAB)
 
   const renderBody = tab => {
-    switch(tab.name) {
+    switch (tab.name) {
       case 'search':
         return <SearchPage />
       case 'my_lists':
         return <SearchPage />
       case 'user_lists':
-        return <UserLists 
+        return <UserLists
           tab={tab}
         />
 
@@ -32,8 +32,8 @@ function Workspace(props) {
 
   return (
     <div className="Workspace">
-      <Tabs 
-        currentTab={currentTab} 
+      <Tabs
+        currentTab={currentTab}
         setCurrentTab={setCurrentTab}
       />
       {renderBody(currentTab)}

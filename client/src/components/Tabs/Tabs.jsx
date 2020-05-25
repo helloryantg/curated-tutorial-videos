@@ -13,6 +13,7 @@ function Tabs(props) {
     user,
     dispatch,
     reducerVideoLists,
+    setCurrentTab
   } = props
 
   const tabs = [
@@ -38,6 +39,7 @@ function Tabs(props) {
   const handleClickTab = (clickedTab) => {
     
     setClickedTab(clickedTab)
+    setCurrentTab(clickedTab)
 
     if (clickedTab.label === 'My Lists') {
       setToggleList(!toggleList)
