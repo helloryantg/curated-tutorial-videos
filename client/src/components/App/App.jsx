@@ -56,7 +56,8 @@ function App(props) {
       {modal.modalProps.open ? <Modal modal={modal} /> : null}
       <Router>
         <Switch>
-          <Route exact path='/' component={Workspace}/>
+          {/* <Route exact path='/' component={Workspace}/> */}
+          <Route exact path='/' component={VideoWorkspace}/>
           <Route exact path='/video/:id' component={VideoPage}/>
         </Switch>
       </Router>
