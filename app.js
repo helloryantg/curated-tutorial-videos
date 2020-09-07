@@ -3,6 +3,7 @@ const http = require('http')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
+const helmet = require('helmet')
 
 // App
 const app = express()
@@ -11,7 +12,8 @@ require('dotenv').config()
 require('./config/database')
 
 // Middleware
-app.use(logger('dev'))
+app.use(helmet())
+app.use(logger('tiny'))
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.json({ type: '*/*' }))
