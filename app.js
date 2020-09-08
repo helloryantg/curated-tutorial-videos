@@ -34,6 +34,16 @@ app.use((req, res, next) => {
   next(error);
 });
 
+// Error handling middleware
+app.use((error, req, res, next) => {
+  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+  res.status(statusCode);
+  res.json({
+    message: error.message,
+    stack: process.env.NODE_ENV === 'production' ? 'Error' : error.stack
+  });
+});
+
 const port = process.env.PORT || 4000;
 
 const server = http.createServer(app);
