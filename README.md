@@ -11,3 +11,6 @@ Dependencies:
 - react-player
 - react-icons
 - moment
+
+Major changes:
+- Change this app to an app where you can send anyone a link that shows a list of curated videos by the user
