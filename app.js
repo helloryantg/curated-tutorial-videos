@@ -28,7 +28,11 @@ app.use('/likes', require('./controllers/like.controller'))
 app.use('/comments', require('./controllers/comment.controller'))
 
 // Catch all route
-app.get('*', (req, res) => { res.send('404 not found!') })
+app.use((req, res, next) => {
+  const error = new Error(`Not Found - ${req.originalUrl}`);
+  res.status(404);
+  next(error);
+});
 
 const port = process.env.PORT || 4000;
 
