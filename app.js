@@ -16,7 +16,7 @@ require('./config/database')
 // Middleware
 app.use(helmet())
 app.use(logger('tiny'))
-app.use(cors())
+app.use(cors({ origin: process.env.CORS_ORIGIN }))
 app.use(express.json())
 app.use(bodyParser.json({ type: '*/*' }))
 app.use(bodyParser.urlencoded({ extended: true }))
