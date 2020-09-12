@@ -22,12 +22,12 @@ app.use(bodyParser.json({ type: '*/*' }))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // Routes
-app.use('/auth', require('./controllers/auth.controller'))
-app.use('/users', require('./controllers/user.controller'))
-app.use('/videoLists', require('./controllers/videoList.controller'))
-app.use('/videos', require('./controllers/video.controller'))
-app.use('/likes', require('./controllers/like.controller'))
-app.use('/comments', require('./controllers/comment.controller'))
+app.use('/api/auth', require('./controllers/auth.controller'))
+app.use('/api/users', require('./controllers/user.controller'))
+app.use('/api/videoLists', require('./controllers/videoList.controller'))
+app.use('/api/videos', require('./controllers/video.controller'))
+app.use('/api/likes', require('./controllers/like.controller'))
+app.use('/api/comments', require('./controllers/comment.controller'))
 
 // Catch all route
 app.use(middlewares.notFound);
