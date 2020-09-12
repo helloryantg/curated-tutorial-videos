@@ -5,7 +5,7 @@ import tokenService from './token.service'
 // Interfaces
 import { server } from '../interfaces/axios.interface'
 
-const BASE_URL = 'http://localhost:4000/auth'
+const BASE_URL = 'http://localhost:4000/api/auth'
 
 const signup = async user => {
   const res = await axios.post(`${BASE_URL}/register`, user)
@@ -41,7 +41,7 @@ const logout = () => tokenService.removeToken()
 
 const getUserDetails = async id => {
   try {
-    const res = await server.get(`http://localhost:4000/users/${id}`)
+    const res = await server.get(`http://localhost:4000/api/users/${id}`)
 
     return res.data
   } catch (err) {
@@ -49,7 +49,7 @@ const getUserDetails = async id => {
   }
 }
 
-const USER_BASE_URL = 'http://localhost:4000/users'
+const USER_BASE_URL = 'http://localhost:4000/api/users'
 
 const getUserById = async id => {
   try {
