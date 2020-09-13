@@ -8,6 +8,10 @@ const createVideoList = name => {
   return server.post('/videoLists', { name })
 }
 
+const getVideoList = id => {
+  return server.get(`/videoLists/${id}`);
+}
+
 const getVideosFromVideoList = id => {
   return server.get(`/videoLists/${id}/videos`)
 }
@@ -24,7 +28,8 @@ const deleteVideoList = id => {
 export default {
   getUserVideoLists,
   createVideoList,
+  getVideoList,
   getVideosFromVideoList,
   updateVideoList,
-  deleteVideoList
+  deleteVideoList,
 }

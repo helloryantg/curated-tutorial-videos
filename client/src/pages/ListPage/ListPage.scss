@@ -1,0 +1,52 @@
+.ListPage {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > .list-title {
+    
+  }
+
+  & > .video-container {
+    width: 80%;
+
+    & > .video {
+      margin: 1rem; 
+  
+      &.vsmall { // 240p
+        width: 426px;
+        height: 240px;
+      }
+  
+      &.small { // 360p
+        width: 640px;
+        height: 360px;
+      }
+  
+      &.medium { // 480p
+        width: 1280px;
+        height: 720px;
+      }
+  
+      &.large { // 720p
+        width: 1920px;
+        height: 1080px;
+      }
+  
+      &.huge { // 1440p
+        width: 2560px;
+        height: 1440px;
+      }
+  
+      &.ginormous { // 2160p
+        width: 3840px;
+        height: 2160px;
+      }
+
+      &.right {
+        margin-left: auto;
+      }
+    }
+  }
+}

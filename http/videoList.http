@@ -2,26 +2,26 @@
 @application-json = Content-Type: application/json
 @id = 5e6411e05d938c317b873924
 @userId = 5e61892041a37762ae86eb0a
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJ0eXBlIjoidXNlciIsIl9pZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImZpcnN0TmFtZSI6IlJ5YW4iLCJsYXN0TmFtZSI6IkdvbnphbGVzIiwiZGlzcGxheU5hbWUiOiJyZ29uemFsZXMiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiY3JlYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwidXBkYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwiX192IjowfSwiaWF0IjoxNTg4NDQzMDU5LCJleHAiOjE1ODg1Mjk0NTl9.-CY8T1tW_BdFY6jTnX1MuNq0SiaYxk5tSNaofi9HI9Q
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJ0eXBlIjoidXNlciIsIl9pZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImZpcnN0TmFtZSI6IlJ5YW4iLCJsYXN0TmFtZSI6IkdvbnphbGVzIiwiZGlzcGxheU5hbWUiOiJyZ29uemFsZXMiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiY3JlYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwidXBkYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwiX192IjowfSwiaWF0IjoxNjAwMDIwODg1LCJleHAiOjE2MDAxMDcyODV9.7ErvtBk3spxF01TYoS-Xtlj6yuAHmnyoBiJ9__HPI8w
 @authorization = Authorization: {{token}}
 
 ### Get all videos in a videoList
-GET {{base}}/videoLists/{{id}}/videos
+GET {{base}}/api/videoLists/{{id}}/videos
 {{application-json}}
 {{authorization}}
 
 ### Get all user video lists
-GET {{base}}/videoLists/{{userId}}/user
+GET {{base}}/api/videoLists/{{userId}}/user
 {{application-json}}
 {{authorization}}
 
 ### Get all video lists
-GET {{base}}/videoLists/all
+GET {{base}}/api/videoLists/all
 {{application-json}}
 {{authorization}}
 
 ### Create a video list
-POST {{base}}/videoLists
+POST {{base}}/api/videoLists
 {{application-json}}
 {{authorization}}
 
@@ -31,13 +31,13 @@ POST {{base}}/videoLists
 }
 
 ### Get a video list
-GET {{base}}/videoLists/{{id}}
+GET {{base}}/api/videoLists/{{id}}
 {{application-json}}
 {{authorization}}
 
 
 ### Update a video list
-PUT {{base}}/videoLists/{{id}}
+PUT {{base}}/api/videoLists/{{id}}
 {{application-json}}
 {{authorization}}
 
@@ -46,6 +46,6 @@ PUT {{base}}/videoLists/{{id}}
 }
 
 ### Delete a video list
-DELETE {{base}}/videoLists/{{id}}
+DELETE {{base}}/api/videoLists/{{id}}
 {{application-json}}
 {{authorization}}

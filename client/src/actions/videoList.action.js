@@ -22,6 +22,15 @@ const createNewVideoList = videoList => async (dispatch, getState) => {
   })
 }
 
+const getVideoList = videoListId => async (dispatch, getState) => {
+  const res = await videoListService.getVideoList(videoListId)
+
+  dispatch({
+    type: VIDEO_LIST_CONSTANTS.SET_VIDEO_LIST,
+    payload: res.data
+  })
+}
+
 const getVideoListVideos = id => async dispatch => {
   const res = await videoListService.getVideosFromVideoList(id)
 
@@ -62,7 +71,8 @@ const deleteVideoList = id => async (dispatch, getState) => {
 export default {
   getUserVideoLists,
   createNewVideoList,
+  getVideoList,
   getVideoListVideos,
   updateVideoList,
-  deleteVideoList
+  deleteVideoList,
 }

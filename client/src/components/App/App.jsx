@@ -15,6 +15,7 @@ import {
 } from '../../actions/user.action'
 // Pages
 import AuthPage from '../../pages/AuthPage/AuthPage'
+import ListPage from '../../pages/ListPage/ListPage';
 // Components
 import Modal from '../Modals/Modals'
 import NavBar from '../../components/NavBar/NavBar'
@@ -58,6 +59,7 @@ function App(props) {
         <Switch>
           {/* <Route exact path='/' component={Workspace}/> */}
           <Route exact path='/' component={VideoWorkspace}/>
+          <Route exact path='/list/:listId' component={ListPage} />
           <Route exact path='/video/:id' component={VideoPage}/>
         </Switch>
       </Router>
