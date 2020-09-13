@@ -36,10 +36,6 @@ function ListPage(props) {
   // Test list page - http://localhost:3000/list/5e66c35fc0055d7503f48f2e
   // Longer test http://localhost:3000/list/5e6411e05d938c317b873924
 
-  console.log(currentVideo);
-
-  const isOdd = idx => idx % 2 !== 0;
-  
   return (
     <div className="ListPage">
       <h2>{currentVideo.name}</h2>
@@ -51,7 +47,7 @@ function ListPage(props) {
               key={video._id}
             >
               <div 
-                className={`video small ${isOdd(idx) ? 'right' : ''}`}
+                className="video"
               >
                 <ReactPlayer
                   url={video.url}
