@@ -1,21 +1,21 @@
 @base = http://localhost:4000
 @application-json = Content-Type: application/json
 @id = 5e61892041a37762ae86eb0a
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJ0eXBlIjoidXNlciIsIl9pZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImZpcnN0TmFtZSI6IlJ5YW4iLCJsYXN0TmFtZSI6IkdvbnphbGVzIiwiZGlzcGxheU5hbWUiOiJyZ29uemFsZXMiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiY3JlYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwidXBkYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwiX192IjowfSwiaWF0IjoxNTg1NjI1MjE1LCJleHAiOjE1ODU3MTE2MTV9.3BCZOvmNQflucCfDCYScJfq0wF2ITSxeKyS-8N2iq0Y
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJ0eXBlIjoidXNlciIsIl9pZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImZpcnN0TmFtZSI6IlJ5YW4iLCJsYXN0TmFtZSI6IkdvbnphbGVzIiwiZGlzcGxheU5hbWUiOiJyZ29uemFsZXMiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiY3JlYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwidXBkYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwiX192IjowfSwiaWF0IjoxNjAwMDIwODg1LCJleHAiOjE2MDAxMDcyODV9.7ErvtBk3spxF01TYoS-Xtlj6yuAHmnyoBiJ9__HPI8w
 @authorization = Authorization: {{token}}
 
 ### Get all users
-GET {{base}}/users/all
+GET {{base}}/api/users/all
 {{application-json}}
 {{authorization}}
 
 ### Get user
-GET {{base}}/users/{{id}}
+GET {{base}}/api/users/{{id}}
 {{application-json}}
 {{authorization}}
 
 ### Delete user
-DELETE {{base}}/users/{{id}}
+DELETE {{base}}/api/users/{{id}}
 {{application-json}}
 
 # ### Get all user video lists

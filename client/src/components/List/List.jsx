@@ -70,7 +70,13 @@ function List({
         <div
           className="delete"
           onClick={() => {
-            dispatch(videoListAction.deleteVideoList(videoLists[activeTabIndex]._id))
+            dispatch(modalActions.showModal({
+              modalType: MODAL_CONSTANTS.DELETE_VIDEO_LIST_MODAL,
+              modalProps: {
+                videoList: videoLists[activeTabIndex]
+              }
+            }))
+            // dispatch(videoListAction.deleteVideoList(videoLists[activeTabIndex]._id))
           }}
         >
           <FiXSquare />

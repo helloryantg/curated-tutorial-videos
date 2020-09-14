@@ -11,6 +11,7 @@ import AddVideoListModal from './AddVideoListModal/AddVideoListModal'
 import AddVideoModal from './AddVideoModal/AddVideoModal'
 import EditVideoModal from './EditVideoModal/EditVideoModal'
 import EditVideoListModal from './EditVideoListModal/EditVideoListModal.jsx'
+import DeleteVideoListModal from './DeleteVideoListModal/DeleteVideoListModal';
 
 function Modals(props) {
   const {
@@ -36,6 +37,10 @@ function Modals(props) {
     case MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL:
       modalType = <EditVideoListModal data={data} />
       break
+    
+    case MODAL_CONSTANTS.DELETE_VIDEO_LIST_MODAL:
+      modalType = <DeleteVideoListModal data={data} />
+      break;
 
     default:
       return <div>Empty Modal</div>
