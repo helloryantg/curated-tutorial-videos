@@ -92,6 +92,15 @@ router.delete('/:id', authMiddleware, async (req, res) => {
     // Deletes all likes, comments, and videos associated with this video list
     await deleteVideoList(videoListId)
 
+    Video.deleteMany({ videoListId })
+      .then(() => {
+        console.log('Deleted many');
+      })
+      .catch(error => {
+        console.error(error);
+        next(error);
+      })
+
     res
       .status(HttpStatus.NO_CONTENT)
       .send(await VideoList.findOneAndDelete({ _id: req.params.id }))
