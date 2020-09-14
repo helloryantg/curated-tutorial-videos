@@ -1,19 +1,19 @@
 @base = http://localhost:4000
 @application-json = Content-Type: application/json
-@id = 5eae2f74527cbc603cc0cd4c
+@id = 5f5ec824d059b84b264aba3a
 @userId = 5e61892041a37762ae86eb0a
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJ0eXBlIjoidXNlciIsIl9pZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImZpcnN0TmFtZSI6IlJ5YW4iLCJsYXN0TmFtZSI6IkdvbnphbGVzIiwiZGlzcGxheU5hbWUiOiJyZ29uemFsZXMiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiY3JlYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwidXBkYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwiX192IjowfSwiaWF0IjoxNTg5NDI3Njc4LCJleHAiOjE1ODk1MTQwNzh9.YNKHS_gPsp1T4qBJbNRKUyvJGT1xtkGK41C8ozd7O3s
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJ0eXBlIjoidXNlciIsIl9pZCI6IjVlNjE4OTIwNDFhMzc3NjJhZTg2ZWIwYSIsImZpcnN0TmFtZSI6IlJ5YW4iLCJsYXN0TmFtZSI6IkdvbnphbGVzIiwiZGlzcGxheU5hbWUiOiJyZ29uemFsZXMiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiY3JlYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwidXBkYXRlZEF0IjoiMjAyMC0wMy0wNVQyMzoyMDowMC40NjdaIiwiX192IjowfSwiaWF0IjoxNjAwMDIwODg1LCJleHAiOjE2MDAxMDcyODV9.7ErvtBk3spxF01TYoS-Xtlj6yuAHmnyoBiJ9__HPI8w
 @authorization = Authorization: {{token}}
 @videoListId = 5e6411e05d938c317b873924
 @userId = 5e61892041a37762ae86eb0a
 
 ### Get all videos
-GET {{base}}/videos/all
+GET {{base}}/api/videos/all
 {{application-json}}
 {{authorization}}
 
 ### Create a video
-POST {{base}}/videos
+POST {{base}}/api/videos
 {{application-json}}
 {{authorization}}
 
@@ -26,12 +26,12 @@ POST {{base}}/videos
 }
 
 ### Get a video
-GET {{base}}/videos/{{id}}
+GET {{base}}/api/videos/{{id}}
 {{application-json}}
 {{authorization}}
 
 ### Update a video
-PUT {{base}}/videos/{{id}}
+PUT {{base}}/api/videos/{{id}}
 {{application-json}}
 {{authorization}}
 
@@ -43,11 +43,11 @@ PUT {{base}}/videos/{{id}}
 }
 
 ### Delete a video
-DELETE {{base}}/videos/{{id}}
+DELETE {{base}}/api/videos/{{id}}
 {{application-json}}
 {{authorization}}
 
 ### Gets video comments
-GET {{base}}/videos/{{id}}/comments
+GET {{base}}/api/videos/{{id}}/comments
 {{application-json}}
 {{authorization}}
