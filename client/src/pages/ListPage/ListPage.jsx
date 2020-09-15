@@ -3,6 +3,7 @@ import './ListPage.scss';
 import videoListActions from '../../actions/videoList.action';
 import { connect } from 'react-redux';
 import ReactPlayer from 'react-player';
+import { FiMoreVertical } from "react-icons/fi";
 
 function ListPage(props) {
   const {
@@ -58,7 +59,10 @@ function ListPage(props) {
               </div>
 
               <div className="text-container">
-                <h3 className="title">{video.title}</h3>
+                <div className="top">
+                  <h3 className="title">{video.title}</h3>
+                  <FiMoreVertical />
+                </div>
                 <div className="description">{video.description}</div>
               </div>
             </div>  
