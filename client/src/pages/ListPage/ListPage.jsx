@@ -56,6 +56,11 @@ function ListPage(props) {
                   width={'100%'}
                 />
               </div>
+
+              <div className="text-container">
+                <h3 className="title">{video.title}</h3>
+                <div className="description">{video.description}</div>
+              </div>
             </div>  
           )
         })
