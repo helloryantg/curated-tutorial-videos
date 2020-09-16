@@ -63,6 +63,12 @@ function ListPage(props) {
                   <h3 className="title">{video.title}</h3>
                   <FiMoreVertical />
                 </div>
+                <div className="hidden-options">
+                  <div className="options">
+                    <div className="option">Edit</div>
+                    <div className="option">Delete</div>
+                  </div>
+                </div>
                 <div className="description">{video.description}</div>
               </div>
             </div>  
