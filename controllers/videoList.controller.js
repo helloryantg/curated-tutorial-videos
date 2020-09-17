@@ -142,7 +142,7 @@ router.get('/:id/videos', authMiddleware, async (req, res) => {
   try {
     const videos = await Video
       .find({ videoListId: req.params.id })
-      .sort('createdAt');
+      .sort({ createdAt: 'asc' });
 
     res
       .status(HttpStatus.OK)
