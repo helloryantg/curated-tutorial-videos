@@ -24,7 +24,6 @@
       flex-direction: column;
       margin: 1rem 2rem;
       padding: 1rem;
-      position: relative;
 
       & > .top {
         display: flex;
@@ -32,25 +31,40 @@
         align-items: center;
         margin-bottom: 1rem;
 
-        & > svg {
-          cursor: pointer;
-        }
-      }
-
-      & > .hidden-options {
-        position: absolute;
-        width: 100px;
-        border: 1px solid red;
-        // transform: translate(256px, 23px);
-
-        & > .options {
-          height: 100%;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-
-          & > .option {
+        & > .right {
+          & > svg {
+            cursor: pointer;
+            position: relative;
           }
+  
+          & > .hidden-options {
+            position: absolute;
+            width: 100px;
+            transform: translate(-84px, 0px);
+            background-color: white;
+            overflow: hidden;
+            display: none;
+
+            &.visible {
+              display: block;
+            }
+    
+            & > .options {
+              height: 100%;
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+    
+              & > .option {
+                padding: .2rem 1rem;
+                cursor: pointer;
+
+                &:hover {
+                  background-color: lightblue;
+                }
+              }
+            }
+          }          
         }
       }
     }

@@ -13,13 +13,14 @@ function ListPage(props) {
     videos,
     videoList,
   } = props;
-  
+
   const {
     listId,
   } = match.params;
 
   const [currentVideos, setCurrentVideos] = useState([]);
   const [currentVideo, setCurrentVideo] = useState({});
+  const [displayMenuId, setDisplayMenuId] = useState('');
 
   useEffect(() => {
     dispatch(videoListActions.getVideoList(listId));
@@ -33,7 +34,7 @@ function ListPage(props) {
   useEffect(() => {
     setCurrentVideo(videoList);
   }, [videoList])
-  
+
   // Test list page - http://localhost:3000/list/5e66c35fc0055d7503f48f2e
   // Longer test http://localhost:3000/list/5e6411e05d938c317b873924
 
@@ -43,11 +44,11 @@ function ListPage(props) {
       {
         currentVideos.map((video, idx) => {
           return (
-            <div 
+            <div
               className="video-container"
               key={video._id}
             >
-              <div 
+              <div
                 className="video"
               >
                 <ReactPlayer
@@ -61,17 +62,28 @@ function ListPage(props) {
               <div className="text-container">
                 <div className="top">
                   <h3 className="title">{video.title}</h3>
-                  <FiMoreVertical />
-                </div>
-                <div className="hidden-options">
-                  <div className="options">
-                    <div className="option">Edit</div>
-                    <div className="option">Delete</div>
+                  <div className="right">
+                    <FiMoreVertical
+                      title='options' 
+                      onClick={() => {
+                        if (displayMenuId === video._id) {
+                          setDisplayMenuId('');
+                        } else {
+                          setDisplayMenuId(video._id)  
+                        }
+                      }}
+                    />
+                    <div className={`hidden-options ${displayMenuId === video._id ? 'visible' : ''}`}>
+                      <div className="options">
+                        <div className="option">Edit</div>
+                        <div className="option">Delete</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="description">{video.description}</div>
               </div>
-            </div>  
+            </div>
           )
         })
       }
