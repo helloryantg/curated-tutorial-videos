@@ -32,11 +32,11 @@ const getVideoList = videoListId => async (dispatch, getState) => {
 }
 
 const getVideoListVideos = id => async dispatch => {
-  const res = await videoListService.getVideosFromVideoList(id)
+  const res = await videoListService.getVideosFromVideoList(id);
 
   dispatch({
     type: VIDEO_LIST_CONSTANTS.SET_VIDEOS_IN_VIDEO_LIST,
-    payload: res.data
+    payload: res.data,
   })
 }
 

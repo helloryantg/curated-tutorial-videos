@@ -35,6 +35,7 @@
           & > svg {
             cursor: pointer;
             position: relative;
+            background-color: #d3d3d3;
           }
   
           & > .hidden-options {
@@ -44,6 +45,7 @@
             background-color: white;
             overflow: hidden;
             display: none;
+            background-color: #d3d3d3;
 
             &.visible {
               display: block;
@@ -60,7 +62,7 @@
                 cursor: pointer;
 
                 &:hover {
-                  background-color: lightblue;
+                  background-color: white;
                 }
               }
             }

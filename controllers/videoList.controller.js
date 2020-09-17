@@ -140,9 +140,13 @@ router.get('/:userId/user', authMiddleware, async (req, res) => {
 // Get all video list videos
 router.get('/:id/videos', authMiddleware, async (req, res) => {
   try {
+    const videos = await Video
+      .find({ videoListId: req.params.id })
+      .sort('createdAt');
+
     res
       .status(HttpStatus.OK)
-      .send(await Video.find({ videoListId: req.params.id }))
+      .send(videos);
   } catch (err) {
     res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)

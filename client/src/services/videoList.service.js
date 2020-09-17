@@ -13,7 +13,7 @@ const getVideoList = id => {
 }
 
 const getVideosFromVideoList = id => {
-  return server.get(`/videoLists/${id}/videos`)
+  return server.get(`/videoLists/${id}/videos`);
 }
 
 const updateVideoList = videoList => {
