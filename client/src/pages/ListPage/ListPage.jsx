@@ -37,9 +37,8 @@ function ListPage(props) {
   }, [videoList])
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClick, false);
-  
-    return () => document.removeEventListener("mousedown", handleClick, false);
+    window.addEventListener("click", handleClick);
+    return () => window.removeEventListener("click", handleClick);
   });
 
   // Test list page - http://localhost:3000/list/5e66c35fc0055d7503f48f2e
@@ -52,10 +51,20 @@ function ListPage(props) {
   }
 
   const handleClick = e => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
     if (options.toString().includes(e.target.toString())) {
       setDisplayMenuId('');
       setOptions({});
     }
+  }
+
+  const handleEditClick = video => {
+    console.log('edit video');
+  }
+
+  const handleDeleteClick = video => {
+    console.log('delete video');
   }
 
   return (
@@ -84,14 +93,13 @@ function ListPage(props) {
                   <h3 className="title">{video.title}</h3>
                   <div className="right" ref={node => setOptions(node)}>
                     <FiMoreVertical
-                      
                       title='options' 
                       onClick={() => handleOptionsClick(video._id)}
                     />
                     <div className={`hidden-options ${displayMenuId === video._id ? 'visible' : ''}`}>
                       <div className="options">
-                        <div className="option">Edit</div>
-                        <div className="option">Delete</div>
+                        <div className="option" onClick={() => handleEditClick(video)}>Edit</div>
+                        <div className="option" onClick={() => handleDeleteClick(video)}>Delete</div>
                       </div>
                     </div>
                   </div>
