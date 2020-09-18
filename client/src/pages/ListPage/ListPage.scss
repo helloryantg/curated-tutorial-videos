@@ -15,7 +15,8 @@
     & > .video {
       margin: 2rem;
       width: 640px;
-      height: 360px; 
+      height: 360px;
+      box-shadow: var(--default-box-shadow); 
     }
 
     & > .text-container {
@@ -44,7 +45,7 @@
             background-color: white;
             overflow: hidden;
             display: none;
-            box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: var(--default-box-shadow);
 
             &.visible {
               display: block;
