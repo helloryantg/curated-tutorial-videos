@@ -125,7 +125,7 @@ router.get('/all', authMiddleware, async (req, res) => {
 })
 
 // Get all user video lists
-router.get('/:userId/user', authMiddleware, async (req, res) => {
+router.get('/:userId/user', async (req, res) => {
   try {
     res
       .status(HttpStatus.OK)
@@ -138,7 +138,7 @@ router.get('/:userId/user', authMiddleware, async (req, res) => {
 })
 
 // Get all video list videos
-router.get('/:id/videos', authMiddleware, async (req, res) => {
+router.get('/:id/videos', async (req, res) => {
   try {
     const videos = await Video
       .find({ videoListId: req.params.id })
