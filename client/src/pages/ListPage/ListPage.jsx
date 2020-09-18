@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './ListPage.scss';
 import videoListActions from '../../actions/videoList.action';
 import { connect } from 'react-redux';
@@ -21,6 +21,7 @@ function ListPage(props) {
   const [currentVideos, setCurrentVideos] = useState([]);
   const [currentVideo, setCurrentVideo] = useState({});
   const [displayMenuId, setDisplayMenuId] = useState('');
+  const [options, setOptions] = useState({});
 
   useEffect(() => {
     dispatch(videoListActions.getVideoList(listId));
@@ -35,8 +36,27 @@ function ListPage(props) {
     setCurrentVideo(videoList);
   }, [videoList])
 
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClick, false);
+  
+    return () => document.removeEventListener("mousedown", handleClick, false);
+  });
+
   // Test list page - http://localhost:3000/list/5e66c35fc0055d7503f48f2e
   // Longer test http://localhost:3000/list/5e6411e05d938c317b873924
+
+  const handleOptionsClick = videoId => {
+    displayMenuId === videoId 
+      ? setDisplayMenuId('')
+      : setDisplayMenuId(videoId);
+  }
+
+  const handleClick = e => {
+    if (options.toString().includes(e.target.toString())) {
+      setDisplayMenuId('');
+      setOptions({});
+    }
+  }
 
   return (
     <div className="ListPage">
@@ -62,16 +82,11 @@ function ListPage(props) {
               <div className="text-container">
                 <div className="top">
                   <h3 className="title">{video.title}</h3>
-                  <div className="right">
+                  <div className="right" ref={node => setOptions(node)}>
                     <FiMoreVertical
+                      
                       title='options' 
-                      onClick={() => {
-                        if (displayMenuId === video._id) {
-                          setDisplayMenuId('');
-                        } else {
-                          setDisplayMenuId(video._id)  
-                        }
-                      }}
+                      onClick={() => handleOptionsClick(video._id)}
                     />
                     <div className={`hidden-options ${displayMenuId === video._id ? 'visible' : ''}`}>
                       <div className="options">
