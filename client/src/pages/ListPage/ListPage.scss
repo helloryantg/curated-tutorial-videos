@@ -83,4 +83,23 @@
       }
     }
   }
+
+  @media only screen and (max-width: 680px) {
+    & > .video-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & > .video {
+        // width: 90%;
+        margin: .4rem 0.4rem;
+        width: 90%;
+        height: 56vw;
+      }
+
+      & > .text-container {
+        width: 90%;
+      }
+    }
+  }
 }
