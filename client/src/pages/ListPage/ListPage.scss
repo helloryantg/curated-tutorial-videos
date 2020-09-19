@@ -69,6 +69,14 @@
           }          
         }
       }
+
+      & > .description {
+        color: grey;
+
+        & > .empty-description {
+          
+        }
+      }
     }
   }
 

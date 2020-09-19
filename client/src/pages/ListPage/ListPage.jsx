@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import ReactPlayer from 'react-player';
 import { FiMoreVertical } from "react-icons/fi";
 
+const EMPTY_DESCRIPTION = 'No description...';
+
 function ListPage(props) {
   const {
     videoLists,
@@ -104,7 +106,11 @@ function ListPage(props) {
                     </div>
                   </div>
                 </div>
-                <div className="description">{video.description}</div>
+                <div className="description">
+                  {video.description !== '' 
+                    ? <span>{video.description}</span>
+                    : <span className="empty-description">{EMPTY_DESCRIPTION}</span>}
+                </div>
               </div>
             </div>
           )
