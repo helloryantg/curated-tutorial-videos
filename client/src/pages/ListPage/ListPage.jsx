@@ -24,6 +24,8 @@ function ListPage(props) {
   const [currentVideo, setCurrentVideo] = useState({});
   const [displayMenuId, setDisplayMenuId] = useState('');
   const [options, setOptions] = useState({});
+  const [editVideo, setEditVideo] = useState({});
+  const [editDescription, setEditDescription] = useState('');
 
   useEffect(() => {
     dispatch(videoListActions.getVideoList(listId));
@@ -71,11 +73,17 @@ function ListPage(props) {
   }
 
   const handleEditClick = video => {
-    console.log('edit video');
+    setEditVideo(editVideo[video._id] ? {} : { [video._id]: video });
+    setEditDescription(video.description);
   }
 
   const handleDeleteClick = video => {
     console.log('delete video');
+  }
+
+  const handleChangeTextarea = event => {
+    console.log(event.target.value);
+    setEditDescription(event.target.value);
   }
 
   return (
@@ -116,9 +124,18 @@ function ListPage(props) {
                   </div>
                 </div>
                 <div className="description">
-                  {video.description !== '' 
-                    ? <span>{video.description}</span>
-                    : <span className="empty-description">{EMPTY_DESCRIPTION}</span>}
+                  {editVideo[video._id] ?
+                    <textarea 
+                      name="description" 
+                      id="description" 
+                      cols="30" 
+                      rows="10"
+                      value={editDescription}
+                      onChange={(evt) => handleChangeTextarea(evt)}
+                    ></textarea>
+                    : video.description !== '' 
+                      ? <span>{video.description}</span>
+                      : <span className="empty-description">{EMPTY_DESCRIPTION}</span>}
                 </div>
               </div>
             </div>
