@@ -64,7 +64,10 @@ function List({
         </div>
 
         <div className="name">
-          {videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}
+          <a 
+            href={`list/${videoLists[activeTabIndex]._id}`}
+            target="_blank"
+          >{videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}</a>
         </div>
         <div
           className="delete"
