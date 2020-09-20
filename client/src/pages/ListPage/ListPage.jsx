@@ -14,6 +14,7 @@ function ListPage(props) {
     match,
     videos,
     videoList,
+    searchText,
   } = props;
 
   const {
@@ -37,6 +38,15 @@ function ListPage(props) {
   useEffect(() => {
     setCurrentVideo(videoList);
   }, [videoList])
+
+  useEffect(() => {
+    if (searchText === '') {
+      setCurrentVideos(videos);
+    } else {
+      const filteredVideos = currentVideos.filter(video => video.title.toLowerCase().includes(searchText.toLowerCase()));
+      setCurrentVideos(filteredVideos);
+    }
+  }, [searchText])
 
   useEffect(() => {
     window.addEventListener("click", handleClick);
@@ -120,9 +130,14 @@ function ListPage(props) {
   )
 }
 
-const mapState = ({ reducers }) => ({
-  videos: reducers.videos,
-  videoList: reducers.videoList,
+const mapState = ({ reducers: {
+  videos,
+  videoList,
+  searchText
+}}) => ({
+  videos,
+  videoList,
+  searchText,
 })
 
 export default connect(mapState)(ListPage);
