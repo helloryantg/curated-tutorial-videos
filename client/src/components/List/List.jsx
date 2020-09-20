@@ -8,7 +8,6 @@ import './List.scss'
 import VideoCard from '../../components/VideoCard/VideoCard'
 // Actions
 import modalActions from '../../actions/modal.action'
-import videoListAction from '../../actions/videoList.action'
 // Constants
 import MODAL_CONSTANTS from '../../constants/modal.constants'
 // Dependencies

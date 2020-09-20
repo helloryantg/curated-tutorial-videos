@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ListPage.scss';
 import videoListActions from '../../actions/videoList.action';
 import { connect } from 'react-redux';
@@ -9,7 +9,6 @@ const EMPTY_DESCRIPTION = 'No description...';
 
 function ListPage(props) {
   const {
-    videoLists,
     dispatch,
     match,
     videos,

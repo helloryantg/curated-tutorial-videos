@@ -10,7 +10,6 @@ import moment from 'moment'
 function Card(props) {
   const {
     video,
-    dispatch,
   } = props
 
   const [currentVideo, setCurrentVideo] = useState(video)
