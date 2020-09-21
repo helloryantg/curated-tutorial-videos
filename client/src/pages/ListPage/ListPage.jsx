@@ -26,6 +26,7 @@ function ListPage(props) {
   const [options, setOptions] = useState({});
   const [editVideo, setEditVideo] = useState({});
   const [editDescription, setEditDescription] = useState('');
+  const [editTitle, setEditTitle] = useState('');
 
   useEffect(() => {
     dispatch(videoListActions.getVideoList(listId));
@@ -75,15 +76,11 @@ function ListPage(props) {
   const handleEditClick = video => {
     setEditVideo(editVideo[video._id] ? {} : { [video._id]: video });
     setEditDescription(video.description);
+    setEditTitle(video.title);
   }
 
   const handleDeleteClick = video => {
     console.log('delete video');
-  }
-
-  const handleChangeTextarea = event => {
-    console.log(event.target.value);
-    setEditDescription(event.target.value);
   }
 
   return (
@@ -109,7 +106,15 @@ function ListPage(props) {
 
               <div className="text-container">
                 <div className="top">
-                  <h3 className="title">{video.title}</h3>
+                  <div className="title">
+                    {editVideo[video._id] 
+                      ? <input 
+                        type="text" 
+                        onChange={(evt) => setEditTitle(evt.target.value)}
+                        autoFocus
+                      />
+                      : <h3>{video.title}</h3>}
+                  </div>
                   <div className="right" ref={node => setOptions(node)}>
                     <FiMoreVertical
                       title='options' 
@@ -124,14 +129,14 @@ function ListPage(props) {
                   </div>
                 </div>
                 <div className="description">
-                  {editVideo[video._id] ?
-                    <textarea 
+                  {editVideo[video._id] 
+                    ? <textarea 
                       name="description" 
                       id="description" 
                       cols="30" 
                       rows="10"
                       value={editDescription}
-                      onChange={(evt) => handleChangeTextarea(evt)}
+                      onChange={(evt) => setEditDescription(evt.target.value)}
                     ></textarea>
                     : video.description !== '' 
                       ? <span>{video.description}</span>
