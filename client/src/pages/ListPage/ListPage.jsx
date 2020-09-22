@@ -4,6 +4,7 @@ import videoListActions from '../../actions/videoList.action';
 import { connect } from 'react-redux';
 import ReactPlayer from 'react-player';
 import { FiMoreVertical } from "react-icons/fi";
+import { editVideo } from '../../actions/video.action';
 
 const EMPTY_DESCRIPTION = 'No description...';
 
@@ -79,6 +80,17 @@ function ListPage(props) {
     setEditTitle(video.title);
   }
 
+  const handleEnterClick = ({ key }, video) => {
+    if (key !== 'Enter') {
+      return;
+    }
+
+    video['description'] = editDescription;
+    video['title'] = editTitle;
+
+    // Unfinished
+  }
+
   const handleDeleteClick = video => {
     console.log('delete video');
   }
@@ -110,8 +122,10 @@ function ListPage(props) {
                     {editVideo[video._id] 
                       ? <input 
                         type="text" 
+                        value={editTitle}
                         onChange={(evt) => setEditTitle(evt.target.value)}
                         autoFocus
+                        onKeyDown={(evt) => handleEnterClick(evt, video)}
                       />
                       : <h3>{video.title}</h3>}
                   </div>
@@ -137,6 +151,7 @@ function ListPage(props) {
                       rows="10"
                       value={editDescription}
                       onChange={(evt) => setEditDescription(evt.target.value)}
+                      onKeyDown={(evt) => handleEnterClick(evt, video)}
                     ></textarea>
                     : video.description !== '' 
                       ? <span>{video.description}</span>
