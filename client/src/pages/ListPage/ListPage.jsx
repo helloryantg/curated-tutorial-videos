@@ -4,7 +4,7 @@ import videoListActions from '../../actions/videoList.action';
 import { connect } from 'react-redux';
 import ReactPlayer from 'react-player';
 import { FiMoreVertical } from "react-icons/fi";
-import { editVideo } from '../../actions/video.action';
+import videoActions from '../../actions/video.action';
 
 const EMPTY_DESCRIPTION = 'No description...';
 
@@ -80,7 +80,7 @@ function ListPage(props) {
     setEditTitle(video.title);
   }
 
-  const handleEnterClick = ({ key }, video) => {
+  const handleEnterClick = ({ key, shiftKey }, video) => {
     if (key !== 'Enter') {
       return;
     }
@@ -88,7 +88,9 @@ function ListPage(props) {
     video['description'] = editDescription;
     video['title'] = editTitle;
 
-    // Unfinished
+    if (shiftKey) {
+      dispatch(videoActions.editVideo(video));
+    }
   }
 
   const handleDeleteClick = video => {
