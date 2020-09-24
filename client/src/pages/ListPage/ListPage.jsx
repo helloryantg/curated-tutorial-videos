@@ -149,8 +149,6 @@ function ListPage(props) {
                     ? <textarea 
                       name="description" 
                       id="description" 
-                      cols="30" 
-                      rows="10"
                       value={editDescription}
                       onChange={(evt) => setEditDescription(evt.target.value)}
                       onKeyDown={(evt) => handleEnterClick(evt, video)}
