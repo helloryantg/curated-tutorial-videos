@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import ReactPlayer from 'react-player';
 import { FiMoreVertical } from "react-icons/fi";
 import videoActions from '../../actions/video.action';
+import { Link } from 'react-router-dom'
 
 const EMPTY_DESCRIPTION = 'No description...';
 
@@ -129,7 +130,7 @@ function ListPage(props) {
                         autoFocus
                         onKeyDown={(evt) => handleEnterClick(evt, video)}
                       />
-                      : <h3>{video.title}</h3>}
+                      : <Link to={`/video/${video._id}`}>{video.title}</Link>}
                   </div>
                   <div className="right" ref={node => setOptions(node)}>
                     <FiMoreVertical
