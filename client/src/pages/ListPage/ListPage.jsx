@@ -29,6 +29,7 @@ function ListPage(props) {
   const [editVideo, setEditVideo] = useState({});
   const [editDescription, setEditDescription] = useState('');
   const [editTitle, setEditTitle] = useState('');
+  const [hasChanges, setHasChanges] = useState('')
 
   useEffect(() => {
     dispatch(videoListActions.getVideoList(listId));
@@ -79,19 +80,37 @@ function ListPage(props) {
     setEditVideo(editVideo[video._id] ? {} : { [video._id]: video });
     setEditDescription(video.description);
     setEditTitle(video.title);
+
+    if (Object.keys(editVideo).length) {
+      let hasChanges = false;
+
+      if (editVideo[video._id].description !== editDescription) {
+        video.description = editDescription
+        hasChanges = true
+      } 
+      
+      if (editVideo[video._id].title !== editTitle) {
+        video.title = editTitle
+        hasChanges = true
+      }
+
+      if (hasChanges) {
+        dispatch(videoActions.editVideo(video))
+      }
+    }
   }
 
   const handleEnterClick = ({ key, shiftKey }, video) => {
-    if (key !== 'Enter') {
-      return;
-    }
+    // if (key !== 'Enter') {
+    //   return;
+    // }
 
-    video['description'] = editDescription;
-    video['title'] = editTitle;
+    // video['description'] = editDescription;
+    // video['title'] = editTitle;
 
-    if (shiftKey) {
-      dispatch(videoActions.editVideo(video));
-    }
+    // if (shiftKey) {
+    //   dispatch(videoActions.editVideo(video));
+    // }
   }
 
   const handleDeleteClick = video => {
