@@ -29,7 +29,6 @@ function ListPage(props) {
   const [editVideo, setEditVideo] = useState({});
   const [editDescription, setEditDescription] = useState('');
   const [editTitle, setEditTitle] = useState('');
-  const [hasChanges, setHasChanges] = useState('')
 
   useEffect(() => {
     dispatch(videoListActions.getVideoList(listId));
@@ -70,6 +69,9 @@ function ListPage(props) {
   const handleClick = e => {
     e.preventDefault();
     e.stopImmediatePropagation();
+    
+    if (options === null) return
+
     if (options.toString().includes(e.target.toString())) {
       setDisplayMenuId('');
       setOptions({});
