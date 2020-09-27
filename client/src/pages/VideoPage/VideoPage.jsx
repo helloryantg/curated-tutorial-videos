@@ -1,40 +1,30 @@
 // React
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react"
 // Redux
-import { connect } from 'react-redux'
+import { connect } from "react-redux"
 // Styles
-import './VideoPage.scss'
+import "./VideoPage.scss"
 // Components
-import NavBar from '../../components/NavBar/NavBar'
+// import NavBar from "../../components/NavBar/NavBar"
 // Dependencies
-import ReactPlayer from 'react-player'
+import ReactPlayer from "react-player"
 // Services
-import commentService from '../../services/comment.service'
-import videoActions from '../../actions/video.action'
+import commentService from "../../services/comment.service"
+import videoActions from "../../actions/video.action"
 // Utils
-import { 
-  isEmpty
-} from '../../utils/object'
-import { 
-  isNullOrEmpty 
-} from '../../utils/string.utils'
-import videoUtils from '../../utils/video.utils'
+import { isEmpty } from "../../utils/object"
+import { isNullOrEmpty } from "../../utils/string.utils"
+import videoUtils from "../../utils/video.utils"
 
 function VideoPage(props) {
-  const {
-    comments,
-    dispatch,
-    user,
-    video,
-    videoPageUser,
-  } = props
-  
-  const [body, setBody] = useState('')
-  const [createdByUser, setCreatedByUser] = useState('')
+  const { comments, dispatch, user, video, videoPageUser } = props
+
+  const [body, setBody] = useState("")
+  const [createdByUser, setCreatedByUser] = useState("")
   const [currentVideo, setCurrentVideo] = useState({})
   const [editComment, setEditComment] = useState({})
   const [videoComments, setVideoComments] = useState([])
-  const [videoId, setVideoId] = useState('')
+  const [videoId, setVideoId] = useState("")
 
   useEffect(() => {
     dispatch(videoActions.getVideo(props.match.params.id))
@@ -49,7 +39,7 @@ function VideoPage(props) {
 
   useEffect(() => {
     if (comments.length) {
-      if (comments.some(comment => comment.parentId === currentVideo._id)) {
+      if (comments.some((comment) => comment.parentId === currentVideo._id)) {
         setVideoComments(comments)
       }
     }
@@ -68,20 +58,23 @@ function VideoPage(props) {
         body,
         user: user._id,
       }
-  
+
       try {
         const commentId = await commentService.createComment(newComment)
-  
-        setVideoComments([...videoComments, { ...newComment, user, _id: commentId, createdAt: new Date() }])
+
+        setVideoComments([
+          ...videoComments,
+          { ...newComment, user, _id: commentId, createdAt: new Date() },
+        ])
       } catch {
-        throw new Error('Unable to create comment')
+        throw new Error("Unable to create comment")
       }
-  
-      setBody('')      
+
+      setBody("")
     }
   }
 
-  const onReady = event => {
+  const onReady = (event) => {
     event.target.pauseVideo()
   }
 
@@ -93,20 +86,22 @@ function VideoPage(props) {
     // }
   }
 
-  const handleEditComment = async comment => {
+  const handleEditComment = async (comment) => {
     if (comment._id === editComment._id) {
       try {
         commentService.editComment(editComment)
       } catch (err) {
         throw new Error(err)
       }
-      
-      const commentIndex = videoComments.findIndex(vidComment => vidComment._id === editComment._id)
+
+      const commentIndex = videoComments.findIndex(
+        (vidComment) => vidComment._id === editComment._id
+      )
 
       if (commentIndex !== -1) {
         setVideoComments(videoComments.splice(commentIndex, 1, editComment))
       } else {
-        console.error('Could not find the index of the edited comment')
+        console.error("Could not find the index of the edited comment")
       }
 
       setVideoComments(videoComments)
@@ -116,11 +111,13 @@ function VideoPage(props) {
     }
   }
 
-  const handleDeleteComment = async comment => {
+  const handleDeleteComment = async (comment) => {
     try {
       await commentService.deleteComment(comment._id)
-      
-      const commentsList = videoComments.filter(vidComment => vidComment._id !== comment._id)
+
+      const commentsList = videoComments.filter(
+        (vidComment) => vidComment._id !== comment._id
+      )
 
       setVideoComments(commentsList)
     } catch (err) {
@@ -128,7 +125,7 @@ function VideoPage(props) {
     }
   }
 
-  const handleCancelComment = comment => {
+  const handleCancelComment = (comment) => {
     setEditComment({})
   }
 
@@ -144,8 +141,8 @@ function VideoPage(props) {
           <ReactPlayer
             url={video.url}
             light={true}
-            width={'80%'}
-            height={'100%'}
+            width={"80%"}
+            height={"100%"}
           />
         </div>
         <div className="details">
@@ -153,45 +150,54 @@ function VideoPage(props) {
           <p className="userName">{createdByUser}</p>
           <p className="description">{video.description}</p>
           <div className="comments">
-            {videoComments.map(comment => {
-              return <div className="comment" key={comment._id}>
-                <div className="body-user">
-                  {(editComment && (editComment._id === comment._id))
-                    ? <textarea 
+            {videoComments.map((comment) => {
+              return (
+                <div className="comment" key={comment._id}>
+                  <div className="body-user">
+                    {editComment && editComment._id === comment._id ? (
+                      <textarea
                         value={editComment.body}
                         onChange={({ target }) => {
-                          setEditComment({ 
+                          setEditComment({
                             ...editComment,
                             body: target.value,
                           })
                         }}
                       ></textarea>
-                      : <div className="body">({new Date(comment.createdAt).toDateString()}) {comment.body}</div> 
-                  }
-                  <div className="user">{comment.user.displayName}</div>
-                </div>
-                {(comment.user._id === user._id) 
-                  ? <div className="settings">
-                      <div 
+                    ) : (
+                      <div className="body">
+                        ({new Date(comment.createdAt).toDateString()}){" "}
+                        {comment.body}
+                      </div>
+                    )}
+                    <div className="user">{comment.user.displayName}</div>
+                  </div>
+                  {comment.user._id === user._id ? (
+                    <div className="settings">
+                      <div
                         className="edit"
                         onClick={() => handleEditComment(comment)}
-                      >Edit</div>
-                      <div 
+                      >
+                        Edit
+                      </div>
+                      <div
                         className="delete"
                         onClick={() => handleDeleteComment(comment)}
-                      >Delete</div>
-                      {!isEmpty(editComment)
-                        ? <div 
-                            className="cancel"
-                            onClick={() => handleCancelComment(comment)}
-                          >Cancel</div>
-                        : null
-                      }
-                      
+                      >
+                        Delete
+                      </div>
+                      {!isEmpty(editComment) ? (
+                        <div
+                          className="cancel"
+                          onClick={() => handleCancelComment(comment)}
+                        >
+                          Cancel
+                        </div>
+                      ) : null}
                     </div>
-                  : null
-                }
-              </div>
+                  ) : null}
+                </div>
+              )
             })}
           </div>
           <div className="addComment">
@@ -201,9 +207,7 @@ function VideoPage(props) {
               onChange={({ target }) => setBody(target.value)}
               value={body}
             ></textarea>
-            <button
-              onClick={() => createComment()}
-            >Add Comment</button>
+            <button onClick={() => createComment()}>Add Comment</button>
           </div>
         </div>
       </div>
