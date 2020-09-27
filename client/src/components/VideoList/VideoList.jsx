@@ -1,10 +1,10 @@
 // React
-import React from 'react'
+import React from "react"
 // Styles
-import './VideoList.scss'
+import "./VideoList.scss"
 // Components
-import LeftTab from '../../components/LeftTab/LeftTab'
-import List from '../../components/List/List'
+import LeftTab from "../../components/LeftTab/LeftTab"
+import List from "../../components/List/List"
 
 function VideoList({
   activeTabIndex,
@@ -27,9 +27,7 @@ function VideoList({
         videoLists={videoLists}
       />
 
-      <List
-        activeTabIndex={activeTabIndex}
-      />
+      <List activeTabIndex={activeTabIndex} />
     </div>
   )
 }

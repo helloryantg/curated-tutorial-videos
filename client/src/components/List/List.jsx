@@ -1,29 +1,19 @@
 // React
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react"
 // Redux
-import { connect } from 'react-redux'
+import { connect } from "react-redux"
 // Styles
-import './List.scss'
+import "./List.scss"
 // Components
-import VideoCard from '../../components/VideoCard/VideoCard'
+import VideoCard from "../../components/VideoCard/VideoCard"
 // Actions
-import modalActions from '../../actions/modal.action'
+import modalActions from "../../actions/modal.action"
 // Constants
-import MODAL_CONSTANTS from '../../constants/modal.constants'
+import MODAL_CONSTANTS from "../../constants/modal.constants"
 // Dependencies
-import { 
-  FiEdit,
-  FiPlusSquare,
-  FiXSquare
-} from "react-icons/fi";
+import { FiEdit, FiPlusSquare, FiXSquare } from "react-icons/fi"
 
-function List({
-  activeTabIndex,
-  dispatch,
-  videoLists,
-  videos,
-}) {
-
+function List({ activeTabIndex, dispatch, videoLists, videos }) {
   const [currentVideos, setCurrentVideos] = useState(videos)
 
   useEffect(() => {
@@ -37,12 +27,14 @@ function List({
           <div
             className="add"
             onClick={() => {
-              dispatch(modalActions.showModal({
-                modalType: MODAL_CONSTANTS.ADD_VIDEO_TO_LIST_MODAL,
-                modalProps: {
-                  videoList: videoLists[activeTabIndex]
-                }
-              }))
+              dispatch(
+                modalActions.showModal({
+                  modalType: MODAL_CONSTANTS.ADD_VIDEO_TO_LIST_MODAL,
+                  modalProps: {
+                    videoList: videoLists[activeTabIndex],
+                  },
+                })
+              )
             }}
           >
             <FiPlusSquare />
@@ -51,12 +43,14 @@ function List({
           <div
             className="edit"
             onClick={() => {
-              dispatch(modalActions.showModal({
-                modalType: MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL,
-                modalProps: {
-                  videoList: videoLists[activeTabIndex]
-                }
-              }))
+              dispatch(
+                modalActions.showModal({
+                  modalType: MODAL_CONSTANTS.EDIT_VIDEO_LIST_MODAL,
+                  modalProps: {
+                    videoList: videoLists[activeTabIndex],
+                  },
+                })
+              )
             }}
           >
             <FiEdit />
@@ -64,31 +58,34 @@ function List({
         </div>
 
         <div className="name">
-          <a 
-            href={`list/${videoLists[activeTabIndex]._id}`}
-            target="_blank"
-          >{videoLists[activeTabIndex] ? videoLists[activeTabIndex].name : 'All Videos'}</a>
+          <a href={`list/${videoLists[activeTabIndex]._id}`} target="_blank">
+            {videoLists[activeTabIndex]
+              ? videoLists[activeTabIndex].name
+              : "All Videos"}
+          </a>
         </div>
         <div
           className="delete"
           onClick={() => {
-            dispatch(modalActions.showModal({
-              modalType: MODAL_CONSTANTS.DELETE_VIDEO_LIST_MODAL,
-              modalProps: {
-                videoList: videoLists[activeTabIndex]
-              }
-            }))
-            // dispatch(videoListAction.deleteVideoList(videoLists[activeTabIndex]._id))
+            dispatch(
+              modalActions.showModal({
+                modalType: MODAL_CONSTANTS.DELETE_VIDEO_LIST_MODAL,
+                modalProps: {
+                  videoList: videoLists[activeTabIndex],
+                },
+              })
+            )
           }}
         >
           <FiXSquare />
         </div>
       </div>
       <div className="list">
-        {currentVideos.length ?
-          currentVideos.map(video => <VideoCard key={video._id} video={video} />)
-          : null
-        }
+        {currentVideos.length
+          ? currentVideos.map((video) => (
+              <VideoCard key={video._id} video={video} />
+            ))
+          : null}
       </div>
     </div>
   )
@@ -97,7 +94,7 @@ function List({
 const mapState = ({ reducers }) => {
   return {
     videoLists: reducers.videoLists,
-    videos: reducers.videos
+    videos: reducers.videos,
   }
 }
 
