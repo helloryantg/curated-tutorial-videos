@@ -23,9 +23,11 @@
       display: flex;
       justify-content: center;
       flex-direction: column;
-      width: 100%;
-      min-height: 80%;
-      background-color: black;
+      
+      width: 1280px;
+      height: 720px;
+      // width: 100%;
+      // min-height: 80%;
 
       & > div {
         margin: 0 auto;

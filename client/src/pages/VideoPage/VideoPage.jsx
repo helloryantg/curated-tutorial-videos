@@ -141,7 +141,7 @@ function VideoPage(props) {
           <ReactPlayer
             url={video.url}
             light={true}
-            width={"80%"}
+            width={"100%"}
             height={"100%"}
           />
         </div>
