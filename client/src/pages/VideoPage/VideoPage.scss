@@ -54,7 +54,17 @@
         width: 80%;
 
         & > .comment {
-          margin-left: 1rem;
+          margin: 0 0 .5rem 1rem;
+
+          &:hover {
+            & > .settings {
+              & > .edit,
+              & > .delete,
+              & > .cancel {
+                visibility: visible;
+              }
+            }
+          }
 
           & > .body-user {
             display: flex;
@@ -85,6 +95,7 @@
               margin-left: .6rem;
               cursor: pointer;
               color: grey;
+              visibility: hidden;
 
               &:hover {
                 text-decoration: underline;
