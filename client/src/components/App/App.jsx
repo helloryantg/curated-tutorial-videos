@@ -16,6 +16,7 @@ import NavBar from "../../components/NavBar/NavBar"
 import VideoPage from "../../pages/VideoPage/VideoPage"
 import VideoWorkspace from "../../pages/VideoWorkspace/VideoWorkspace"
 // import Workspace from "../../components/Workspace/Workspace"
+import VidWorkspace from '../../components/VidWorkspace/VidWorkspace'
 // Utils
 import { isEmpty } from "../../utils/object"
 
@@ -49,7 +50,8 @@ function App(props) {
       <Router>
         <Switch>
           {/* <Route exact path='/' component={Workspace}/> */}
-          <Route exact path="/" component={VideoWorkspace} />
+          <Route exact path="/" component={VidWorkspace} />
+          {/* <Route exact path="/" component={VideoWorkspace} /> */}
           <Route exact path="/list/:listId" component={ListPage} />
           <Route exact path="/video/:id" component={VideoPage} />
         </Switch>
