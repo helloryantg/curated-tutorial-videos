@@ -23,11 +23,13 @@
       display: flex;
       justify-content: center;
       flex-direction: column;
-      
       width: 1280px;
       height: 720px;
-      // width: 100%;
-      // min-height: 80%;
+
+      & > .title {
+        text-align: center;
+        margin: 1rem 0;
+      }
 
       & > div {
         margin: 0 auto;
@@ -42,7 +44,6 @@
       align-items: center;
       margin: 1rem 0 4rem 0;
 
-      & > .title,
       & > .userName,
       & > .description {
         margin: .4rem 0;

@@ -138,6 +138,7 @@ function VideoPage(props) {
             opts={opts}
             onReady={onReady}
           /> */}
+          <h2 className="title">{video.title}</h2>
           <ReactPlayer
             url={video.url}
             light={true}
@@ -146,7 +147,6 @@ function VideoPage(props) {
           />
         </div>
         <div className="details">
-          <h2 className="title">{video.title}</h2>
           <p className="userName">{createdByUser}</p>
           <p className="description">{video.description}</p>
           <div className="comments">
