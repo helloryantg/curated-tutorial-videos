@@ -1,15 +1,7 @@
 .VideoPage {
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
-  // & > .loader {
-  //   height: 100%;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
 
   & > .main {
     height: calc(100% - 40px);
@@ -37,7 +29,6 @@
     }
 
     & > .details {
-      height: 20%;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -48,6 +39,10 @@
       & > .description {
         margin: .4rem 0;
         width: 80%;
+      }
+
+      & > .description {
+        margin-bottom: 2rem;
       }
 
       & > .comments {
