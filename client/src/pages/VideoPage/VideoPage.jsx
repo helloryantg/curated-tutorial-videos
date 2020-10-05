@@ -147,7 +147,6 @@ function VideoPage(props) {
           />
         </div>
         <div className="details">
-          <p className="userName">{createdByUser}</p>
           <p className="description">{video.description}</p>
           <div className="comments">
             {videoComments.map((comment) => {
