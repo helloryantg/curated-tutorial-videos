@@ -58,7 +58,7 @@ function List({ activeTabIndex, dispatch, videoLists, videos }) {
         </div>
 
         <div className="name">
-          <a href={`list/${videoLists[activeTabIndex]._id}`} target="_blank">
+          <a href={`list/${videoLists[activeTabIndex]._id}`} >
             {videoLists[activeTabIndex]
               ? videoLists[activeTabIndex].name
               : "All Videos"}
