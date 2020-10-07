@@ -25,6 +25,7 @@ function VideoPage(props) {
   const [editComment, setEditComment] = useState({})
   const [videoComments, setVideoComments] = useState([])
   const [videoId, setVideoId] = useState("")
+  const[isCommenting, setCommenting] = useState(false)
 
   useEffect(() => {
     dispatch(videoActions.getVideo(props.match.params.id))
@@ -72,6 +73,8 @@ function VideoPage(props) {
 
       setBody("")
     }
+
+    setCommenting(false)
   }
 
   const onReady = (event) => {
@@ -199,7 +202,8 @@ function VideoPage(props) {
               )
             })}
           </div>
-          <div className="addComment">
+          {isCommenting ?
+            <div className="addComment">
             <textarea
               cols="30"
               rows="10"
@@ -207,7 +211,13 @@ function VideoPage(props) {
               value={body}
             ></textarea>
             <button onClick={() => createComment()}>Add Comment</button>
-          </div>
+            </div> :
+            <div className="addComment">
+              <button
+                onClick={() => setCommenting(true)}
+              >Add Comment</button>
+            </div>
+          }
         </div>
       </div>
     </div>
