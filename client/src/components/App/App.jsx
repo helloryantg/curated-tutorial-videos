@@ -50,8 +50,8 @@ function App(props) {
       <Router>
         <Switch>
           {/* <Route exact path='/' component={Workspace}/> */}
-          {/* <Route exact path="/" component={VidWorkspace} /> */}
-          <Route exact path="/" component={VideoWorkspace} />
+          <Route exact path="/" component={VidWorkspace} />
+          {/* <Route exact path="/" component={VideoWorkspace} /> */}
           <Route exact path="/list/:listId" component={ListPage} />
           <Route exact path="/video/:id" component={VideoPage} />
         </Switch>
