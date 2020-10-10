@@ -2,6 +2,7 @@ import USER_CONSTANTS from '../constants/user.constants'
 import VIDEO_LIST_CONSTANTS from '../constants/videoList.constants'
 import VIDEO_CONSTANTS from '../constants/video.constants'
 import SEARCH_CONSTANTS from '../constants/search.constants'
+import { bindActionCreators } from 'redux'
 
 const initialState = {
   allVideos: [],
@@ -13,7 +14,8 @@ const initialState = {
   videoPageUser: {},
   videos: [],
   comments: [],
-  searchText: ''
+  searchText: '',
+  userVideos: [],
 }
 
 const reducers = (state = initialState, action) => {
@@ -81,6 +83,12 @@ const reducers = (state = initialState, action) => {
       return {
         ...state,
         searchText: action.payload
+      }
+
+    case USER_CONSTANTS.GET_USER_VIDEOS:
+      return {
+        ...state,
+        userVideos: action.payload,
       }
 
     default:

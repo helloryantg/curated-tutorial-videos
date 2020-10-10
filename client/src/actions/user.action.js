@@ -60,10 +60,20 @@ export const setUser = user => dispatch => {
   })
 }
 
+export const getUserVideos = (userId) => async dispatch => {
+  const videos = await userService.getUserVideos(userId)
+
+  dispatch({
+    type: USER_CONSTANTS.GET_USER_VIDEOS,
+    payload: videos,
+  })
+}
+
 export default {
   login,
   signUp,
   logout,
   getUserFromToken,
-  setUser
+  setUser,
+  getUserVideos,
 }
