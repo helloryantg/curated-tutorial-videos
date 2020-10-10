@@ -45,6 +45,7 @@ function VidWorkspace(props) {
             width={"100%"}
             height={"100%"}
           />
+          <div className="title">{video.title}</div>
          </div>
        })}
      </div>
