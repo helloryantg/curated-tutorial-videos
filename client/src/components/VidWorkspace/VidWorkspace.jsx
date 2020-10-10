@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import videoListActions from '../../actions/videoList.action'
 import { Link } from 'react-router-dom'
 import VideoList from '../VideoList/VideoList'
+import userActions from '../../actions/user.action'
+import ReactPlayer from "react-player"
 
 function VidWorkspace(props) {
   useEffect(() => {
@@ -11,14 +13,18 @@ function VidWorkspace(props) {
   }, [])
 
   useEffect(() => {
-    getUserVideoLists(props.user._id)
+    const { _id: userId } = props.user
+    getUserVideoLists(userId)
+    getUserVideos(userId)
   }, [props.user])
 
   const getUserVideoLists = (userId) => {
     props.dispatch(videoListActions.getUserVideoLists(userId))
   }
 
-  console.log(props.videoLists)
+  const getUserVideos = (userId) => {
+    props.dispatch(userActions.getUserVideos(userId))
+  }
 
   return (
     <div className="VidWorkspace">
@@ -30,15 +36,22 @@ function VidWorkspace(props) {
           >{videoList.name}</Link>
         })}
       </div>
-     
+     <div className="videos">
+       {props.userVideos.map(video => {
+         return <div className="video">
+           {video.title}
+         </div>
+       })}
+     </div>
     </div>
   )
 }
 
-const mapState = ({ reducers: { user, videoLists } }) => {
+const mapState = ({ reducers: { user, videoLists, userVideos, } }) => {
   return {
     user,
     videoLists,
+    userVideos,
   }
 }
 
