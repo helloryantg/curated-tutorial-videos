@@ -63,6 +63,14 @@ const getUserById = async (id) => {
   }
 }
 
+const getUserVideos = async (id) => {
+  try {
+    return await server.get(`${USER_BASE_URL}/${id}/videos`)
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 export default {
   signup,
   login,
@@ -70,4 +78,5 @@ export default {
   logout,
   getUserDetails,
   getUserById,
+  getUserVideos,
 }
