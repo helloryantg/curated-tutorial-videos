@@ -13,4 +13,16 @@
       cursor: pointer;
     }
   }
+
+  & > .videos {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    
+    & > .video {
+      width: 320px;
+      height: 200px;
+      margin: 1rem;
+    }
+  }
 }

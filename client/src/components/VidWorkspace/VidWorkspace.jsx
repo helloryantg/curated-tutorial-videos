@@ -39,7 +39,12 @@ function VidWorkspace(props) {
      <div className="videos">
        {props.userVideos.map(video => {
          return <div className="video">
-           {video.title}
+           <ReactPlayer
+            url={video.url}
+            light={true}
+            width={"100%"}
+            height={"100%"}
+          />
          </div>
        })}
      </div>
