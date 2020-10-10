@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './VidWorkspace.scss'
 import { connect } from 'react-redux'
 import videoListActions from '../../actions/videoList.action'
+import { Link } from 'react-router-dom'
+import VideoList from '../VideoList/VideoList'
 
 function VidWorkspace(props) {
   useEffect(() => {
@@ -20,9 +22,15 @@ function VidWorkspace(props) {
 
   return (
     <div className="VidWorkspace">
-      {props.videoLists.map(videoList => {
-        return <div>{videoList.name}</div>
-      })}
+      <div className="video-lists">
+        {props.videoLists.map(videoList => {
+          return <Link 
+            className="video"
+            to={`/list/${videoList._id}`}
+          >{videoList.name}</Link>
+        })}
+      </div>
+     
     </div>
   )
 }

@@ -3,4 +3,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  & > .video-lists {
+    display: flex;
+    justify-content: center;
+
+    & > .video {
+      padding: .5rem 1rem;
+      cursor: pointer;
+    }
+  }
 }
