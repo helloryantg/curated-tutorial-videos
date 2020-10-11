@@ -18,6 +18,7 @@ const videoListSchema = new Schema({
   description: {
     type: String,
     max: 150,
+    default: '',
   }
 }, { timestamps: true })
 
