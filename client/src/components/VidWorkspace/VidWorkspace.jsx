@@ -9,10 +9,6 @@ import ReactPlayer from "react-player"
 
 function VidWorkspace(props) {
   useEffect(() => {
-    
-  }, [])
-
-  useEffect(() => {
     const { _id: userId } = props.user
     getUserVideoLists(userId)
     getUserVideos(userId)
@@ -26,19 +22,24 @@ function VidWorkspace(props) {
     props.dispatch(userActions.getUserVideos(userId))
   }
 
+  console.log(props)
+
   return (
     <div className="VidWorkspace">
       <div className="video-lists">
         {props.videoLists.map(videoList => {
-          return <Link 
+          return <Link
             className="video"
             to={`/list/${videoList._id}`}
+            key={videoList._id}
           >{videoList.name}</Link>
         })}
       </div>
      <div className="videos">
-       {props.userVideos.map(video => {
-         return <div className="video">
+       {props.userVideos
+        .filter(video => video.description.toLowerCase().includes(props.searchText.toLowerCase()))
+        .map(video => {
+         return <div className="video" key={video._id}>
            <ReactPlayer
             url={video.url}
             light={true}
@@ -53,11 +54,12 @@ function VidWorkspace(props) {
   )
 }
 
-const mapState = ({ reducers: { user, videoLists, userVideos, } }) => {
+const mapState = ({ reducers: { user, videoLists, userVideos, searchText, } }) => {
   return {
     user,
     videoLists,
     userVideos,
+    searchText,
   }
 }
 
