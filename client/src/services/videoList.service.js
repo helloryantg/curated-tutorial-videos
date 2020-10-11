@@ -4,8 +4,8 @@ const getUserVideoLists = userId => {
   return server.get(`/videoLists/${userId}/user`)
 }
 
-const createVideoList = name => {
-  return server.post('/videoLists', { name })
+const createVideoList = videoList => {
+  return server.post('/videoLists', videoList)
 }
 
 const getVideoList = id => {

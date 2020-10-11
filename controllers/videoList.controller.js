@@ -14,7 +14,6 @@ const deleteVideoList = require('../operations/deleteVideoList')
 
 // Create a video list
 router.post('/', authMiddleware, async (req, res) => {
-  const { name } = req.body
   const { userId } = req
 
   try {
@@ -26,10 +25,12 @@ router.post('/', authMiddleware, async (req, res) => {
         .send({ msg: 'You must provide a valid user id' })
     }
 
-    const newVideoList = new VideoList({
-      name,
-      userId
-    })
+    const body = {
+      ...req.body,
+      userId,
+    }
+
+    const newVideoList = new VideoList(body)
 
     await newVideoList.save()
 
