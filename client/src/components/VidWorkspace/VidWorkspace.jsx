@@ -3,7 +3,6 @@ import './VidWorkspace.scss'
 import { connect } from 'react-redux'
 import videoListActions from '../../actions/videoList.action'
 import { Link } from 'react-router-dom'
-import VideoList from '../VideoList/VideoList'
 import userActions from '../../actions/user.action'
 import ReactPlayer from "react-player"
 
@@ -21,8 +20,6 @@ function VidWorkspace(props) {
   const getUserVideos = (userId) => {
     props.dispatch(userActions.getUserVideos(userId))
   }
-
-  console.log(props)
 
   return (
     <div className="VidWorkspace">
