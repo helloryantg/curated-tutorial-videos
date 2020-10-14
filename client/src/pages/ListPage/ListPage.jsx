@@ -6,6 +6,7 @@ import ReactPlayer from "react-player"
 import { FiMoreVertical } from "react-icons/fi"
 import videoActions from "../../actions/video.action"
 import { Link } from "react-router-dom"
+import { IoIosAddCircleOutline, IoIosSettings } from "react-icons/io"
 
 const EMPTY_DESCRIPTION = "No description..."
 
@@ -55,9 +56,7 @@ function ListPage(props) {
   // Longer test http://localhost:3000/list/5e6411e05d938c317b873924
 
   const handleOptionsClick = (videoId) => {
-    displayMenuId === videoId
-      ? setDisplayMenuId("")
-      : setDisplayMenuId(videoId)
+    displayMenuId === videoId ? setDisplayMenuId("") : setDisplayMenuId(videoId)
   }
 
   const handleClick = (e) => {
@@ -113,7 +112,15 @@ function ListPage(props) {
 
   return (
     <div className="ListPage">
-      <h2>{currentVideo.name}</h2>
+      <div className="header">
+        <div className="add">
+          <IoIosAddCircleOutline />
+        </div>
+        <h2>{currentVideo.name}</h2>
+        <div className="settings">
+          <IoIosSettings />
+        </div>
+      </div>
       {currentVideos.map((video, idx) => {
         return (
           <div className="video-container" key={video._id}>

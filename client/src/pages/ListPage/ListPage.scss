@@ -4,8 +4,27 @@
   flex-direction: column;
   align-items: center;
 
-  & > h2 {
-    margin: 2rem 0;
+  & > .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    & > h2 {
+      margin: 0 4rem;
+    }
+
+    & > .add,
+    & > .settings {
+      height: 2rem;
+      width: 2rem;
+      cursor: pointer;
+
+      & > svg {
+        height: 100%;
+        width: 100%;
+      }
+    }
   }
 
   & > .video-container {
