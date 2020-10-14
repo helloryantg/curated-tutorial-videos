@@ -110,15 +110,31 @@ function ListPage(props) {
     console.log("delete video")
   }
 
+  const handleAddVideoClick = () => {
+    console.log('add video click')
+
+    // TODO
+  }
+
+  const handleSettingsClick = () => {
+    console.log('settings click')
+
+    // TODO
+  }
+
   return (
     <div className="ListPage">
       <div className="header">
         <div className="add">
-          <IoIosAddCircleOutline />
+          <IoIosAddCircleOutline 
+            onClick={() => handleAddVideoClick()}
+          />
         </div>
         <h2>{currentVideo.name}</h2>
         <div className="settings">
-          <IoIosSettings />
+          <IoIosSettings 
+            onClick={() => handleSettingsClick()}
+          />
         </div>
       </div>
       {currentVideos.map((video, idx) => {
