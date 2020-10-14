@@ -3,15 +3,10 @@ import './VidWorkspace.scss'
 import { connect } from 'react-redux'
 import videoListActions from '../../actions/videoList.action'
 import { Link } from 'react-router-dom'
-import VideoList from '../VideoList/VideoList'
 import userActions from '../../actions/user.action'
 import ReactPlayer from "react-player"
 
 function VidWorkspace(props) {
-  useEffect(() => {
-    
-  }, [])
-
   useEffect(() => {
     const { _id: userId } = props.user
     getUserVideoLists(userId)
@@ -30,15 +25,18 @@ function VidWorkspace(props) {
     <div className="VidWorkspace">
       <div className="video-lists">
         {props.videoLists.map(videoList => {
-          return <Link 
+          return <Link
             className="video"
             to={`/list/${videoList._id}`}
+            key={videoList._id}
           >{videoList.name}</Link>
         })}
       </div>
      <div className="videos">
-       {props.userVideos.map(video => {
-         return <div className="video">
+       {props.userVideos
+        .filter(video => video.description.toLowerCase().includes(props.searchText.toLowerCase()))
+        .map(video => {
+         return <div className="video" key={video._id}>
            <ReactPlayer
             url={video.url}
             light={true}
@@ -53,11 +51,12 @@ function VidWorkspace(props) {
   )
 }
 
-const mapState = ({ reducers: { user, videoLists, userVideos, } }) => {
+const mapState = ({ reducers: { user, videoLists, userVideos, searchText, } }) => {
   return {
     user,
     videoLists,
     userVideos,
+    searchText,
   }
 }
 

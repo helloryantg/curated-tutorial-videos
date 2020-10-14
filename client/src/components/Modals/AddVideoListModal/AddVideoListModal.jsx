@@ -11,7 +11,7 @@ import videoListActions from '../../../actions/videoList.action'
 import CustomButton from '../../../components/CustomButton/CustomButton'
 import Input from '../../../components/Input/Input'
 
-const initialVideoList = { name: '' }
+const initialVideoList = { name: '', description: '', }
 
 function AddVideoListModal({ dispatch }) {
   const [videoList, setVideoList] = useState(initialVideoList)
@@ -45,10 +45,23 @@ function AddVideoListModal({ dispatch }) {
           value={videoList.name}
           onChange={({ value }) => {
             setVideoList({
-              name: value
+              ...videoList,
+              name: value,
             })
           }}
           error={error}
+        />
+
+        <Input
+          option='description'
+          placeholder='Video list description'
+          value={videoList.description}
+          onChange={({ value }) => {
+            setVideoList({
+              ...videoList,
+              description: value,
+            })
+          }}
         />
 
         <CustomButton

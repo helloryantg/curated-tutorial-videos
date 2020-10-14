@@ -5,15 +5,20 @@ const videoListSchema = new Schema({
   name: {
     type: String,
     required: true,
-    max: 50
+    max: 50,
   },
   userId: {
     type: String,
-    required: true
+    required: true,
   },
   type: {
     type: String,
-    default: 'videoList'
+    default: 'videoList',
+  },
+  description: {
+    type: String,
+    max: 150,
+    default: '',
   }
 }, { timestamps: true })
 
